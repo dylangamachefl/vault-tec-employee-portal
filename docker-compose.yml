@@ -1,0 +1,49 @@
+# docker-compose.yml — Tier 2 Architecture
+version: "3.9"
+
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src       # Hot reload during development
+    env_file: .env
+    depends_on:
+      - postgres
+      - chromadb
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    env_file: .env
+    depends_on:
+      - api
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: app_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8002:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+
+volumes:
+  postgres_data:
+  chroma_data:

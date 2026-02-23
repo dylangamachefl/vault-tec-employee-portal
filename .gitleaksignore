@@ -1,0 +1,4 @@
+data/
+# Ignore specific files if needed
+# raw/Doc02_Radiation_Sickness_Symptom_Guide.docx
+# raw/SOP_PipBoy_3000_Calibration.md
