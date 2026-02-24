@@ -187,10 +187,7 @@ class VaultRetriever:
         documents: list[str] = results["documents"][0]
         metadatas: list[dict[str, Any]] = results["metadatas"][0]
 
-        chunks = [
-            {"document": doc, "metadata": meta}
-            for doc, meta in zip(documents, metadatas)
-        ]
+        chunks = [{"document": doc, "metadata": meta} for doc, meta in zip(documents, metadatas)]
         logger.debug("Retrieved %d chunks for query: %.80s…", len(chunks), query)
         return chunks
 
@@ -208,14 +205,12 @@ class VaultRetriever:
         """
         # Build context block
         context_block = "\n".join(
-            _format_chunk(chunk["document"], chunk["metadata"])
-            for chunk in chunks
+            _format_chunk(chunk["document"], chunk["metadata"]) for chunk in chunks
         )
 
         # Assemble full prompt (system + user roles via combined string for gemma)
-        prompt = (
-            f"{_SYSTEM_PROMPT}\n\n"
-            + _USER_TEMPLATE.format(query=query, context_block=context_block)
+        prompt = f"{_SYSTEM_PROMPT}\n\n" + _USER_TEMPLATE.format(
+            query=query, context_block=context_block
         )
 
         logger.info("Calling LLM with %d chunk(s) …", len(chunks))

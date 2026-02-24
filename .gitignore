@@ -9,3 +9,8 @@ data/processed/
 .ruff_cache/
 dist/
 build/
+
+# Data & DB
+chroma_db/
+tests/eval/results/
+tests/eval/generated_answers_*.json

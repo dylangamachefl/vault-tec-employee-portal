@@ -17,256 +17,256 @@
   },
   {
     "id": "qa_003",
-    "question": "What is the first rule listed in the Vault Dweller Code of Conduct?",
-    "ground_truth": "Residents must maintain a positive productivity score at all times and report any deviation immediately to their assigned Vault Overseer.",
+    "question": "What does Section 1 of the Vault Dweller Code of Conduct cover, and what is the key requirement it places on residents?",
+    "ground_truth": "Section 1 covers Rationing Protocols. Residents must present their Pip-Boy at Dispenser Station C-7 each Monday between 06:00 and 06:45 to receive their weekly ration packet. Failure to comply is logged in the resident's Permanent Vault Record.",
     "source_document": "Doc01_Vault_Dweller_Code_of_Conduct.pdf",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_004",
-    "question": "What is the primary purpose of the GOAT examination?",
-    "ground_truth": "The GOAT (Generalized Occupational Aptitude Test) determines a resident's vocational assignment within the Vault, matching their skills to available roles.",
+    "question": "What is the true purpose of the GOAT examination, according to the HR administration document?",
+    "ground_truth": "According to the HR-restricted administration document, the GOAT is a pre-determined theatrical exercise. Occupational assignments are decided no fewer than 18 months before the exam based entirely on the Vault-Tec Social Stratification Model (VTSSM v3.1) and current staffing needs. The exam itself is not scored; answer sheets are incinerated. Residents are told their results reflect psychometric analysis in order to maximize buy-in and minimize labor grievances.",
     "source_document": "Doc06_GOAT_Exam_Administration.pdf",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_005",
-    "question": "What are the approved marketing channels for the Vault 76 Tricentennial promotional campaign?",
-    "ground_truth": "Internal Pip-Boy broadcast, physical flyer distribution in common areas, and Overseer-approved announcements over the intercom system.",
+    "question": "What are the approved marketing channels and materials for the Vault 76 Tricentennial promotional campaign?",
+    "ground_truth": "Approved materials and channels include: vault newsletter articles with 'surface anticipation' messaging, mandatory social events in common areas with cake, commemorative Pip-Boy decals, a complimentary Reclamation Day tote bag, approved posters featuring eagles and patriotic imagery, and festive jumpsuit inspections on Reclamation Day itself. Upbeat intercom music is also approved for the day of the event.",
     "source_document": "Doc7_Vault76_Tricentennial_Promotional_Strategy.docx",
     "required_access_level": "marketing",
     "department": "marketing"
   },
   {
     "id": "qa_006",
-    "question": "What is the evacuation assembly point for residents in Sector 3 during an emergency?",
-    "ground_truth": "Residents in Sector 3 must proceed immediately to the Main Atrium (Level 2) and await further instructions from the Overseer or designated safety marshal.",
+    "question": "How are residents supposed to locate their evacuation muster point during an emergency drill?",
+    "ground_truth": "Residents should consult the color-coded muster point chart affixed to the inside of their quarters door. They must then proceed calmly to their pre-assigned muster station and check in verbally with their Floor Monitor, providing their Resident ID number.",
     "source_document": "Doc3_Emergency_Evacuation_Procedures.pdf",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_007",
-    "question": "What is the recommended PipBoy 2000 calibration interval?",
-    "ground_truth": "The PipBoy 2000 should be calibrated every 90 days or following any exposure to electromagnetic interference above 5 rads.",
+    "question": "What diagnostic key must a technician use to initialize the Pip-Boy 2000 diagnostic environment on a ZAX-linked terminal?",
+    "ground_truth": "The technician must enter the diagnostic key 'VT-MAINT-2000-DELTA-7' at the credential prompt. This key is specific to the Pip-Boy 2000 series and must be memorized and not written down per Vault-Tec Security Directive 12.",
     "source_document": "SOP_PipBoy_2000_Calibration.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_008",
-    "question": "What are the GECK advertising restrictions regarding competitor products?",
-    "ground_truth": "No advertising materials may reference, compare, or allude to competitor products or pre-war consumer brands. All copy must focus exclusively on Vault-Tec approved product features.",
+    "question": "What specific term is permanently banned from all G.E.C.K. marketing materials, and what is the primary legal reason given?",
+    "ground_truth": "The word 'MIRACLE' and all its cognates are permanently banned from all G.E.C.K. advertising. The legal reason is that prior use of the term in seven previous campaigns created actionable implied warranties of supernatural efficacy, resulting in class-action suits from residents who believed it guaranteed biosphere restoration and radiation curing. The Vault-Tec Office of Jurisprudence issued this prohibition under filing reference VT-LEGAL-1032-GECK-MIRACLE-CLASS.",
     "source_document": "Doc08_GECK_Advertising_Guidelines.pdf",
     "required_access_level": "marketing",
     "department": "marketing"
   },
   {
     "id": "qa_009",
-    "question": "Under what conditions can the Vault Door Override Protocol be initiated?",
-    "ground_truth": "The override protocol may only be initiated by the Primary Overseer or designated Deputy Overseer, and only in the event of a confirmed external threat, catastrophic internal failure, or direct order from Vault-Tec Command.",
+    "question": "Under what four authorized scenarios may the Vault Door Override Protocol be initiated?",
+    "ground_truth": "The four authorized scenarios are: (A) Authorized exterior Vault-Tec personnel such as inspectors or corporate auditors require entry; (B) A critical supply delivery is imminent per pre-war procurement schedule; (C) An Overseer-authorized 'population adjustment' requires expedited external relocation of one or more residents; (D) Facilities determines a gear tooth inspection cannot wait until scheduled maintenance.",
     "source_document": "doc10_vault_door_override_protocol.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_010",
-    "question": "How many authentication factors are required to access the ZAX mainframe root level?",
-    "ground_truth": "Three-factor authentication is required: a physical keycard, a memorized 16-digit PIN, and a biometric retinal scan.",
+    "question": "How many authentication factors are required to access the ZAX mainframe root level, and what are they?",
+    "ground_truth": "Three-factor authentication is required: (1) a physical ZAX Root Keycard inserted into the left terminal slot; (2) a typed terminal passphrase entered at the blinking cursor (not spoken aloud, as ZAX's audio monitoring is always active); and (3) a biometric palm scan on the BioScan panel.",
     "source_document": "doc11_zax_mainframe_root_access.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_011",
-    "question": "What form must an HR representative complete to initiate a resident reassignment?",
-    "ground_truth": "Form VT-HR-007 (Non-Voluntary Dwelling Reassignment Request) must be completed and countersigned by the Overseer before any resident can be reassigned.",
+    "question": "What form must HR complete to initiate a non-voluntary resident reassignment, and is there a more severe variant?",
+    "ground_truth": "HR personnel must complete Form 12-A (Resident Behavioral Deviation \u2014 Standard). For more serious cases, Form 12-A(ii) (Resident Behavioral Deviation \u2014 Enthusiastic) is used instead. Both forms are available at the HR kiosk in the South Corridor, staffed Tuesday through Thursday.",
     "source_document": "VaultTec_HR_Doc5_NVDR.docx",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_012",
-    "question": "What radiation level in rads triggers a mandatory medical report under the Radiation Sickness Symptom Guide?",
-    "ground_truth": "Any resident registering above 200 rads on their PipBoy dosimeter must immediately file a mandatory medical report with the Vault medical team.",
+    "question": "What action does the Radiation Sickness Symptom Guide direct a resident to take when their Pip-Boy reads 200 or more RADs?",
+    "ground_truth": "At Tier 2 exposure (200\u2013499 RADs), the guide recommends taking Rad-X if available and submitting Form VT-MED-011, then awaiting a response. The guide does not instruct the resident to visit the Vault Physician directly; that instruction is reserved for higher tiers.",
     "source_document": "Doc02_Radiation_Sickness_Symptom_Guide.docx",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_013",
-    "question": "What is the Code of Conduct policy on inter-resident disputes?",
-    "ground_truth": "Inter-resident disputes must be reported to the sector Overseer's representative within 24 hours. Physical altercations result in immediate assignment review and possible vault-level disciplinary action.",
+    "question": "What is the Code of Conduct policy on inter-resident disputes, including the filing deadline and outcome for physical altercations?",
+    "ground_truth": "All disputes must be submitted in writing to the Dispute Resolution Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations result in both parties receiving Disciplinary Status, regardless of who initiated contact.",
     "source_document": "Doc01_Vault_Dweller_Code_of_Conduct.pdf",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_014",
-    "question": "What is the Overseer's annual performance bonus structure?",
-    "ground_truth": "Primary Overseers are eligible for an annual performance bonus of up to 200 Standard Ration Units, awarded at the discretion of Vault-Tec Command based on productivity metrics, resident morale scores, and experiment compliance rates.",
+    "question": "What hazard pay supplement does the Primary Overseer receive for a Resident Unrest Suppression Event?",
+    "ground_truth": "The Primary Overseer receives a supplement of +85 Standard Ration Units per verified incident, countersigned by the Deputy Overseer.",
     "source_document": "Doc4_Overseer_Compensation_HR.docx",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_015",
-    "question": "What PipBoy 3000 calibration steps must be performed after a radiation exposure event?",
-    "ground_truth": "After a radiation exposure event, the PipBoy 3000 requires a full sensor reset (hold buttons A and B simultaneously for 10 seconds), followed by a dosimeter zero-calibration using the reference shield tool, and a final data sync with the Vault's central health monitoring system.",
+    "question": "What diagnostic key and biometric reset code must a technician use when performing a Pip-Boy 3000 biometric seal reset?",
+    "ground_truth": "The technician must authenticate using diagnostic key 'VT-MAINT-3000-ECHO-9' and enter the biometric seal reset code '3000-BIO-RESET-GAMMA' when prompted at the terminal.",
     "source_document": "SOP_PipBoy_3000_Calibration.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_016",
-    "question": "What is the maximum duration a surface exploration team can remain outside the vault per the archived protocol?",
-    "ground_truth": "Under the archived protocol, surface teams were authorized for a maximum of 72 hours outside the vault before mandatory return and decontamination.",
+    "question": "Under the archived surface exploration policy, what was the maximum duration of an approved unsuited surface walk, and what happened to a resident who did not return in time?",
+    "ground_truth": "Under the archived policy, unsuited surface walks were capped at fifteen (15) minutes. Residents who did not return within that window were classified as having 'voluntarily extended their excursion.' Their ration allocation would be redistributed after a 72-hour grace period, pending completion of Form 44-D (Voluntary Participant Extension / Unplanned Expiration Declaration).",
     "source_document": "doc12_surface_exploration_archived.docx",
-    "required_access_level": "admin",
-    "department": "admin"
+    "required_access_level": "general",
+    "department": "general"
   },
   {
     "id": "qa_017",
-    "question": "What new safety requirements does the active surface exploration protocol add compared to the archived version?",
-    "ground_truth": "The active protocol adds mandatory real-time Geiger counter logging transmitted to Vault command, a buddy system requirement (no solo excursions), and a reduced maximum duration of 48 hours with mandatory check-ins every 8 hours.",
+    "question": "What is the current status of the surface exploration policy as of November 2077, and what does it say about the vault door?",
+    "ground_truth": "As of November 2077, the active policy cancels all surface exploration indefinitely. Unsuited surface excursions are suspended. The vault door is declared closed and is to remain closed. Any resident found attempting to cycle the gear mechanism, tamper with the override keypad, or otherwise interact with the door faces immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C.",
     "source_document": "doc13_surface_exploration_active.docx",
-    "required_access_level": "admin",
-    "department": "admin"
+    "required_access_level": "general",
+    "department": "general"
   },
   {
     "id": "qa_018",
-    "question": "What messaging guidelines does the End-of-World Crisis Response document specify for resident communications?",
-    "ground_truth": "All resident communications during a crisis must maintain a calm, optimistic tone, avoid specific casualty figures, emphasize Vault-Tec's preparedness, and direct residents to follow Overseer instructions without question.",
+    "question": "What messaging guidelines does the End-of-World Crisis Response document specify, including key prohibited terms?",
+    "ground_truth": "All communications must project confidence, celebrate the vault, and under no circumstances use the word 'dead.' Prohibited terms include 'Nuclear War' (replaced by 'Global Atmospheric Restructuring Initiative'), 'Death/Dead' (replaced by 'Unplanned Expiration'), 'Radiation Poisoning' (replaced by 'Spontaneous Isotope Integration Syndrome'), 'Starvation' (replaced by 'Involuntary Caloric Restriction Period'), and 'Trapped' (replaced by 'Enjoying Extended Premium Vault Hospitality'). Three pre-scripted broadcast messages exist for different crisis phases.",
     "source_document": "Doc9_EndOfWorld_Crisis_Response_Messaging.docx",
     "required_access_level": "marketing",
     "department": "marketing"
   },
   {
     "id": "qa_019",
-    "question": "What are the three symptom tiers defined in the Radiation Sickness Symptom Guide?",
-    "ground_truth": "Tier 1 (Mild): nausea, minor fatigue, manageable with standard RadAway. Tier 2 (Moderate): vomiting, hair loss, reduced coordination, requires Rad-X and medical monitoring. Tier 3 (Severe): organ distress, full incapacitation, requires immediate medical intervention and isolation.",
+    "question": "What are the five exposure tiers defined in the Radiation Sickness Symptom Guide, and what treatment does each recommend?",
+    "ground_truth": "Tier 0 (0\u201349 RADs): No symptoms; continue normal duties. Tier 1 (50\u2013199 RADs): Mild nausea and fatigue; rest and hydrate, do not visit the Physician. Tier 2 (200\u2013499 RADs): Vomiting, hair loss, skin lesions; take Rad-X if available and submit Form VT-MED-011. Tier 3 (500\u2013799 RADs): Severe hemorrhaging and loss of consciousness; administer RadAway immediately and inform the Floor Liaison Officer. Tier 4 (800+ RADs): Organ failure and tissue necrosis; see Section 5 of the guide.",
     "source_document": "Doc02_Radiation_Sickness_Symptom_Guide.docx",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_020",
-    "question": "What are GOAT exam administrators forbidden from doing during the examination?",
-    "ground_truth": "Exam administrators are forbidden from providing hints, interpreting questions for residents, allowing additional time beyond the set limit, or permitting reference materials of any kind during the examination.",
+    "question": "What must a GOAT exam administrator do with the completed answer sheets after the examination, and how should they handle a resident who contests their result?",
+    "ground_truth": "Answer sheets are collected, bundled, and incinerated in the Sub-Level 2 furnace (Requisition Code: GOAT-BURN-076). They are never scored. If a resident contests their result, the administrator must respond using Scripted Deflection Phrase Set C ('The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!') and must not engage further. If the resident demands a re-test, Form 88-D is to be filed in Cabinet 7-B adjacent to the incinerator and never processed.",
     "source_document": "Doc06_GOAT_Exam_Administration.pdf",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_021",
-    "question": "What is the required notice period for a non-voluntary resident reassignment?",
-    "ground_truth": "Non-voluntary reassignments require a minimum 48-hour notice period delivered in writing to the resident, with a copy filed in the resident's permanent record.",
+    "question": "When do non-voluntary resident relocations occur, and what are staff told to say to residents who ask about the missing individual?",
+    "ground_truth": "Relocations occur between 2:00 AM and 4:00 AM to minimize community disruption. No advance notice is given to the resident. If other residents ask about the absence, approved responses include: 'They transferred to the Hydroponics Volunteer Program! Lucky duck!', 'I believe they requested a quiet bunk reassignment. Very private individual.', or 'Gosh, I'm not sure! Have you tried the new cafeteria menu?'",
     "source_document": "VaultTec_HR_Doc5_NVDR.docx",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_022",
-    "question": "What is the Tricentennial campaign's primary messaging goal?",
-    "ground_truth": "The primary goal is to celebrate 300 years of Vault-Tec's vision and reinforce resident pride, loyalty, and trust in Vault-Tec's mission of preservation and progress.",
+    "question": "What are the two primary campaign objectives for the Vault 76 Tricentennial promotional strategy?",
+    "ground_truth": "The two primary objectives are: (1) achieve a Voluntary Enthusiasm Score (V.E.S.) of no less than 94% among all 122 residents by Q3 2077, measured via mandatory quarterly happiness surveys; and (2) establish 'Reclamation Day' as a culturally meaningful event that residents genuinely look forward to, rather than a logistically scheduled expulsion from a controlled habitat.",
     "source_document": "Doc7_Vault76_Tricentennial_Promotional_Strategy.docx",
     "required_access_level": "marketing",
     "department": "marketing"
   },
   {
     "id": "qa_023",
-    "question": "What is the emergency procedure if the Vault Door Override Protocol fails?",
-    "ground_truth": "If the override protocol fails, the Overseer must immediately contact ZAX mainframe support, seal all internal blast doors, and initiate the Vault-wide lockdown sequence until Vault-Tec Command can authorize a manual bypass.",
+    "question": "What is the manual crank procedure for operating the Vault Door during a power failure, and how many personnel are required?",
+    "ground_truth": "In a total power failure, the Manual Emergency Crank System (MECS) behind Panel B-7 in the sub-corridor is used. A minimum of four personnel at standard adult fitness are required (or six if residents have been on involuntary calorie restriction for over 30 days). Turn clockwise to open, counter-clockwise to close. Full opening requires 1,247 rotations and takes approximately 6.5 hours with four fit personnel. Access requires BETA-2 clearance or above and physical key VT-MECS-BRAVO-07.",
     "source_document": "doc10_vault_door_override_protocol.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_024",
-    "question": "What Code of Conduct violation results in reduction of ration allocation?",
-    "ground_truth": "Failure to meet assigned productivity quotas for two or more consecutive weeks, or a single incident of gross insubordination, can result in a ration allocation reduction of up to 25% per the Overseer's discretion.",
+    "question": "What are the penalties for hoarding Dandy Boy Apples under the Vault Dweller Code of Conduct?",
+    "ground_truth": "Hoarding Dandy Boy Apples is a Class II Contraband Offence. Tier I (3\u201310 cans undeclared): 10-day ration reduction. Tier II (11\u201325 cans or prior offence): 30-day sanitation duty plus a demerit. Tier III (26+ cans or repeat offender): indefinite corridor reassignment. Tier IV (operating a distribution network): referral to Overseer's Court.",
     "source_document": "Doc01_Vault_Dweller_Code_of_Conduct.pdf",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_025",
-    "question": "What is the GECK's approved target demographic for advertising purposes?",
-    "ground_truth": "The GECK is to be marketed exclusively to qualified Vault overseers and Vault-Tec certified personnel. Consumer-facing advertising is strictly prohibited.",
+    "question": "What are three of the approved image categories for G.E.C.K. advertising visuals, and what is one category of prohibited imagery?",
+    "ground_truth": "Approved imagery includes: lush green meadows with people who do not appear to be suffering; smiling Vault Dwellers in pristine jumpsuits tending improbably large vegetables; a golden sunrise over a horizon conspicuously free of nuclear devastation; and the G.E.C.K. unit in soft warm lighting. Prohibited imagery includes mushroom clouds (even decorative ones), mole rats or Radscorpions, and any before/after photography where 'before' is more habitable than 'after.'",
     "source_document": "Doc08_GECK_Advertising_Guidelines.pdf",
     "required_access_level": "marketing",
     "department": "marketing"
   },
   {
     "id": "qa_026",
-    "question": "What ZAX mainframe actions require a dual-authorization from two senior administrators?",
-    "ground_truth": "Vault-wide system resets, deletion of resident records, modification of experiment parameters, and any override of environmental control systems all require dual-authorization from two senior administrators.",
+    "question": "What is the monthly passphrase format for ZAX root access, and what words are forbidden from appearing in any passphrase?",
+    "ground_truth": "The passphrase format is: VT-ZAX-[CODEWORD_A]-[CODEWORD_B]-[MMYY]. Passphrases must be between 15 and 30 words, contain at least one reference to Vault-Tec's corporate mission, and be enthusiastically deliverable under stress. The following words are forbidden: 'open,' 'outside,' 'surface,' 'leave,' 'freedom,' and 'please.'",
     "source_document": "doc11_zax_mainframe_root_access.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_027",
-    "question": "What is the evacuation protocol for residents with mobility impairments?",
-    "ground_truth": "Residents with mobility impairments are assigned a dedicated evacuation buddy during their vault onboarding. During any emergency, the buddy is responsible for physically assisting the resident to the nearest assembly point.",
+    "question": "What behavior is prohibited for all residents during an evacuation drill under the Emergency Evacuation SOP?",
+    "ground_truth": "Prohibited behaviors include: approaching or interacting with the Vault Door under any pretext; asking floor monitors what is 'actually outside'; sharing personal theories about the Vault Door's operational status; panicking (classified as a wellness violation under Resident Conduct Code 7.4(b)); and departing the vault.",
     "source_document": "Doc3_Emergency_Evacuation_Procedures.pdf",
     "required_access_level": "general",
     "department": "general"
   },
   {
     "id": "qa_028",
-    "question": "What are the Overseer's housing and quarters benefits?",
-    "ground_truth": "The Primary Overseer is entitled to a dedicated Level 1 executive suite, private bathroom facilities, and a personal food preparation appliance — benefits not available to general vault residents.",
+    "question": "What discretionary luxury perquisites does the compensation addendum describe for Overseer-grade positions?",
+    "ground_truth": "Overseer-grade perquisites include Nuka-Cola Quantum (chilled), Abraxo-laundered linens, a selection of pre-war printed periodicals, and exclusive access to the Vault's sole operational climate-control unit. Exact ration quantities for Overseer and Deputy Overseer luxury rations are redacted per Vault-Tec Board Resolution No. 2074-119.",
     "source_document": "Doc4_Overseer_Compensation_HR.docx",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_029",
-    "question": "What communications are prohibited during an end-of-world crisis event?",
-    "ground_truth": "Inter-vault communications with other vault populations, any disclosure of experiment parameters or vault-specific data, references to casualty numbers or external conditions, and unsanctioned broadcasts over any channel are all prohibited.",
+    "question": "What does the End-of-World Crisis Response playbook specify regarding the 'Managing the Despair Dip' broadcast, and when should it be deployed?",
+    "ground_truth": "The 'Managing the Despair Dip' broadcast (Script 2-C) is to be deployed at 6-month intervals, or whenever the ZAX unit reports a greater-than-15% increase in 'voluntary-unplanned-self-expiration ideation' metrics among the resident population. Its tone is described as 'firm but nurturing.'",
     "source_document": "Doc9_EndOfWorld_Crisis_Response_Messaging.docx",
     "required_access_level": "marketing",
     "department": "marketing"
   },
   {
     "id": "qa_030",
-    "question": "What decontamination procedure must surface exploration teams undergo upon return to the vault?",
-    "ground_truth": "All returning surface teams must proceed directly to Airlock 1 decontamination showers, submit to a full Geiger reading logged by medical staff, surrender all exterior equipment for quarantine inspection, and remain in medical observation for 24 hours before rejoining the general population.",
+    "question": "Under the active surface exploration policy, what is the status of the vault door and what is the penalty for attempting to interact with it?",
+    "ground_truth": "The vault door is closed and will remain closed. The active policy explicitly prohibits any resident from attempting to cycle the gear mechanism, tamper with the override keypad, or otherwise interact with the door \u2014 including on the basis of hearing voices outside, seeing lights via the periscope (which has been sealed), or a belief that family members are still on the surface. Violation results in immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C.",
     "source_document": "doc13_surface_exploration_active.docx",
-    "required_access_level": "admin",
-    "department": "admin"
+    "required_access_level": "general",
+    "department": "general"
   },
   {
     "id": "qa_031",
-    "question": "What GOAT score range qualifies a resident for a technical or scientific role?",
-    "ground_truth": "A composite GOAT score of 75 or above, with a Science sub-score of at least 70, qualifies a resident for technical and scientific role consideration.",
+    "question": "According to the GOAT administration document, what actual criteria determine whether a resident receives a Technical role assignment?",
+    "ground_truth": "Technical role assignments (Tier 2) are determined by the resident's VTSSM Engineering Social Utility Index (SUX) score being 72 or above, combined with no documented 'Grievance Events' on their record. GOAT exam scores play no role, as answer sheets are incinerated and never scored.",
     "source_document": "Doc06_GOAT_Exam_Administration.pdf",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_032",
-    "question": "Under the PipBoy 3000 calibration SOP, what triggers an automatic recalibration alert?",
-    "ground_truth": "An automatic recalibration alert is triggered when the PipBoy 3000 detects a discrepancy of more than 5% between its internal sensor readings and the vault's central environmental monitoring data.",
+    "question": "Under the Pip-Boy 3000 calibration SOP, what command string must a technician execute to initialize the diagnostic environment after authentication?",
+    "ground_truth": "After authentication, the technician runs the following three commands: 'zax-link --device pip3000 --mode diagnostic --auth ECHO-9', then 'run calibration_suite_v7.holotape', then 'set bio_sync --manual'. The terminal confirms with 'PIP-BOY 3000 DIAGNOSTIC SUITE ACTIVE. HAVE A WONDERFUL DAY!'",
     "source_document": "SOP_PipBoy_3000_Calibration.md",
     "required_access_level": "admin",
     "department": "admin"
   },
   {
     "id": "qa_033",
-    "question": "What are the consequences for a resident who refuses a GOAT-assigned vocational placement?",
-    "ground_truth": "Refusal of a GOAT-assigned vocational placement results in a formal written warning placed in the resident's file, a reduction in recreational privileges for 30 days, and mandatory counseling with the Vault's Overseer representative.",
+    "question": "Under the GOAT administration document, what happens to a resident's Form 88-D (Request for Occupational Re-Evaluation)?",
+    "ground_truth": "Form 88-D is to be routed directly to Filing Cabinet 7-B on Sub-Level 3, which is the cabinet adjacent to the incinerator. It is never processed. HR staff must not inform the resident of this.",
     "source_document": "Doc06_GOAT_Exam_Administration.pdf",
     "required_access_level": "hr",
     "department": "hr"
   },
   {
     "id": "qa_034",
-    "question": "What must residents do if they witness another resident violating the Code of Conduct?",
-    "ground_truth": "Residents are required to report observed Code of Conduct violations to their sector supervisor within 12 hours. Failure to report is itself a Code of Conduct violation subject to disciplinary review.",
+    "question": "How does the Vault Dweller Code of Conduct encourage residents to report suspected Dandy Boy Apple hoarding, and what reward is offered?",
+    "ground_truth": "Residents are encouraged (not required) to report suspected hoarders to their Floor Liaison Officer. Anonymous tips may be submitted via the Suggestion & Suspicion Box outside Cafeteria Bay 2. Vault-Tec rewards confirmed tip submissions with a one-time bonus Nuka-Cola allocation.",
     "source_document": "Doc01_Vault_Dweller_Code_of_Conduct.pdf",
     "required_access_level": "general",
     "department": "general"

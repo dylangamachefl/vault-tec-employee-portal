@@ -103,9 +103,7 @@ def main() -> None:
     for spec in CANONICAL_QUERIES:
         qid = spec["id"]
         try:
-            response = retriever.query(
-                QueryInput(query=spec["query"])
-            )
+            response = retriever.query(QueryInput(query=spec["query"]))
             _print_response(qid, response)
 
             # Inline AC assertions
@@ -115,9 +113,9 @@ def main() -> None:
 
             # Deduplication check (AC-3)
             seen_docs = [s.source_document for s in response.sources]
-            assert len(seen_docs) == len(set(seen_docs)), (
-                f"Q{qid}: duplicate source_document values in sources: {seen_docs}"
-            )
+            assert len(seen_docs) == len(
+                set(seen_docs)
+            ), f"Q{qid}: duplicate source_document values in sources: {seen_docs}"
 
         except AssertionError as exc:
             errors.append(str(exc))
@@ -128,8 +126,10 @@ def main() -> None:
 
     # ── Query 6 — AC-6: access_level_filter="hr" path ────────────────────────
     _divider("═")
-    print(f"  QUERY {HR_FILTER_QUERY['id']} (AC-6 — access_level_filter=\"hr\"): "
-          f"{HR_FILTER_QUERY['query']}")
+    print(
+        f"  QUERY {HR_FILTER_QUERY['id']} (AC-6 — access_level_filter=\"hr\"): "
+        f"{HR_FILTER_QUERY['query']}"
+    )
     _divider()
     try:
         response = retriever.query(
@@ -139,8 +139,10 @@ def main() -> None:
             )
         )
         _print_response(HR_FILTER_QUERY["id"], response)
-        print(f"  ✓  AC-6 PASSED — hr filter executed without exception "
-              f"({response.retrieved_chunk_count} chunk(s) retrieved)\n")
+        print(
+            f"  ✓  AC-6 PASSED — hr filter executed without exception "
+            f"({response.retrieved_chunk_count} chunk(s) retrieved)\n"
+        )
     except Exception as exc:  # noqa: BLE001
         msg = f"AC-6 raised {type(exc).__name__}: {exc}"
         errors.append(msg)
