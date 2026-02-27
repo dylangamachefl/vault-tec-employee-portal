@@ -95,7 +95,7 @@ def main() -> None:
     print()
 
     # Instantiate once — shared across all queries
-    retriever = VaultRetriever(collection_name="vault_documents_512")
+    retriever = VaultRetriever(collection_name="vault_documents_256")
 
     errors: list[str] = []
 

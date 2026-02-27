@@ -2,7 +2,7 @@
 Acceptance-criteria tests for the Docling-based chunking pipeline (Phase 1 refactor).
 
 Tests validate the 8 spec acceptance criteria + AC9 (Docling export) using the
-chunk_document_docling() function directly (no ChromaDB required).
+chunk_document_docling() function directly (no Qdrant required).
 
 Tests requiring real documents from data/raw/ are marked with @pytest.mark.skipif
 so CI without the corpus can still run the synthetic tests.
@@ -175,7 +175,7 @@ def test_metadata_completeness():
     All non-optional fields must be populated on every chunk.
     Only effective_date is permitted to be None.
     """
-    # Lazy import to avoid pulling in chromadb
+    # Lazy import to avoid pulling in Qdrant at import time
     try:
         from src.pipelines.ingest import DOCUMENT_METADATA, _build_base_metadata, _make_doc_slug
     except ImportError as exc:
@@ -392,3 +392,102 @@ def test_token_count_populated():
     chunks = _chunk_doc(PIPBOY3000_PATH, max_tokens=512)
     for chunk in chunks:
         assert chunk.token_count > 0, f"Chunk {chunk.chunk_index} has token_count=0"
+
+
+# ---------------------------------------------------------------------------
+# Fix 1 tests — Pipe markdown table serialization
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.skipif(
+    not DOC02_PATH.exists(), reason="Requires data/raw/Doc02_Radiation_Sickness_Symptom_Guide.docx"
+)
+def test_no_key_value_table_syntax_doc02():
+    """
+    Fix 1 regression guard: No chunk from Doc02 should contain the key=value
+    serialization pattern '** =' that HybridChunker produces for table cells.
+    Any occurrence means export_to_markdown() lookup silently fell back.
+    """
+    chunks = _chunk_doc(DOC02_PATH, max_tokens=512)
+    offenders = [c for c in chunks if "** =" in c.text]
+    assert not offenders, (
+        f"Fix 1 FAIL: {len(offenders)} chunk(s) still contain '** =' key=value syntax.\n"
+        + "\n---\n".join(f"chunk_{c.chunk_index}: {c.text[:300]}" for c in offenders)
+    )
+
+
+@pytest.mark.skipif(
+    not DOC02_PATH.exists(), reason="Requires data/raw/Doc02_Radiation_Sickness_Symptom_Guide.docx"
+)
+def test_table_chunks_have_pipe_markdown_doc02():
+    """
+    Fix 1 acceptance: Every chunk with content_type == 'table' in Doc02 must
+    contain at least one pipe '|' character, proving export_to_markdown() ran
+    successfully (not silently fell back to key=value text).
+    """
+    chunks = _chunk_doc(DOC02_PATH, max_tokens=512)
+    table_chunks = [c for c in chunks if c.content_type == "table"]
+    assert table_chunks, "No table chunks found in Doc02 — check content_type classification."
+
+    offenders = [c for c in table_chunks if "|" not in c.text]
+    assert not offenders, (
+        f"Fix 1 FAIL: {len(offenders)} table chunk(s) have no pipe '|' character.\n"
+        f"This means export_to_markdown() lookup silently failed; key=value text survived.\n"
+        + "\n---\n".join(f"chunk_{c.chunk_index}: {c.text[:300]}" for c in offenders)
+    )
+
+
+# ---------------------------------------------------------------------------
+# Fix 2 tests — Section header injection
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.skipif(
+    not PIPBOY3000_PATH.exists(), reason="Requires data/raw/SOP_PipBoy_3000_Calibration.md"
+)
+def test_fix2_section_header_prefix_pipboy():
+    """
+    Fix 2 acceptance on a well-structured markdown doc: for any chunk that has
+    a non-empty section_header AND the text did not already begin with that heading,
+    Fix 2 must have prepended the heading so the text now starts with it.
+
+    PipBoy3000 is used because it has Docling-recognized section headers.
+    Doc02 is a DOCX with bold-formatted headers that Docling does not classify
+    as SectionHeaderItems — no heading injection is possible or expected there.
+    """
+    chunks = _chunk_doc(PIPBOY3000_PATH, max_tokens=512)
+    chunks_with_header = [c for c in chunks if c.section_header and c.section_header.strip()]
+    assert chunks_with_header, "Fix 2: No chunks with section_header in PipBoy3000 — check AC5."
+
+    offenders = [c for c in chunks_with_header if not c.text.startswith(c.section_header)]
+    assert not offenders, (
+        f"Fix 2 FAIL: {len(offenders)} chunk(s) have a section_header but text "
+        f"does not start with it (prefix was not injected).\n"
+        + "\n---\n".join(
+            f"chunk_{c.chunk_index} header={repr(c.section_header)} | text[:100]={repr(c.text[:100])}"
+            for c in offenders
+        )
+    )
+
+
+@pytest.mark.skipif(
+    not DOC02_PATH.exists(), reason="Requires data/raw/Doc02_Radiation_Sickness_Symptom_Guide.docx"
+)
+def test_table_chunk_text_starts_with_section_header_doc02():
+    """
+    Fix 2 acceptance: For table chunks that have a non-empty section_header,
+    the chunk text must begin with that heading string (the prefix injection
+    ensures topical context is present at the start of the embedding window).
+    """
+    chunks = _chunk_doc(DOC02_PATH, max_tokens=512)
+    table_chunks_with_header = [c for c in chunks if c.content_type == "table" and c.section_header]
+
+    offenders = [c for c in table_chunks_with_header if not c.text.startswith(c.section_header)]
+    assert not offenders, (
+        f"Fix 2 FAIL: {len(offenders)} table chunk(s) have a section_header but text "
+        f"does not start with it.\n"
+        + "\n---\n".join(
+            f"chunk_{c.chunk_index} header='{c.section_header}' | text[:200]={c.text[:200]}"
+            for c in offenders
+        )
+    )

@@ -14,3 +14,4 @@ build/
 chroma_db/
 tests/eval/results/
 tests/eval/generated_answers_*.json
+tests/eval/runs/

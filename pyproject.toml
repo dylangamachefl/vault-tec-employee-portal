@@ -7,7 +7,6 @@ dependencies = [
     # Core AI & Retrieval
     "langchain>=0.1.0",
     "langchain-text-splitters>=0.0.1",
-    "chromadb>=0.4.0",
     "sentence-transformers>=2.2.0",
     "google-generativeai>=0.4.0",
     # Document parsing
@@ -24,6 +23,8 @@ dependencies = [
     # Frontend
     "streamlit>=1.32.0",
     "docling>=2.75.0",
+    "qdrant-client>=1.17.0",
+    "fastembed>=0.4.0",
 ]
 
 [project.optional-dependencies]

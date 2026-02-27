@@ -25,6 +25,7 @@ from typing import TYPE_CHECKING
 
 import tiktoken
 
+from src.config import settings
 from src.pipelines.models import DocumentChunk
 
 if TYPE_CHECKING:
@@ -109,7 +110,7 @@ def _extract_section_header(chunk: DocChunk) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Markdown serializer helper
+# Markdown serializer helpers
 # ---------------------------------------------------------------------------
 
 
@@ -126,6 +127,44 @@ def _serialize_chunk_to_markdown(chunk: DocChunk) -> str:
     # Docling already serializes tables as markdown in chunk.text when using
     # the default markdown serializer on the DocumentConverter.
     return text.strip()
+
+
+def _get_table_markdown(raw_chunk: DocChunk, docling_doc: object) -> str | None:
+    """
+    Fix 1: If this chunk corresponds to a table, return its full pipe-markdown
+    string via export_to_markdown(doc=docling_doc).
+
+    IMPORTANT: chunk.meta.doc_items contains generic DocItem objects (not
+    TableItem subclasses), so isinstance(item, TableItem) always returns False.
+    We must match on item.label string instead, then look up the canonical live
+    TableItem from docling_doc.tables (which are full TableItem objects with
+    the export_to_markdown method) by self_ref.
+    """
+    _TABLE_LABEL_STRINGS = {"table", "document_index"}
+
+    try:
+        for item in raw_chunk.meta.doc_items:
+            label = str(getattr(item, "label", "")).lower()
+            if label not in _TABLE_LABEL_STRINGS:
+                continue
+
+            item_ref = getattr(item, "self_ref", None)
+            if item_ref is None:
+                continue
+
+            # Look up the live TableItem in docling_doc.tables
+            for tbl in docling_doc.tables:
+                if getattr(tbl, "self_ref", None) == item_ref:
+                    try:
+                        md = tbl.export_to_markdown(doc=docling_doc)
+                        if md and "|" in md:
+                            return md.strip()
+                    except Exception:
+                        pass
+
+    except Exception:
+        pass
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -155,7 +194,7 @@ def chunk_document_docling(
                        here (for audit / AC9 verification).
 
     Returns:
-        list[DocumentChunk] ready for ChromaDB insertion.
+        list[DocumentChunk] ready for Qdrant upsert.
     """
     from docling.chunking import HybridChunker
     from docling.document_converter import DocumentConverter
@@ -193,12 +232,35 @@ def chunk_document_docling(
     result_chunks: list[DocumentChunk] = []
 
     for i, raw_chunk in enumerate(raw_chunks):
-        text = _serialize_chunk_to_markdown(raw_chunk)
+        section_header = _extract_section_header(raw_chunk)
+        content_type = _classify_content_type(raw_chunk)
+
+        # Fix 1: For table chunks, use pipe markdown instead of the HybridChunker's
+        # key=value serialization (e.g. **Col** = Value), which embedders score poorly.
+        if content_type == "table":
+            table_md = _get_table_markdown(raw_chunk, docling_doc)
+            if table_md:
+                text = table_md
+            else:
+                logger.warning(
+                    "[Docling] Table chunk %d in %s: export_to_markdown() lookup failed or "
+                    "returned no pipe chars — falling back to chunk.text. "
+                    "The key=value serialization bug may survive in this chunk.",
+                    i,
+                    doc_path.name,
+                )
+                text = _serialize_chunk_to_markdown(raw_chunk)
+        else:
+            text = _serialize_chunk_to_markdown(raw_chunk)
+
         if not text:
             continue  # skip empty chunks
 
-        section_header = _extract_section_header(raw_chunk)
-        content_type = _classify_content_type(raw_chunk)
+        # Fix 2: Prepend section heading as a text prefix for context-free chunks.
+        # Embedders score poorly on chunks with no topical anchor.
+        if section_header and not text.startswith(section_header):
+            text = f"{section_header}\n\n{text}"
+
         token_count = _count_tokens(text)
 
         # Warn (but don't truncate) oversized chunks — usually a large table
@@ -240,9 +302,9 @@ def chunk_document_docling(
 
 def chunk_document(
     text: str,
-    chunk_size: int,
-    chunk_overlap: int,
     metadata_template: ChunkMetadata,  # type: ignore[name-defined]  # noqa: F821
+    chunk_size: int | None = None,
+    chunk_overlap: int | None = None,
     doc_format: str = "txt",
     filepath: str | None = None,
 ) -> list[tuple[str, ChunkMetadata]]:  # type: ignore[name-defined]  # noqa: F821
@@ -321,6 +383,9 @@ def chunk_document(
             else:
                 break
         return nearest
+
+    chunk_size = chunk_size or settings.CHUNK_SIZE
+    chunk_overlap = chunk_overlap or settings.CHUNK_OVERLAP
 
     splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
         model_name="gpt-4",

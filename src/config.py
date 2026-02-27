@@ -7,9 +7,15 @@ class Settings(BaseSettings):
     google_api_key: str = ""
     llm_model: str = "gemma-3-27b-it"
     database_url: str = ""
-    chroma_host: str = "localhost"
-    chroma_port: int = 8002
+    qdrant_host: str = "localhost"
+    qdrant_port: int = 6333
+    qdrant_collection_name: str = "vault_documents"
     jwt_secret_key: str = ""
+    retrieval_dedup_threshold: float = 0.95
+
+    # Chunking
+    CHUNK_SIZE: int = 512
+    CHUNK_OVERLAP: int = 64
 
 
 settings = Settings()

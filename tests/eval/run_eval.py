@@ -14,20 +14,25 @@ warnings.filterwarnings("ignore", category=FutureWarning, module="google.generat
 # Suppress the huggingface hub token warning as well, as we rely on public embedding model
 warnings.filterwarnings("ignore", module="huggingface_hub.utils._http")
 
-import httpx
-from datasets import Dataset
-from langchain_ollama import ChatOllama, OllamaEmbeddings
-from ragas import RunConfig, evaluate
-from ragas.embeddings import LangchainEmbeddingsWrapper
-from ragas.llms import LangchainLLMWrapper
-from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
+import httpx  # noqa: E402
+from datasets import Dataset  # noqa: E402
+from langchain_ollama import ChatOllama, OllamaEmbeddings  # noqa: E402
+from ragas import RunConfig, evaluate  # noqa: E402
+from ragas.embeddings import LangchainEmbeddingsWrapper  # noqa: E402
+from ragas.llms import LangchainLLMWrapper  # noqa: E402
+from ragas.metrics import (  # noqa: E402
+    answer_relevancy,
+    context_precision,
+    context_recall,
+    faithfulness,
+)
 
-from src.config import settings
-from src.pipelines.retrieval_chain import QueryInput, VaultRetriever
+from src.config import settings  # noqa: E402
+from src.pipelines.retrieval_chain import VaultRetriever  # noqa: E402
 
 # Constants
 INTER_CALL_DELAY_SECONDS = 15  # Increased to avoid Google AI Studio free tier 15K TPM limit
-EVAL_TOP_K = 3  # Reduced from 5. Fewer chunks = fewer RAGAS judge calls.
+EVAL_TOP_K = 5  # Increased to 5 per user request
 COLLECTIONS = ["vault_documents_256", "vault_documents_512", "vault_documents_1024"]
 WEIGHTS = {
     "faithfulness": 0.35,
@@ -38,8 +43,6 @@ WEIGHTS = {
 
 # Directories
 EVAL_DIR = Path("tests/eval")
-RESULTS_DIR = EVAL_DIR / "results"
-RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 QA_PAIRS_FILE = EVAL_DIR / "golden_qa_pairs.json"
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s", force=True)
@@ -98,51 +101,94 @@ def load_qa_pairs(max_samples: int | None = None) -> list[dict]:
     return qa_pairs
 
 
-def run_generation_phase(collections: list[str], max_samples: int | None = None) -> None:
+def run_generation_phase(
+    collections: list[str], run_dir: Path, max_samples: int | None = None
+) -> None:
     """Phase A: Generate answers via Google AI Studio and cache them to disk."""
     qa_pairs = load_qa_pairs(max_samples)
+    run_dir.mkdir(parents=True, exist_ok=True)
 
     for collection_name in collections:
         logger.info(f"--- Generating answers for collection: {collection_name} ---")
         retriever = VaultRetriever(collection_name=collection_name)
         data_rows = []
 
-        for idx, qa in enumerate(qa_pairs):
-            logger.info(f"[{collection_name}] Query {idx+1}/{len(qa_pairs)}: {qa['id']}")
-
-            t0 = time.time()
-            response = retriever.query(
-                QueryInput(query=qa["question"], collection_name=collection_name, top_k=EVAL_TOP_K)
-            )
-            t1 = time.time()
-            logger.info(f"  -> Generated in {t1 - t0:.2f}s")
-
-            data_rows.append(
-                {
-                    "question": qa["question"],
-                    "answer": response.answer,
-                    "retrieved_chunks": response.retrieved_chunks,
-                    "ground_truth": qa["ground_truth"],
-                    "collection": collection_name,
-                }
-            )
-            logger.info(f"  -> Sleeping for {INTER_CALL_DELAY_SECONDS}s...")
-            time.sleep(INTER_CALL_DELAY_SECONDS)
-
         chunk_size = collection_name.split("_")[-1]
-        out_file = EVAL_DIR / f"generated_answers_{chunk_size}.json"
+        log_file = run_dir / f"generation_log_{chunk_size}.txt"
 
+        with open(log_file, "w", encoding="utf-8") as log_fh:
+            _divider = "=" * 100
+
+            log_fh.write(f"GENERATION LOG — {collection_name}\n")
+            log_fh.write(f"Run dir: {run_dir}\n")
+            log_fh.write(f"QA pairs: {len(qa_pairs)}  |  top_k: {EVAL_TOP_K}\n")
+            log_fh.write(f"{_divider}\n\n")
+
+            for idx, qa in enumerate(qa_pairs):
+                logger.info(f"[{collection_name}] Query {idx+1}/{len(qa_pairs)}: {qa['id']}")
+
+                t0 = time.time()
+
+                # Retrieve chunks separately so we can log them before the LLM call
+                chunks = retriever.retrieve(
+                    query=qa["question"],
+                    top_k=EVAL_TOP_K,
+                    access_level_filter=None,
+                )
+
+                # --- Log header ---
+                log_fh.write(f"[{idx+1}/{len(qa_pairs)}] ID: {qa['id']}\n")
+                log_fh.write(f"QUESTION : {qa['question']}\n")
+                log_fh.write(f"GROUND TRUTH: {qa['ground_truth']}\n\n")
+
+                # --- Log retrieved chunks ---
+                log_fh.write(f"RETRIEVED CHUNKS ({len(chunks)}):\n")
+                for ci, chunk in enumerate(chunks, 1):
+                    meta = chunk.metadata
+                    log_fh.write(
+                        f"  [{ci}] source={meta.get('source_document','?')} | "
+                        f"section={meta.get('section_header') or 'N/A'} | "
+                        f"type={meta.get('content_type','?')} | "
+                        f"tokens={meta.get('token_count','?')}\n"
+                    )
+                    log_fh.write(f"  TEXT:\n{chunk.content}\n\n")
+
+                # --- Call LLM and log answer ---
+                response = retriever.generate(query=qa["question"], chunks=chunks)
+                t1 = time.time()
+
+                log_fh.write(f"LLM ANSWER ({t1 - t0:.2f}s):\n{response.answer}\n")
+                log_fh.write(f"\n{_divider}\n\n")
+                log_fh.flush()
+
+                logger.info(f"  -> Generated in {t1 - t0:.2f}s")
+
+                data_rows.append(
+                    {
+                        "question": qa["question"],
+                        "answer": response.answer,
+                        "retrieved_chunks": response.retrieved_chunks,
+                        "ground_truth": qa["ground_truth"],
+                        "collection": collection_name,
+                    }
+                )
+                logger.info(f"  -> Sleeping for {INTER_CALL_DELAY_SECONDS}s...")
+                time.sleep(INTER_CALL_DELAY_SECONDS)
+
+        out_file = run_dir / f"generated_answers_{chunk_size}.json"
         with open(out_file, "w", encoding="utf-8") as f:
             json.dump(data_rows, f, indent=2, default=str)
 
         logger.info(f"[{collection_name}] Saved generated answers to {out_file.name}")
+        logger.info(f"[{collection_name}] Detailed log saved to {log_file.name}")
 
 
 def run_scoring_phase(
-    collections: list[str], is_pilot: bool = False, print_summary: bool = True
+    collections: list[str], run_dir: Path, is_pilot: bool = False, print_summary: bool = True
 ) -> None:
     """Phase B: Load cached answers and evaluate them using standard evaluation."""
     check_ollama_running()
+    run_dir.mkdir(parents=True, exist_ok=True)
 
     logger.info("Setting up RAGAS Ollama wrappers...")
     ragas_llm, ragas_embeddings = build_ragas_wrappers()
@@ -155,7 +201,7 @@ def run_scoring_phase(
 
     for collection_name in collections:
         chunk_size = collection_name.split("_")[-1]
-        results_file = RESULTS_DIR / f"eval_results_{chunk_size}.json"
+        results_file = run_dir / f"eval_results_{chunk_size}.json"
 
         # Skip if results already exist (unless pilot)
         if results_file.exists() and not is_pilot:
@@ -168,7 +214,7 @@ def run_scoring_phase(
         logger.info(
             f"--- Evaluating collection: {collection_name} ({'Pilot' if is_pilot else 'Full'}) ---"
         )
-        answers_file = EVAL_DIR / f"generated_answers_{chunk_size}.json"
+        answers_file = run_dir / f"generated_answers_{chunk_size}.json"
 
         if not answers_file.exists():
             raise FileNotFoundError(
@@ -225,7 +271,7 @@ def run_scoring_phase(
             "context_recall": float(df["context_recall"].mean()) if "context_recall" in df else 0.0,
         }
 
-        out_file = RESULTS_DIR / f"eval_results_{chunk_size}.json"
+        out_file = run_dir / f"eval_results_{chunk_size}.json"
         with open(out_file, "w", encoding="utf-8") as f:
             json.dump(
                 {"collection": collection_name, "averages": avg_scores, "detailed": res_dict},
@@ -272,7 +318,7 @@ def run_scoring_phase(
     summary_data["winning_collection"] = best_collection
     summary_data["canonical_collection_name"] = "vault_documents"
 
-    summary_file = RESULTS_DIR / "eval_summary.json"
+    summary_file = run_dir / "eval_summary.json"
     with open(summary_file, "w", encoding="utf-8") as f:
         json.dump(summary_data, f, indent=2, default=str)
 
@@ -372,22 +418,39 @@ if __name__ == "__main__":
     parser.add_argument(
         "--write-canonical", action="store_true", help="Write winner to canonical collection"
     )
+    parser.add_argument(
+        "--collection",
+        type=str,
+        help="Specify a single collection to evaluate (e.g., vault_documents_256).",
+    )
+    parser.add_argument(
+        "--run-name",
+        type=str,
+        default=time.strftime("%Y%m%d_%H%M%S"),
+        help="Name of the run folder (created in tests/eval/runs/)",
+    )
     args = parser.parse_args()
 
+    run_dir = EVAL_DIR / "runs" / args.run_name
+
     if args.write_canonical:
-        write_canonical(RESULTS_DIR / "eval_summary.json")
+        write_canonical(run_dir / "eval_summary.json")
     elif args.pilot and args.generate_answers:
-        run_generation_phase(["vault_documents_512"], max_samples=3)
+        run_generation_phase([args.collection or "vault_documents_512"], run_dir, max_samples=3)
         logger.info("Pilot generation phase complete. Cached answers saved. Proceed to --pilot.")
     elif args.pilot:
-        run_scoring_phase(["vault_documents_512"], is_pilot=True, print_summary=False)
+        run_scoring_phase(
+            [args.collection or "vault_documents_512"], run_dir, is_pilot=True, print_summary=False
+        )
         logger.info("Pilot run complete. Review results above, then run without --pilot.")
-    elif args.generate_answers:
-        run_generation_phase(COLLECTIONS)
-        logger.info("Generation phase complete. Cached answers saved. Proceed to --score-only.")
-    elif args.score_only:
-        run_scoring_phase(COLLECTIONS)
     else:
-        # Fallback behaviour: combined run
-        run_generation_phase(COLLECTIONS)
-        run_scoring_phase(COLLECTIONS)
+        collections_to_run = [args.collection] if args.collection else COLLECTIONS
+        if args.generate_answers:
+            run_generation_phase(collections_to_run, run_dir)
+            logger.info("Generation phase complete. Cached answers saved. Proceed to --score-only.")
+        elif args.score_only:
+            run_scoring_phase(collections_to_run, run_dir)
+        else:
+            # Fallback behaviour: combined run
+            run_generation_phase(collections_to_run, run_dir)
+            run_scoring_phase(collections_to_run, run_dir)

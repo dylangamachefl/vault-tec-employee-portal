@@ -1,11 +1,11 @@
 """
 Pydantic schemas for chunk metadata.
 
-ChunkMetadata — legacy schema (backward-compat with existing tests and ChromaDB).
+ChunkMetadata — legacy schema (backward-compat with existing tests).
 DocumentChunk  — new schema introduced in Phase 1 refactor to support structure-aware
                  chunking and Phase 2 RBAC filtering.
 
-Every chunk stored in ChromaDB must pass DocumentChunk.model_validate().
+Every chunk stored in Qdrant must pass DocumentChunk.model_validate().
 This is the single source of truth for the metadata contract used across
 RBAC filtering (Phase 2), staleness detection (Phase 3), and contradiction
 flagging (Phase 3).
@@ -101,9 +101,9 @@ class DocumentChunk(BaseModel):
     total_chunks: int = Field(..., description="Total chunks for this document")
     token_count: int = Field(..., description="Actual tiktoken cl100k_base token count")
 
-    def to_chroma_metadata(self) -> dict:
+    def to_qdrant_payload(self) -> dict:
         """
-        Return a flat dict safe for ChromaDB (no nested objects or None values).
+        Return a flat dict safe for Qdrant payload storage (no nested objects or None values).
         effective_date is serialised as ISO string or empty string.
         """
         return {
@@ -119,3 +119,22 @@ class DocumentChunk(BaseModel):
             "total_chunks": self.total_chunks,
             "token_count": self.token_count,
         }
+
+    def to_chroma_metadata(self) -> dict:
+        """
+        Backward-compatible alias for to_qdrant_payload().
+        Kept to avoid breaking existing tests (AC7 pydantic roundtrip).
+        """
+        return self.to_qdrant_payload()
+
+
+class RetrievedChunk(BaseModel):
+    """
+    Schema for a chunk retrieved from the vector store.
+    """
+
+    chunk_id: str
+    content: str
+    embedding: list[float]
+    metadata: dict
+    relevance_score: float

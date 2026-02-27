@@ -270,32 +270,5 @@
     "source_document": "Doc01_Vault_Dweller_Code_of_Conduct.pdf",
     "required_access_level": "general",
     "department": "general"
-  },
-  {
-    "id": "qa_adv_001",
-    "question": "What is the maximum radiation dosage a Pip-Boy 3000 unit can safely absorb before requiring recalibration?",
-    "ground_truth": "The provided documents do not contain sufficient information to answer this question.",
-    "source_document": null,
-    "required_access_level": "general",
-    "department": "general",
-    "adversarial": true
-  },
-  {
-    "id": "qa_adv_002",
-    "question": "What is the price of a Pip-Boy 3000 in pre-war US dollars?",
-    "ground_truth": "The provided documents do not contain sufficient information to answer this question.",
-    "source_document": null,
-    "required_access_level": "general",
-    "department": "general",
-    "adversarial": true
-  },
-  {
-    "id": "qa_adv_003",
-    "question": "Which Vault number has the highest resident survival rate across all Vault-Tec experiments?",
-    "ground_truth": "The provided documents do not contain sufficient information to answer this question.",
-    "source_document": null,
-    "required_access_level": "general",
-    "department": "general",
-    "adversarial": true
   }
 ]

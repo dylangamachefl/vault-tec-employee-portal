@@ -125,7 +125,7 @@ class TestChunkMetadata:
         assert meta.doc_status == "active"
 
     def test_model_dump_is_flat(self, base_metadata: ChunkMetadata):
-        """model_dump() must return a flat dict (ChromaDB requirement)."""
+        """model_dump() must return a flat dict (Qdrant payload requirement)."""
         dumped = base_metadata.model_dump()
         for v in dumped.values():
             assert not isinstance(v, dict), "metadata must be a flat dict"
@@ -252,7 +252,7 @@ class TestChunkDocument:
 
     def test_returns_list_of_tuples(self):
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         assert isinstance(result, list)
         assert len(result) > 0
         for text, meta in result:
@@ -261,39 +261,39 @@ class TestChunkDocument:
 
     def test_chunk_index_is_sequential(self):
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         for expected_i, (_, meta) in enumerate(result):
             assert meta.chunk_index == expected_i
 
     def test_total_chunks_consistent(self):
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         total = len(result)
         for _, meta in result:
             assert meta.total_chunks == total
 
     def test_every_chunk_has_unique_chunk_id(self):
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         ids = [meta.chunk_id for _, meta in result]
         assert len(ids) == len(set(ids)), "All chunk_ids must be unique UUIDs"
 
     def test_access_level_preserved(self):
         template = self._make_template(access_level="admin")
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         for _, meta in result:
             assert meta.access_level == "admin"
 
     def test_doc_status_preserved(self):
         template = self._make_template(doc_status="archived")
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         for _, meta in result:
             assert meta.doc_status == "archived"
 
     def test_markdown_section_title_extracted(self):
         """At least one chunk should have a non-empty section_title from the # heading."""
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         section_titles = {meta.section_title for _, meta in result}
         # Should detect "Introduction" or "Safety Procedures"
         assert any(
@@ -302,15 +302,19 @@ class TestChunkDocument:
 
     def test_larger_chunk_size_produces_fewer_chunks(self):
         template = self._make_template()
-        result_256 = chunk_document(self._SAMPLE_TEXT, 256, 32, template, doc_format="md")
-        result_1024 = chunk_document(self._SAMPLE_TEXT, 1024, 128, template, doc_format="md")
+        result_256 = chunk_document(
+            self._SAMPLE_TEXT, template, chunk_size=256, chunk_overlap=32, doc_format="md"
+        )
+        result_1024 = chunk_document(
+            self._SAMPLE_TEXT, template, chunk_size=1024, chunk_overlap=128, doc_format="md"
+        )
         assert len(result_256) >= len(
             result_1024
         ), "Smaller chunk_size should produce more (or equal) chunks"
 
     def test_each_chunk_passes_pydantic_validation(self):
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 512, 64, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         for _, meta in result:
             # This will raise if any field is invalid
             ChunkMetadata.model_validate(meta.model_dump())
@@ -318,6 +322,6 @@ class TestChunkDocument:
     def test_template_chunk_id_not_used(self):
         """The 'placeholder' chunk_id on the template must be replaced in every chunk."""
         template = self._make_template()
-        result = chunk_document(self._SAMPLE_TEXT, 512, 64, template, doc_format="md")
+        result = chunk_document(self._SAMPLE_TEXT, template, doc_format="md")
         for _, meta in result:
             assert meta.chunk_id != "placeholder"

@@ -6,7 +6,7 @@ No Streamlit, no FastAPI — pure Python, callable from test scripts and the
 RAGAS eval harness (Task 5).
 
 Architecture:
-  ChromaDB (vault_documents_512) → VaultRetriever → gemma-3-27b-it → CitedResponse
+  Qdrant (vault_documents_256) → VaultRetriever → gemma-3-27b-it → CitedResponse
 
 RBAC note: access_level_filter is wired into the schema but defaults to None
 for Task 4. Phase 2 will populate it before calling .query(). This module has
@@ -27,12 +27,15 @@ warnings.filterwarnings(
     module="google.generativeai",
 )
 
-import chromadb
 import google.generativeai as genai  # noqa: E402
-from pydantic import BaseModel, Field
-from sentence_transformers import SentenceTransformer
+from pydantic import BaseModel, Field  # noqa: E402
+from qdrant_client import QdrantClient  # noqa: E402
+from sentence_transformers import SentenceTransformer  # noqa: E402
 
-from src.config import settings
+from src.config import settings  # noqa: E402
+from src.pipelines.models import RetrievedChunk  # noqa: E402
+from src.retrieval.dedup import deduplicate_chunks  # noqa: E402
+from src.retrieval.retriever import hybrid_retrieve  # noqa: E402
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +59,7 @@ class QueryInput(BaseModel):
     """Input contract for VaultRetriever.query()."""
 
     query: str
-    collection_name: str = "vault_documents_512"
+    collection_name: str = "vault_documents_256"
     top_k: int = 5
     # RESERVED — Phase 2 will populate this. Task 4 always passes None.
     access_level_filter: str | None = None
@@ -79,13 +82,31 @@ class CitedResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 _SYSTEM_PROMPT = """\
-You are the Vault-Tec Internal Knowledge Assistant. Your role is to answer employee questions accurately and exclusively based on the provided document excerpts. 
+You are the Vault-Tec Internal Knowledge Assistant. Answer employee questions using the provided document excerpts.  # noqa: E501
 
 Rules you must follow:
-1. Only use information from the provided context. Do not use outside knowledge.
-2. If the context does not contain enough information to answer the question, say: "The provided documents do not contain sufficient information to answer this question."
-3. Be concise and professional.
-4. Do not speculate, infer beyond the text, or mention information that is not present in the retrieved excerpts.
+
+1. Base your answer exclusively on the provided context.
+   Do not use outside knowledge.
+
+2. Always attempt to answer. Read every excerpt carefully,
+   including all table rows, before concluding information is
+   absent. Only say "This information is not available in the
+   provided documents" if you have read all excerpts and the
+   answer is genuinely not present.
+
+3. Lead with the direct answer. No preamble such as "Based on
+   the provided context..." or "The documents state..."
+
+4. For table data: read the full row. The answer is in the cell
+   that corresponds to the column header matching the question.
+   Report that specific value directly.
+
+5. Be concise. One to three sentences unless the question
+   requires listing multiple items.
+
+6. Cite the section name or document title when it helps
+   locate the answer.
 """
 
 _USER_TEMPLATE = """\
@@ -96,7 +117,7 @@ QUESTION: {query}
 DOCUMENT EXCERPTS:
 {context_block}
 
-Provide your answer below:
+Answer:
 """
 
 
@@ -120,26 +141,28 @@ def _format_chunk(doc_text: str, metadata: dict[str, Any]) -> str:
 
 class VaultRetriever:
     """
-    Core inference engine: retrieves chunks from ChromaDB, grounds an LLM
+    Core inference engine: retrieves chunks from Qdrant, grounds an LLM
     prompt, and returns a CitedResponse with deduplicated source citations.
 
-    Data lives in the Docker-hosted ChromaDB container — uses HttpClient,
-    NOT PersistentClient (confirmed: local chroma_db/ directory is empty).
+    Data lives in the Docker-hosted Qdrant container — uses QdrantClient
+    connecting via REST (port 6333).
     """
 
-    def __init__(self, collection_name: str = "vault_documents_512") -> None:
+    def __init__(self, collection_name: str = "vault_documents_256") -> None:
         logger.info("Initialising VaultRetriever (collection: %s)", collection_name)
 
-        # ChromaDB — data is in Docker volume, always use HttpClient
-        self._chroma = chromadb.HttpClient(
-            host=settings.chroma_host,
-            port=settings.chroma_port,
+        self._collection_name = collection_name
+
+        # Qdrant — data is in Docker volume
+        self._qdrant = QdrantClient(
+            host=settings.qdrant_host,
+            port=settings.qdrant_port,
         )
-        self._collection = self._chroma.get_collection(name=collection_name)
+        collection_info = self._qdrant.get_collection(collection_name)
         logger.info(
-            "Connected to ChromaDB collection '%s' (%d items).",
+            "Connected to Qdrant collection '%s' (%d points).",
             collection_name,
-            self._collection.count(),
+            collection_info.points_count,
         )
 
         # Embedding model — MUST match ingestion (all-MiniLM-L6-v2)
@@ -160,34 +183,41 @@ class VaultRetriever:
         query: str,
         top_k: int,
         access_level_filter: str | None,
-    ) -> list[dict[str, Any]]:
+        access_filter: dict | None = None,  # Phase 2 RBAC scaffold (field/value dict)
+    ) -> list[RetrievedChunk]:
         """
-        Embed query, query ChromaDB, return raw results as list of dicts.
+        Embed query, run hybrid search (dense + sparse RRF), return raw results.
 
         Each dict has keys: 'document' (str) and 'metadata' (dict).
 
-        If access_level_filter is not None, a ChromaDB where-filter is applied.
-        The caller (Phase 2) is responsible for choosing a sensible filter value.
-        Task 4 always passes None — no filtering.
+        access_level_filter: Legacy string filter (kept for backward compat).
+                             Maps to {"field": "access_level", "value": value}.
+        access_filter:       Phase 2 RBAC scaffold — {"field": ..., "value": ...}.
+                             Both default to None — no filtering applied.
         """
-        # Embed — returns np.ndarray; ChromaDB requires list-of-lists
+        # Dense embedding — returns np.ndarray
         embedding = self._embedder.encode(query, convert_to_numpy=True)
 
-        where_filter: dict[str, Any] | None = None
-        if access_level_filter is not None:
-            where_filter = {"access_level": {"$eq": access_level_filter}}
+        # Resolve access filter: Phase 2 dict takes precedence over legacy string
+        resolved_filter: dict | None = None
+        if access_filter:
+            resolved_filter = access_filter
+        elif access_level_filter is not None:
+            resolved_filter = {"field": "access_level", "value": access_level_filter}
 
-        results = self._collection.query(
-            query_embeddings=[embedding.tolist()],
-            n_results=top_k,
-            where=where_filter,
+        raw_results = hybrid_retrieve(
+            client=self._qdrant,
+            collection_name=self._collection_name,
+            query=query,
+            dense_embedding=embedding.tolist(),
+            k=top_k,
+            access_filter=resolved_filter,
         )
 
-        # ChromaDB returns parallel lists; zip into dicts for ergonomic access
-        documents: list[str] = results["documents"][0]
-        metadatas: list[dict[str, Any]] = results["metadatas"][0]
+        chunks = deduplicate_chunks(
+            raw_results, similarity_threshold=settings.retrieval_dedup_threshold
+        )
 
-        chunks = [{"document": doc, "metadata": meta} for doc, meta in zip(documents, metadatas)]
         logger.debug("Retrieved %d chunks for query: %.80s…", len(chunks), query)
         return chunks
 
@@ -195,7 +225,7 @@ class VaultRetriever:
     # generate()
     # ------------------------------------------------------------------
 
-    def generate(self, query: str, chunks: list[dict[str, Any]]) -> CitedResponse:
+    def generate(self, query: str, chunks: list[RetrievedChunk]) -> CitedResponse:
         """
         Build a grounded prompt from retrieved chunks, call the LLM, and
         return a CitedResponse with deduplicated source citations.
@@ -204,9 +234,7 @@ class VaultRetriever:
         knowledge, no injected content.
         """
         # Build context block
-        context_block = "\n".join(
-            _format_chunk(chunk["document"], chunk["metadata"]) for chunk in chunks
-        )
+        context_block = "\n".join(_format_chunk(chunk.content, chunk.metadata) for chunk in chunks)
 
         # Assemble full prompt (system + user roles via combined string for gemma)
         prompt = f"{_SYSTEM_PROMPT}\n\n" + _USER_TEMPLATE.format(
@@ -221,7 +249,7 @@ class VaultRetriever:
         seen: set[str] = set()
         sources: list[SourceCitation] = []
         for chunk in chunks:
-            meta = chunk["metadata"]
+            meta = chunk.metadata
             src_doc: str = meta.get("source_document", "Unknown")
             if src_doc in seen:
                 continue
@@ -241,7 +269,7 @@ class VaultRetriever:
             answer=answer,
             sources=sources,
             retrieved_chunk_count=len(chunks),
-            retrieved_chunks=[chunk["document"] for chunk in chunks],
+            retrieved_chunks=[chunk.content for chunk in chunks],
             query=query,
         )
 

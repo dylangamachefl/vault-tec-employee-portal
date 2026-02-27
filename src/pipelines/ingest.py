@@ -5,12 +5,13 @@ Vault-Tec Employee Portal — Document Ingestion Pipeline (Docling)
 Stage 1:  Docling DocumentConverter  (raw files → DoclingDocument)
 Stage 2:  Docling HybridChunker      (DoclingDocument → list[DocChunk])
 Stage 3:  Metadata enrichment        (DocChunk → DocumentChunk)
-Stage 4:  Persist to ChromaDB + JSON backup
+Stage 4:  Persist to Qdrant + JSON backup
 
 CLI usage:
     uv run python -m src.pipelines.ingest --chunk-size 512
     uv run python -m src.pipelines.ingest --chunk-size 1024 --collection vault_documents_1024
     uv run python -m src.pipelines.ingest --experiment          # runs 512 + 1024
+    uv run python -m src.pipelines.ingest --chunk-size 256 --reset
     uv run python -m src.pipelines.ingest --chunk-size 512 --dry-run
 """
 
@@ -22,9 +23,15 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from src.config import settings
 from src.pipelines.chunker import chunk_document_docling
 from src.pipelines.models import DocumentChunk
-from src.pipelines.persist import persist_to_chroma, write_json_backup
+from src.pipelines.persist import (
+    get_qdrant_client,
+    reset_collection,
+    upsert_chunks,
+    write_json_backup,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -133,12 +140,6 @@ DOCUMENT_METADATA: dict[str, dict] = {
     },
 }
 
-# Chunk-size experiment configurations
-EXPERIMENTS: list[tuple[int, str]] = [
-    (512, "vault_documents_512"),
-    (1024, "vault_documents_1024"),
-]
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -188,8 +189,6 @@ def _build_base_metadata(filepath: Path, doc_slug: str) -> DocumentChunk | None:
 
 def ingest_document(
     filepath: Path,
-    chunk_size: int,
-    collection_name: str,
     output_dir: Path,
     export_dir: Path | None = None,
     dry_run: bool = False,
@@ -203,11 +202,13 @@ def ingest_document(
     if base_meta is None:
         return []
 
-    logger.info("[INGEST] %s  (slug=%s, chunk_size=%d)", filepath.name, doc_slug, chunk_size)
+    logger.info(
+        "[INGEST] %s  (slug=%s, chunk_size=%d)", filepath.name, doc_slug, settings.CHUNK_SIZE
+    )
 
     chunks = chunk_document_docling(
         doc_path=filepath,
-        max_tokens=chunk_size,
+        max_tokens=settings.CHUNK_SIZE,
         doc_slug=doc_slug,
         base_metadata=base_meta,
         export_dir=export_dir,
@@ -218,7 +219,7 @@ def ingest_document(
         return []
 
     if not dry_run:
-        persist_to_chroma(chunks, collection_name=collection_name)
+        upsert_chunks(chunks, collection_name=settings.qdrant_collection_name)
         write_json_backup(chunks, output_dir=str(output_dir))
 
     return chunks
@@ -226,11 +227,10 @@ def ingest_document(
 
 def run_pipeline(
     data_dir: Path,
-    chunk_size: int,
-    collection_name: str,
     output_dir: Path,
     export_dir: Path | None = None,
     dry_run: bool = False,
+    drop_existing: bool = False,
 ) -> dict[str, int]:
     """
     Ingest all supported documents in data_dir.
@@ -242,17 +242,19 @@ def run_pipeline(
 
     logger.info(
         "=== Vault-Tec Ingestion (Docling) ===  collection='%s'  chunk_size=%d  docs=%d",
-        collection_name,
-        chunk_size,
+        settings.qdrant_collection_name,
+        settings.CHUNK_SIZE,
         len(docs),
     )
+
+    if drop_existing and not dry_run:
+        client = get_qdrant_client()
+        reset_collection(client, settings.qdrant_collection_name)
 
     summary: dict[str, int] = {}
     for doc_path in docs:
         chunks = ingest_document(
             filepath=doc_path,
-            chunk_size=chunk_size,
-            collection_name=collection_name,
             output_dir=output_dir,
             export_dir=export_dir,
             dry_run=dry_run,
@@ -284,7 +286,6 @@ def _build_parser() -> argparse.ArgumentParser:
         prog="ingest",
         description="Vault-Tec document ingestion pipeline (Docling-based).",
     )
-    p.add_argument("--chunk-size", type=int, default=512)
     p.add_argument("--data-dir", type=Path, default=Path("data/raw"))
     p.add_argument("--output-dir", type=Path, default=Path("data/processed"))
     p.add_argument(
@@ -293,14 +294,20 @@ def _build_parser() -> argparse.ArgumentParser:
         default=Path("data/processed/docling_exports"),
         help="Directory to save Docling markdown exports (AC9 audit).",
     )
-    p.add_argument("--collection", type=str, default="vault_documents")
-    p.add_argument(
-        "--experiment", action="store_true", help="Run both 512 and 1024 experiments sequentially."
-    )
     p.add_argument(
         "--dry-run",
         action="store_true",
-        help="Parse and chunk but do not write to ChromaDB or disk.",
+        help="Parse and chunk but do not write to Qdrant or disk.",
+    )
+    p.add_argument(
+        "--drop-existing",
+        action="store_true",
+        help="Drop existing Qdrant collection before ingestion (alias for --reset).",
+    )
+    p.add_argument(
+        "--reset",
+        action="store_true",
+        help="Delete and recreate the Qdrant collection before ingestion (clean re-ingest).",
     )
     return p
 
@@ -314,28 +321,16 @@ def main(argv: list[str] | None = None) -> None:
 
     export_dir = args.export_dir if not args.dry_run else None
 
-    if args.experiment:
-        for size, coll in EXPERIMENTS:
-            logger.info("\n" + "=" * 60)
-            logger.info("EXPERIMENT: chunk_size=%d  collection=%s", size, coll)
-            logger.info("=" * 60)
-            run_pipeline(
-                data_dir=args.data_dir,
-                chunk_size=size,
-                collection_name=coll,
-                output_dir=args.output_dir / f"exp_{size}",
-                export_dir=export_dir,
-                dry_run=args.dry_run,
-            )
-    else:
-        run_pipeline(
-            data_dir=args.data_dir,
-            chunk_size=args.chunk_size,
-            collection_name=args.collection,
-            output_dir=args.output_dir,
-            export_dir=export_dir,
-            dry_run=args.dry_run,
-        )
+    # --reset and --drop-existing are equivalent; reset takes precedence
+    drop_existing = args.drop_existing or getattr(args, "reset", False)
+
+    run_pipeline(
+        data_dir=args.data_dir,
+        output_dir=args.output_dir,
+        export_dir=export_dir,
+        dry_run=args.dry_run,
+        drop_existing=drop_existing,
+    )
 
 
 if __name__ == "__main__":

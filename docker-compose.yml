@@ -14,7 +14,7 @@ services:
     env_file: .env
     depends_on:
       - postgres
-      - chromadb
+      - qdrant
 
   frontend:
     build:
@@ -37,13 +37,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  chromadb:
-    image: chromadb/chroma:latest
+  qdrant:
+    image: qdrant/qdrant:latest
     ports:
-      - "8002:8000"
+      - "6333:6333"
+      - "6334:6334"
     volumes:
-      - chroma_data:/chroma/chroma
+      - qdrant_storage:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__HTTP_PORT=6333
+      - QDRANT__SERVICE__GRPC_PORT=6334
 
 volumes:
   postgres_data:
-  chroma_data:
+  qdrant_storage:
