@@ -15,3 +15,15 @@ chroma_db/
 tests/eval/results/
 tests/eval/generated_answers_*.json
 tests/eval/runs/
+
+# Frontend / Node
+node_modules/
+frontend/node_modules/
+.eslintcache
+*.local
+.npm
+.cache
+frontend/dist/
+
+# Tools
+.claude/

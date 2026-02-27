@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "VT323", ui-monospace, SFMono-Regular, monospace;
+  --color-vault-bg: #050505;
+  --color-vault-green: #4ade80;
+  --color-vault-green-dim: #16a34a;
+  --color-vault-green-dark: #14532d;
+  --color-vault-amber: #f59e0b;
+  --color-vault-red: #ef4444;
+}
+
+body {
+  background-color: var(--color-vault-bg);
+  color: var(--color-vault-green);
+  font-family: var(--font-mono);
+  margin: 0;
+  overflow: hidden;
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
+}
+
+/* CRT Scanline Effect */
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  z-index: 50;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Subtle flicker */
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  5% { opacity: 0.85; }
+  10% { opacity: 0.95; }
+  15% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crt {
+  animation: flicker 0.15s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-vault-green-dark);
+  border-left: 1px solid var(--color-vault-green);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-vault-green);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-vault-green-dim);
+}
+
+/* Input / button font inheritance */
+input, textarea, select, button {
+  font-family: inherit;
+  color: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+}

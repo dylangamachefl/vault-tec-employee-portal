@@ -16,13 +16,14 @@ services:
       - postgres
       - qdrant
 
+  # React frontend (Vite build → nginx)
+  # Replaces the previous Streamlit service (src/ui/ retained for reference).
   frontend:
     build:
       context: .
       dockerfile: docker/Dockerfile.frontend
     ports:
-      - "8501:8501"
-    env_file: .env
+      - "3000:80"
     depends_on:
       - api
 
