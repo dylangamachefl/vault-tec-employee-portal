@@ -8,9 +8,9 @@ RAGAS eval harness (Task 5).
 Architecture:
   Qdrant (vault_documents_256) → VaultRetriever → gemma-3-27b-it → CitedResponse
 
-RBAC note: access_level_filter is wired into the schema but defaults to None
-for Task 4. Phase 2 will populate it before calling .query(). This module has
-NO knowledge of users or roles.
+RBAC (Phase 2): access_level_filter (legacy string) and access_filter (Phase 2
+multi-value dict) are both supported. The API layer now sets access_filter with
+the JWT-derived list of permitted access levels.
 """
 
 from __future__ import annotations
@@ -61,7 +61,8 @@ class QueryInput(BaseModel):
     query: str
     collection_name: str = "vault_documents_256"
     top_k: int = 5
-    # RESERVED — Phase 2 will populate this. Task 4 always passes None.
+    # Legacy single-value filter — kept for backward compat with existing smoke tests.
+    # Phase 2 API uses access_filter (multi-value dict) instead.
     access_level_filter: str | None = None
 
 
@@ -82,7 +83,8 @@ class CitedResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 _SYSTEM_PROMPT = """\
-You are the Vault-Tec Internal Knowledge Assistant. Answer employee questions using the provided document excerpts.  # noqa: E501
+You are the Vault-Tec Internal Knowledge Assistant. Answer employee questions using the \
+provided document excerpts.
 
 Rules you must follow:
 
@@ -277,15 +279,22 @@ class VaultRetriever:
     # query() — public entry point
     # ------------------------------------------------------------------
 
-    def query(self, input: QueryInput) -> CitedResponse:
+    def query(self, input: QueryInput, access_filter: dict | None = None) -> CitedResponse:
         """
         Public entry point consumed by the test harness and (Task 5) RAGAS eval.
 
         Calls retrieve() then generate(). Returns a validated CitedResponse.
+
+        Args:
+            input:         QueryInput with query, top_k, and legacy access_level_filter.
+            access_filter: Phase 2 multi-value RBAC filter passed from the API layer:
+                           {"field": "access_level", "values": ["General Employee", ...]}
+                           Takes precedence over input.access_level_filter when set.
         """
         chunks = self.retrieve(
             query=input.query,
             top_k=input.top_k,
             access_level_filter=input.access_level_filter,
+            access_filter=access_filter,
         )
         return self.generate(query=input.query, chunks=chunks)

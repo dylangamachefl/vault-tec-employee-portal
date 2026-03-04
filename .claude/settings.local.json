@@ -12,7 +12,20 @@
       "Bash(uv run pytest tests/unit/test_hybrid_retriever.py -v --tb=short)",
       "Bash(python -c \":*)",
       "Bash(uv run pytest tests/unit/ -v --tb=short)",
-      "Bash(python -c \"import json; pairs = json.load\\(open\\(''tests/eval/golden_qa_pairs.json''\\)\\); print\\(f''QA pairs count: {len\\(pairs\\)}''\\)\")"
+      "Bash(python -c \"import json; pairs = json.load\\(open\\(''tests/eval/golden_qa_pairs.json''\\)\\); print\\(f''QA pairs count: {len\\(pairs\\)}''\\)\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/package.json\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/src/index.css\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/src/components/LoginView.tsx\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/src/components/Layout.tsx\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/src/components/ChatView.tsx\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/src/components/Sidebar.tsx\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/src/components/ChatHistory.tsx\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/vite.config.ts\")",
+      "Bash(unzip -p \"C:/Users/Dylan/Downloads/vault-tec-portal-demo-main.zip\" \"vault-tec-portal-demo-main/.env.example\")",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(npm run dev)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(docker ps --format \"table {{.Names}}\\\\t{{.Status}}\\\\t{{.Ports}}\")"
     ]
   }
 }

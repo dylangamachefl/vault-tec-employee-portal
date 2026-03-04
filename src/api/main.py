@@ -1,15 +1,31 @@
-"""FastAPI application — Phase 1 REST API for the React frontend."""
+"""FastAPI application — Phase 2: JWT Auth + RBAC + Audit Trail."""
 
 from __future__ import annotations
 
-from fastapi import FastAPI, HTTPException, Query
+import logging
+from typing import Annotated
+
+from fastapi import Depends, FastAPI, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
 from src.api.documents import DocumentRecord, get_accessible_documents
+from src.audit.logger import log_query_event
+from src.audit.schemas import AuditLogOut
+from src.auth.crud import get_allowed_levels, get_user
+from src.auth.database import get_db
+from src.auth.jwt import create_access_token, get_current_user
+from src.auth.schemas import TokenPayload, TokenResponse
 from src.pipelines.retrieval_chain import CitedResponse, QueryInput, VaultRetriever
 
-app = FastAPI(title="Vault-Tec Employee Portal API", version="0.2.0")
+logger = logging.getLogger(__name__)
+
+app = FastAPI(
+    title="Vault-Tec Employee Portal API",
+    version="0.3.0",
+    description="Phase 2: JWT authentication, RBAC-enforced retrieval, audit trail.",
+)
 
 # ---------------------------------------------------------------------------
 # CORS — allow Vite dev server (port 3000) and Docker nginx (port 80/3000)
@@ -24,35 +40,26 @@ app.add_middleware(
 )
 
 # ---------------------------------------------------------------------------
-# Demo credential profiles — match LoginView.tsx DEMO_USERS
+# Startup — seed the auth/audit database
 # ---------------------------------------------------------------------------
 
-_DEMO_USERS: dict[str, dict] = {
-    "u1": {
-        "id": "u1",
-        "username": "Dweller-101",
-        "role": "General Employee",
-        "accessLevel": "General",
-    },
-    "u2": {
-        "id": "u2",
-        "username": "Barnsworth B.",
-        "role": "HR Specialist",
-        "accessLevel": "HR",
-    },
-    "u3": {
-        "id": "u3",
-        "username": "Gable M.",
-        "role": "Marketing Associate",
-        "accessLevel": "Marketing",
-    },
-    "u4": {
-        "id": "u4",
-        "username": "Carmichael J.",
-        "role": "IT Administrator",
-        "accessLevel": "Admin",
-    },
-}
+
+@app.on_event("startup")
+def on_startup() -> None:
+    """Ensure auth.db tables exist and demo data is seeded."""
+    from src.auth.seed import run_seed
+
+    run_seed()
+    logger.info("Auth database ready.")
+
+
+# ---------------------------------------------------------------------------
+# Type alias for the injected current user
+# ---------------------------------------------------------------------------
+
+CurrentUser = Annotated[TokenPayload, Depends(get_current_user)]
+DBSession = Annotated[Session, Depends(get_db)]
+
 
 # ---------------------------------------------------------------------------
 # Request / response models
@@ -63,30 +70,9 @@ class LoginRequest(BaseModel):
     user_id: str
 
 
-class UserResponse(BaseModel):
-    id: str
-    username: str
-    role: str
-    accessLevel: str
-
-
 class QueryRequest(BaseModel):
     query: str
-    access_level: str
     top_k: int = 5
-
-
-# ---------------------------------------------------------------------------
-# Access level → Qdrant filter mapping
-# Phase 2 will enforce hard RBAC; Phase 1 uses soft filter (no restriction).
-# ---------------------------------------------------------------------------
-
-_ACCESS_FILTER: dict[str, str | None] = {
-    "General": None,  # Phase 1: no filter enforced
-    "HR": None,
-    "Marketing": None,
-    "Admin": None,
-}
 
 
 # ---------------------------------------------------------------------------
@@ -99,29 +85,115 @@ async def health_check() -> dict:
     return {"status": "ok", "message": "Vault-Tec systems nominal."}
 
 
-@app.post("/api/login", response_model=UserResponse)
-async def login(req: LoginRequest) -> UserResponse:
-    user = _DEMO_USERS.get(req.user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail=f"Unknown user_id: {req.user_id}")
-    return UserResponse(**user)
+# ------------------------------------------------------------------
+# POST /api/login — issue JWT
+# ------------------------------------------------------------------
+
+
+@app.post("/api/login", response_model=TokenResponse)
+async def login(req: LoginRequest, db: DBSession) -> TokenResponse:
+    """Validate user_id against the auth DB and return a signed JWT."""
+    user = get_user(db, req.user_id)
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Unknown user_id: {req.user_id!r}",
+        )
+
+    allowed_levels = get_allowed_levels(db, req.user_id) or []
+    token = create_access_token(
+        user_id=user.id,
+        username=user.username,
+        role=user.role.name,
+        allowed_levels=allowed_levels,
+    )
+    return TokenResponse(access_token=token)
+
+
+# ------------------------------------------------------------------
+# GET /api/documents — accessible documents for the current user
+# ------------------------------------------------------------------
+
+# Role slug → legacy access level key used by get_accessible_documents()
+_ROLE_TO_ACCESS_LEVEL: dict[str, str] = {
+    "general": "General",
+    "hr": "HR",
+    "marketing": "Marketing",
+    "admin": "Admin",
+}
 
 
 @app.get("/api/documents", response_model=list[DocumentRecord])
 async def list_documents(
-    access_level: str = Query(..., description="Caller's clearance level"),
+    current_user: CurrentUser,
 ) -> list[DocumentRecord]:
+    """Return documents the authenticated user is allowed to see."""
+    access_level = _ROLE_TO_ACCESS_LEVEL.get(current_user.role, "General")
     return get_accessible_documents(access_level)
 
 
+# ------------------------------------------------------------------
+# POST /api/query — RBAC-enforced retrieval + audit
+# ------------------------------------------------------------------
+
+
 @app.post("/api/query", response_model=CitedResponse)
-async def query_knowledge_base(req: QueryRequest) -> CitedResponse:
+async def query_knowledge_base(
+    req: QueryRequest,
+    current_user: CurrentUser,
+    db: DBSession,
+) -> CitedResponse:
+    """Run a retrieval query filtered to the user's permitted access levels.
+
+    - Identity and allowed_levels come from the verified JWT — no client-supplied
+      role override is possible.
+    - Every query is persisted to the audit log.
+    """
     retriever = VaultRetriever()
     result = retriever.query(
         QueryInput(
             query=req.query,
             top_k=req.top_k,
-            access_level_filter=_ACCESS_FILTER.get(req.access_level),
-        )
+            access_level_filter=None,  # Replaced by multi-value access_filter below
+        ),
+        access_filter={
+            "field": "access_level",
+            "values": current_user.allowed_levels,
+        },
     )
+
+    # Persist audit trail entry
+    log_query_event(
+        db=db,
+        user_id=current_user.sub,
+        username=current_user.username,
+        query=req.query,
+        response=result,
+    )
+
     return result
+
+
+# ------------------------------------------------------------------
+# GET /api/audit-logs — Admin-only audit trail viewer
+# ------------------------------------------------------------------
+
+
+@app.get("/api/audit-logs", response_model=list[AuditLogOut])
+async def get_audit_logs(
+    current_user: CurrentUser,
+    db: DBSession,
+    limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
+) -> list[AuditLogOut]:
+    """Return audit log entries. Restricted to Admin role."""
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Audit log access requires Admin role.",
+        )
+
+    from src.audit.models import AuditLog
+
+    rows = db.query(AuditLog).order_by(AuditLog.timestamp.desc()).offset(offset).limit(limit).all()
+    return [AuditLogOut.model_validate(row) for row in rows]

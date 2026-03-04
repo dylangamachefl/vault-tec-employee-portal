@@ -15,7 +15,7 @@ export function Sidebar({ user, onLogout }: SidebarProps) {
 
   useEffect(() => {
     setLoading(true);
-    getDocuments(user.accessLevel)
+    getDocuments()
       .then(setDocs)
       .catch((err) => setError(err instanceof Error ? err.message : 'Failed to load documents.'))
       .finally(() => setLoading(false));

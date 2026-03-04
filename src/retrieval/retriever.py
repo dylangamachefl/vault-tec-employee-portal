@@ -19,6 +19,7 @@ from qdrant_client.models import (
     Filter,
     Fusion,
     FusionQuery,
+    MatchAny,
     MatchValue,
     Prefetch,
     SparseVector,
@@ -57,7 +58,9 @@ def hybrid_retrieve(
         query:            Raw query string — encoded to a sparse vector here.
         dense_embedding:  Pre-computed dense vector for the query (list[float]).
         k:                Number of results to return (applied after RRF fusion).
-        access_filter:    Optional Phase 2 RBAC filter: {"field": str, "value": str}.
+        access_filter:    Optional Phase 2 RBAC filter in one of two forms:
+                            {"field": str, "value": str}       — single-value match (legacy)
+                            {"field": str, "values": list[str]} — multi-value MatchAny (Phase 2)
                           Applied identically to both prefetch steps.
 
     Returns:
@@ -67,14 +70,27 @@ def hybrid_retrieve(
 
     query_filter: Filter | None = None
     if access_filter:
-        query_filter = Filter(
-            must=[
-                FieldCondition(
-                    key=access_filter["field"],
-                    match=MatchValue(value=access_filter["value"]),
-                )
-            ]
-        )
+        field = access_filter["field"]
+        if "values" in access_filter:
+            # Phase 2 multi-value RBAC: match any of the permitted access levels
+            query_filter = Filter(
+                must=[
+                    FieldCondition(
+                        key=field,
+                        match=MatchAny(any=access_filter["values"]),
+                    )
+                ]
+            )
+        else:
+            # Legacy single-value form — kept for backward compatibility
+            query_filter = Filter(
+                must=[
+                    FieldCondition(
+                        key=field,
+                        match=MatchValue(value=access_filter["value"]),
+                    )
+                ]
+            )
 
     results = client.query_points(
         collection_name=collection_name,

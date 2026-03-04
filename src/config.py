@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     qdrant_port: int = 6333
     qdrant_collection_name: str = "vault_documents"
     jwt_secret_key: str = ""
+    auth_db_url: str = "sqlite:///./auth.db"
     retrieval_dedup_threshold: float = 0.95
 
     # Chunking

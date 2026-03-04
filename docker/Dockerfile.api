@@ -11,7 +11,10 @@ COPY pyproject.toml .
 # Install dependencies (no dev extras)
 RUN uv pip install --system --no-cache \
     fastapi uvicorn[standard] pyjwt sqlalchemy psycopg2-binary \
-    pydantic-settings langchain chromadb sentence-transformers google-generativeai
+    pydantic-settings langchain langchain-text-splitters \
+    sentence-transformers google-generativeai \
+    qdrant-client fastembed \
+    pypdf python-docx tiktoken
 
 # Copy source
 COPY src/ ./src/

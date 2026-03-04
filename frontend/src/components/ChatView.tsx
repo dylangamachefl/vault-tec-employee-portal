@@ -37,7 +37,7 @@ export function ChatView({ user, onLogout }: ChatViewProps) {
     setIsQuerying(true);
 
     try {
-      const result = await sendQuery(query, user.accessLevel);
+      const result = await sendQuery(query);
 
       const hasAnswer =
         result.answer &&
