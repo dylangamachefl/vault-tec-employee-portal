@@ -22,7 +22,6 @@ build/
 dist/
 
 # Application Data & Databases
-data/raw/
 data/processed/
 qdrant_storage/
 auth.db
