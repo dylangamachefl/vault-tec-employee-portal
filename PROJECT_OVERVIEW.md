@@ -19,7 +19,7 @@ This is a **portfolio capstone** combining three distinct AI engineering roles i
 ### Phase 1 — Base RAG Pipeline
 *"Can the system answer questions accurately?"*
 
-Ingest 16 corporate documents (PDFs, DOCX, Markdown), clean and chunk the text, tag every chunk with rich metadata, embed using `sentence-transformers`, and store in ChromaDB. Build a LangChain retrieval chain that answers employee questions with grounded source citations. Evaluate accuracy using a 30+ item golden Q&A test suite via RAGAS.
+Ingest 16 corporate documents (PDFs, DOCX, Markdown), clean and chunk the text, tag every chunk with rich metadata, embed using `sentence-transformers`, and store in Qdrant. Build a LangChain retrieval chain that answers employee questions with grounded source citations. Evaluate accuracy using a 30+ item golden Q&A test suite via RAGAS.
 
 **You are here. This phase must pass evaluation before Phase 2 starts.**
 
@@ -28,7 +28,7 @@ Ingest 16 corporate documents (PDFs, DOCX, Markdown), clean and chunk the text, 
 ### Phase 2 — RBAC Security Gateway
 *"Does the system answer questions only for the right people?"*
 
-Build a FastAPI backend with JWT authentication. Define four user roles: `admin`, `hr`, `marketing`, `general`. When a user queries the chatbot, their role is resolved and passed as a metadata filter to ChromaDB — so an HR question about payroll policy is invisible to a Marketing employee. Every query is written to an audit log (PostgreSQL). Prove data isolation with automated cross-role leakage tests.
+Build a FastAPI backend with JWT authentication. Define four user roles: `admin`, `hr`, `marketing`, `general`. When a user queries the chatbot, their role is resolved and passed as a metadata filter to Qdrant — so an HR question about payroll policy is invisible to a Marketing employee. Every query is written to an audit log (PostgreSQL). Prove data isolation with automated cross-role leakage tests.
 
 **Phase 2 cannot start until Phase 1 evaluation results are acceptable.**
 
@@ -44,7 +44,7 @@ Scheduled background jobs continuously scan the vector database. A staleness sco
 ## THE ARCHITECTURE AT A GLANCE
 
 ```
-[React Frontend]  ←→  [FastAPI Backend]  ←→  [ChromaDB]
+[React Frontend]  ←→  [FastAPI Backend]  ←→  [Qdrant]
   Employee chat         JWT auth               Vector embeddings
   Admin dashboard       Role resolution        Metadata filters
                         Audit logging
@@ -65,7 +65,7 @@ Scheduled background jobs continuously scan the vector database. A staleness sco
 | AI orchestration | LangChain | Retrieval chain, text splitting |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2` | Local, fast, no API cost |
 | Generation | `gemma-3-27b-it` via Google AI Studio | The LLM for answers + quality checks |
-| Vector DB | ChromaDB | Metadata filtering for RBAC |
+| Vector DB | Qdrant | Metadata filtering for RBAC |
 | Relational DB | PostgreSQL | Users, roles, audit logs |
 | Backend | FastAPI + PyJWT | Secure API gateway |
 | Frontend | React + Vite | Employee chat + admin dashboard |
@@ -105,7 +105,7 @@ If you are ever uncertain about build order, ask the Architect.
 | `backend/src/pipelines/models.py` | `ChunkMetadata` Pydantic model — the data contract for the entire system |
 | `backend/src/pipelines/ingest.py` | The ingestion pipeline entrypoint |
 | `backend/tests/eval/golden_qa_pairs.json` | The evaluation ground truth — do not modify without Architect approval |
-| `docker-compose.yml` | Starts all four services: api, frontend, postgres, chromadb |
+| `docker-compose.yml` | Starts all four services: api, frontend, postgres, qdrant |
 | `scripts/dev.ps1` | PowerShell dev commands — `setup`, `test`, `docker-up`, `docker-down`, `lint` |
 
 > ⚠️ **Windows path rule:** All file paths in Python must use `pathlib.Path`. Never hardcode `/` separators. The pipeline runs locally on Windows but inside Linux Docker containers — `pathlib` handles both transparently.

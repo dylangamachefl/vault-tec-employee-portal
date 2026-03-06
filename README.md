@@ -11,7 +11,7 @@ This is a **portfolio capstone** demonstrating end-to-end ownership of an AI pro
 ## Architecture
 
 ```
-[React Frontend]  ←→  [FastAPI Backend]  ←→  [ChromaDB]
+[React Frontend]  ←→  [FastAPI Backend]  ←→  [Qdrant]
   Employee chat         JWT auth               Vector embeddings
   Admin dashboard       Role resolution        Metadata filters
   Document Viewer                              Client-side embeddings
@@ -33,7 +33,7 @@ This is a **portfolio capstone** demonstrating end-to-end ownership of an AI pro
 | AI Orchestration | LangChain |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2` |
 | Generation | `gemma-3-27b-it` via Google AI Studio |
-| Vector DB | ChromaDB |
+| Vector DB | Qdrant |
 | Relational DB | PostgreSQL 15 |
 | Backend | FastAPI + PyJWT |
 | Frontend | React + Vite + TailwindCSS |
@@ -100,7 +100,7 @@ docker compose ps
 |---|---|
 | FastAPI backend | http://localhost:8000 |
 | React frontend | http://localhost:3000 |
-| ChromaDB | http://localhost:8002 |
+| Qdrant | http://localhost:6333 |
 | PostgreSQL | localhost:5432 |
 
 ```powershell
