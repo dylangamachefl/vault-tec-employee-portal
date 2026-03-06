@@ -11,9 +11,10 @@ This is a **portfolio capstone** demonstrating end-to-end ownership of an AI pro
 ## Architecture
 
 ```
-[Streamlit UI]  ←→  [FastAPI Backend]  ←→  [ChromaDB]
+[React Frontend]  ←→  [FastAPI Backend]  ←→  [ChromaDB]
   Employee chat         JWT auth               Vector embeddings
   Admin dashboard       Role resolution        Metadata filters
+  Document Viewer                              Client-side embeddings
                         Audit logging
                               ↕
                         [PostgreSQL]
@@ -35,7 +36,7 @@ This is a **portfolio capstone** demonstrating end-to-end ownership of an AI pro
 | Vector DB | ChromaDB |
 | Relational DB | PostgreSQL 15 |
 | Backend | FastAPI + PyJWT |
-| Frontend | Streamlit |
+| Frontend | React + Vite + TailwindCSS |
 | Evaluation | RAGAS |
 | Containers | Docker Compose |
 
@@ -88,7 +89,7 @@ Copy-Item .env.example .env
 ### Running Locally
 
 ```powershell
-# Start all services (ChromaDB, PostgreSQL, API, Frontend)
+# Start database and backend services
 ./scripts/dev.ps1 docker-up
 
 # Verify services are up
@@ -98,9 +99,16 @@ docker compose ps
 | Service | URL |
 |---|---|
 | FastAPI backend | http://localhost:8000 |
-| Streamlit frontend | http://localhost:8501 |
+| React frontend | http://localhost:3000 |
 | ChromaDB | http://localhost:8002 |
 | PostgreSQL | localhost:5432 |
+
+```powershell
+# Start the frontend dev server (in a separate terminal)
+cd frontend
+npm install
+npm run dev
+```
 
 ### Development Commands
 
@@ -118,29 +126,21 @@ docker compose ps
 
 ```
 employee-portal/
-├── src/
-│   ├── api/          # Phase 2: FastAPI backend + JWT auth
-│   ├── ui/           # Phase 3: Streamlit employee + admin interfaces
-│   ├── pipelines/    # Phase 1: Ingestion, chunking, embedding, quality jobs
-│   └── config.py     # Centralized Pydantic settings
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── eval/
-│       └── golden_qa_pairs.json   # 34 ground-truth Q&A pairs
-├── data/
-│   ├── raw/          # Source documents (PDFs, DOCX, MD)
-│   └── processed/    # Chunked JSON output
+├── backend/          # FastAPI API, pipelines, and data (Deployed to server)
+│   ├── src/          # Python source code
+│   ├── tests/        # Unit & eval tests
+│   ├── data/         # Source docs & chunked JSON
+│   ├── Dockerfile
+│   └── pyproject.toml
+├── frontend/         # React + Vite frontend (Deployed to Vercel)
 ├── docker/
-│   ├── Dockerfile.api
 │   └── Dockerfile.frontend
 ├── scripts/
-│   └── dev.ps1       # PowerShell dev commands (replaces Makefile)
-├── docker-compose.yml
-└── pyproject.toml
+│   └── dev.ps1       # PowerShell dev commands
+└── docker-compose.yml
 ```
 
-> ⚠️ **Windows path rule:** All file path construction in `src/` must use `pathlib.Path` — never hardcoded forward slashes. Use `Path("data") / "raw"`, not `"data/raw"`.
+> ⚠️ **Windows path rule:** All file path construction in `backend/src/` must use `pathlib.Path` — never hardcoded forward slashes. Use `Path("data") / "raw"`, not `"data/raw"`.
 
 ---
 

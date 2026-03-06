@@ -1,8 +1,10 @@
-"""FastAPI application — Phase 2: JWT Auth + RBAC + Audit Trail."""
+"""FastAPI application — Phase 3: Client-side embeddings, JWT Auth, RBAC, Audit Trail."""
 
 from __future__ import annotations
 
 import logging
+import os
+import pathlib
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, Query, status
@@ -10,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from src.api.documents import DocumentRecord, get_accessible_documents
+from src.api.documents import DocumentRecord, DOC_ID_TO_FILENAME, get_accessible_documents, get_accessible_doc_ids
 from src.audit.logger import log_query_event
 from src.audit.schemas import AuditLogOut
 from src.auth.crud import get_allowed_levels, get_user
@@ -23,17 +25,22 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Vault-Tec Employee Portal API",
-    version="0.3.0",
-    description="Phase 2: JWT authentication, RBAC-enforced retrieval, audit trail.",
+    version="0.4.0",
+    description="Phase 3: Client-side embeddings (Transformers.js), JWT auth, RBAC, audit trail.",
 )
 
 # ---------------------------------------------------------------------------
-# CORS — allow Vite dev server (port 3000) and Docker nginx (port 80/3000)
+# CORS — driven by ALLOWED_ORIGINS env var for production flexibility.
+# Default covers Vite dev server and Docker nginx.
+# Production: ALLOWED_ORIGINS=https://vault-tec.vercel.app,https://vault-tec.netlify.app
 # ---------------------------------------------------------------------------
+
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:80,http://localhost")
+_allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:80", "http://localhost"],
+    allow_origins=_allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -73,6 +80,9 @@ class LoginRequest(BaseModel):
 class QueryRequest(BaseModel):
     query: str
     top_k: int = 5
+    # Pre-computed embedding from the browser (Phase 3).
+    # When present, the backend skips in-process embedding entirely.
+    vector: list[float] | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -133,6 +143,54 @@ async def list_documents(
 
 
 # ------------------------------------------------------------------
+# GET /api/documents/{doc_id}/content — raw markdown content
+# ------------------------------------------------------------------
+
+_PROJECT_ROOT = pathlib.Path(__file__).parent.parent.parent.resolve()
+_EXPORTS_DIR = _PROJECT_ROOT / "data" / "processed" / "docling_exports"
+
+
+class DocumentContentResponse(BaseModel):
+    content: str
+
+
+@app.get("/api/documents/{doc_id}/content", response_model=DocumentContentResponse)
+async def get_document_content(
+    doc_id: str,
+    current_user: CurrentUser,
+) -> DocumentContentResponse:
+    """Return the raw markdown content of a document.
+
+    Access is enforced: the doc must be within the user's permitted levels.
+    """
+    access_level = _ROLE_TO_ACCESS_LEVEL.get(current_user.role, "General")
+    allowed_ids = get_accessible_doc_ids(access_level)
+
+    if doc_id not in allowed_ids:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"Clearance level insufficient for document {doc_id!r}.",
+        )
+
+    filename = DOC_ID_TO_FILENAME.get(doc_id)
+    if filename is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No source file mapped for document {doc_id!r}.",
+        )
+
+    filepath = _EXPORTS_DIR / filename
+    if not filepath.is_file():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Source file not found on disk: {filename!r}.",
+        )
+
+    content = filepath.read_text(encoding="utf-8")
+    return DocumentContentResponse(content=content)
+
+
+# ------------------------------------------------------------------
 # POST /api/query — RBAC-enforced retrieval + audit
 # ------------------------------------------------------------------
 
@@ -154,7 +212,8 @@ async def query_knowledge_base(
         QueryInput(
             query=req.query,
             top_k=req.top_k,
-            access_level_filter=None,  # Replaced by multi-value access_filter below
+            access_level_filter=None,
+            vector=req.vector,
         ),
         access_filter={
             "field": "access_level",

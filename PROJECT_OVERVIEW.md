@@ -37,14 +37,14 @@ Build a FastAPI backend with JWT authentication. Define four user roles: `admin`
 ### Phase 3 — Automated Quality Monitor
 *"Does the system know when its knowledge base is going stale or broken?"*
 
-Scheduled background jobs continuously scan the vector database. A staleness scorer flags documents whose `doc_date` metadata is old or whose text references outdated time periods. A cosine-similarity duplicate detector flags redundant chunks. An LLM-powered contradiction detector retrieves chunks on the same topic and checks for conflicting statements (e.g., two policy documents giving different instructions). All findings surface in an admin Streamlit dashboard alongside audit log metrics.
+Scheduled background jobs continuously scan the vector database. A staleness scorer flags documents whose `doc_date` metadata is old or whose text references outdated time periods. A cosine-similarity duplicate detector flags redundant chunks. An LLM-powered contradiction detector retrieves chunks on the same topic and checks for conflicting statements (e.g., two policy documents giving different instructions). All findings surface in an admin React dashboard alongside audit log metrics.
 
 ---
 
 ## THE ARCHITECTURE AT A GLANCE
 
 ```
-[Streamlit UI]  ←→  [FastAPI Backend]  ←→  [ChromaDB]
+[React Frontend]  ←→  [FastAPI Backend]  ←→  [ChromaDB]
   Employee chat         JWT auth               Vector embeddings
   Admin dashboard       Role resolution        Metadata filters
                         Audit logging
@@ -68,7 +68,7 @@ Scheduled background jobs continuously scan the vector database. A staleness sco
 | Vector DB | ChromaDB | Metadata filtering for RBAC |
 | Relational DB | PostgreSQL | Users, roles, audit logs |
 | Backend | FastAPI + PyJWT | Secure API gateway |
-| Frontend | Streamlit | Employee chat + admin dashboard |
+| Frontend | React + Vite | Employee chat + admin dashboard |
 | Evaluation | RAGAS | Measures faithfulness, precision, recall |
 | Containers | Docker Compose | Runs all services locally |
 
@@ -101,10 +101,10 @@ If you are ever uncertain about build order, ask the Architect.
 
 | File | Purpose |
 |---|---|
-| `src/config.py` | All environment variables — import `settings` from here, never use `os.environ` directly |
-| `src/pipelines/models.py` | `ChunkMetadata` Pydantic model — the data contract for the entire system |
-| `src/pipelines/ingest.py` | The ingestion pipeline entrypoint |
-| `tests/eval/golden_qa_pairs.json` | The evaluation ground truth — do not modify without Architect approval |
+| `backend/src/config.py` | All environment variables — import `settings` from here, never use `os.environ` directly |
+| `backend/src/pipelines/models.py` | `ChunkMetadata` Pydantic model — the data contract for the entire system |
+| `backend/src/pipelines/ingest.py` | The ingestion pipeline entrypoint |
+| `backend/tests/eval/golden_qa_pairs.json` | The evaluation ground truth — do not modify without Architect approval |
 | `docker-compose.yml` | Starts all four services: api, frontend, postgres, chromadb |
 | `scripts/dev.ps1` | PowerShell dev commands — `setup`, `test`, `docker-up`, `docker-down`, `lint` |
 

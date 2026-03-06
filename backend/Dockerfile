@@ -16,8 +16,9 @@ RUN uv pip install --system --no-cache \
     qdrant-client fastembed \
     pypdf python-docx tiktoken
 
-# Copy source
+# Copy source and data files
 COPY src/ ./src/
+COPY data/ ./data/
 
 EXPOSE 8000
 

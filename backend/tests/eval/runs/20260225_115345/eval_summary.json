@@ -1,0 +1,29 @@
+{
+  "candidate_scores": {
+    "256": {
+      "faithfulness": 0.7061904761904761,
+      "answer_relevancy": 0.3914499130493372,
+      "context_precision": 0.7725225224753377,
+      "context_recall": 0.9144144144144143
+    },
+    "512": {
+      "faithfulness": 0.6796296296296297,
+      "answer_relevancy": 0.4319788927711475,
+      "context_precision": 0.7387387386957206,
+      "context_recall": 0.8443371943371942
+    },
+    "1024": {
+      "faithfulness": 0.6620370370370371,
+      "answer_relevancy": 0.4056461882270638,
+      "context_precision": 0.7499999999505629,
+      "context_recall": 0.8375804375804374
+    }
+  },
+  "composite_scores": {
+    "256": 0.6753219377099975,
+    "512": 0.6572003573876665,
+    "1024": 0.6462615756444352
+  },
+  "winning_collection": "vault_documents_256",
+  "canonical_collection_name": "vault_documents"
+}

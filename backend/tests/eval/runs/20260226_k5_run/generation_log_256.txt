@@ -1,0 +1,2215 @@
+GENERATION LOG — vault_documents_256
+Run dir: tests\eval\runs\20260226_k5_run
+QA pairs: 34  |  top_k: 5
+====================================================================================================
+
+[1/34] ID: qa_001
+QUESTION : What is the treatment recommendation for a resident at Tier 2 radiation exposure?
+GROUND TRUTH: Rad-X if available, and the resident should submit Form VT-MED-011 and await response.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=list | tokens=213
+  TEXT:
+**3.1  Pharmaceutical Interventions**
+- Rad-X (Prophylactic) — Taken before exposure. Increases radiation resistance by a clinically optimistic 50%. Best paired with a positive attitude.
+- RadAway (Curative) — Chelating agent designed to flush radioactive particles from the bloodstream. Tastes of what Vault-Tec's chemists describe as 'tropical fruit,' and what residents describe as 'paint.' Both are correct.
+- Stimpak — Not a radiation treatment. However, it will make other injuries feel less urgent, which may improve your overall outlook. Psychosomatic wellness counts.
+- Buffout — Not a radiation treatment. Vault-Tec includes it here because several residents have reported taking it reflexively when frightened. We understand.
+**3.2  Vault-Tec-Endorsed Home Remedies (Field-Tested*)**
+** Results have varied. Vault-Tec does not guarantee efficacy. Side effects may include: false confidence, worsened symptoms, spontaneous optimism, and in rare cases, complete recovery.*
+
+  [2] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=narrative | tokens=134
+  TEXT:
+The human body absorbs radiation in units called RADs. Vault-Tec's onboard dosimetry systems — accessible via your Pip-Boy — will provide a running RAD count. Please consult your Pip-Boy before reading this guide. If your Pip-Boy is unavailable, please proceed to Section 2 and select the symptoms that best describe your current condition.
+**SECTION 2: SYMPTOM IDENTIFICATION BY EXPOSURE TIER**
+Locate your symptoms in the table below and identify your current Exposure Tier. Each tier includes Vault-Tec-approved treatment recommendations. Do not skip ahead. Vault-Tec is confident in the accuracy of this self-assessment methodology.
+
+  [3] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=narrative | tokens=206
+  TEXT:
+**RADIATION SICKNESS SYMPTOM IDENTIFICATION GUIDE**
+*Self-Diagnosis Manual for General Vault Residents*
+Issued by the Vault-Tec Medical & Resident Health Division  |  August 2076
+**IMPORTANT NOTICE**
+This guide is intended for informational purposes under Vault-Tec's Resident Self-Sufficiency Programme. The Vault Physician may not always be available. In such cases, residents are encouraged to consult this document, remain calm, and trust in Vault-Tec's carefully optimised healthcare protocols.
+**SECTION 1: UNDERSTANDING RADIATION EXPOSURE**
+Radiation is a natural byproduct of the world around us — present in soil, water, food, and the innovative technologies developed by Vault-Tec's partner organisations. In measured quantities, radiation is simply a fact of modern life. In larger quantities, it can cause what Vault-Tec's scientists clinically refer to as Radiation Sickness, or Rad Poisoning. This guide will help you identify which category you fall into.
+
+  [4] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=procedure | tokens=204
+  TEXT:
+1. Inform your Floor Liaison Officer immediately. If they are unavailable, notify the Overseer's office via intercom. If the intercom is unavailable, leave a written note on the Suggestion & Suspicion Board.
+2. Complete Form VT-MED-077 (Terminal Radiation Exposure Declaration) and submit to Resident Affairs. A copy will be retained for Vault-Tec's longitudinal study.
+3. Gather personal effects and relocate to the Medical Observation Wing (Level 5, Section D). Do not alarm other residents during transit. Vault-Tec recommends wearing your second jumpsuit during this journey for dignity purposes.
+4. If RadAway is administered and recovery occurs, please complete Form VT-MED-079 (Unexpected Survival Report). These cases are of significant interest to our research team.
+5. Vault-Tec extends its warmest regards to your registered next of kin. Your Pip-Boy serial number and assigned locker will be reassigned within 72 hours. Your ration allocation will be redistributed to the communal pool.
+
+  [5] source=doc13_surface_exploration_active | section=Section 1: Revised Surface Atmospheric Assessment — F Rating | type=list | tokens=217
+  TEXT:
+Section 1: Revised Surface Atmospheric Assessment — F Rating
+
+- **Ambient Radiation Levels:** Extremely High! Readings now register at levels that our instruments were not designed to measure, which our Senior Data Optimist has officially logged as 'off the charts in the most scientifically interesting way.' Residents who have been experiencing spontaneous isotope integration — e.g., hair loss, luminescent perspiration, or an inexplicable craving to describe everything they see as 'glowing' — should report to Medical immediately and sign Form 88-C, 'Isotope Integration Incident Report (Non-Consensual Category).'
+- **Air Quality:** Not Breathable. Our revised three-second external door test (conducted on a separate volunteer, per Form 9-A Revised, 'Voluntary Atmospheric Sampling — Second Attempt') yielded results that our medical team has classified as 'more data than we expected.' Unsuited surface excursions are hereby suspended indefinitely.
+- **That Cheerful Glow on the Horizon:** This is no longer considered a positive indicator. Management formally retracts the cardigan suggestion.
+
+LLM ANSWER (4.03s):
+This information is not available in the provided documents. The excerpts detail radiation exposure generally and list pharmaceutical interventions, but do not specify treatment recommendations by exposure tier.
+
+====================================================================================================
+
+[2/34] ID: qa_002
+QUESTION : What is the base ration allocation for the Primary Overseer per week?
+GROUND TRUTH: 850 Standard Ration Units per week.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc4_Overseer_Compensation_HR | section=2. COMPENSATION SCHEDULE | type=narrative | tokens=92
+  TEXT:
+2. COMPENSATION SCHEDULE
+
+The following table details the weekly ration allotments for each supervisory tier. Please note that Discretionary Luxury Ration figures for senior leadership positions are redacted per Vault-Tec Board Resolution No. 2074-119, 'Preservation of Morale Through Strategic Opacity.' General Residents are strongly discouraged from speculating about these figures, as such speculation is both unproductive and, frankly, unbecoming.
+
+  [2] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 1: RATIONING PROTOCOLS | type=narrative | tokens=120
+  TEXT:
+SECTION 1: RATIONING PROTOCOLS
+
+Vault-Tec's nutritional science division has calculated precise daily caloric allocations for each residen tier.  All  consumable  items  -  including  but  not  limited  to:  Brahmin  jerky,  Cram,  Fancy  Lads  Snack Cakes, and Nuka-Cola - are subject to the Weekly Allocation Register (WAR). Residents must present their Pip-Boy at Dispenser Station C-7 each Monday between 06:00 and 06:45 to receive their ration packet.
+
+  [3] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 1: RATIONING PROTOCOLS | type=table | tokens=140
+  TEXT:
+SECTION 1: RATIONING PROTOCOLS
+
+| Resident Tier       | Daily Calories   | Nuka-Cola (Weekly)   | Bonus Rations      |
+|---------------------|------------------|----------------------|--------------------|
+| Overseer            | 2,800 kcal       | 12 bottles           | Brahmin steak (x2) |
+| Senior Staff        | 2,200 kcal       | 6 bottles            | Snack Cake (x1)    |
+| General Resident    | 1,800 kcal       | 2 bottles            | None               |
+| Disciplinary Status | 1,200 kcal       | 0 bottles            | None (monitored)   |
+
+  [4] source=VaultTec_HR_Doc5_NVDR | section=SECTION 2: DEFINITIONS | type=narrative | tokens=182
+  TEXT:
+SECTION 2: DEFINITIONS
+
+For the purposes of this procedure, the following terms shall apply:
+**"Flagged Resident" —**
+Any vault participant who has, on three (3) or more documented occasions, engaged in behaviors including but not limited to: questioning ration allocations, requesting access to Overseer-level documentation, expressing unsanctioned opinions about Vault-Tec's corporate mission, or otherwise demonstrating an
+*unfortunate surplus of curiosity.*
+**"Productive Reassignment" —**
+The administrative transfer of a Flagged Resident to an Experimental Participation Zone (EPZ), also known internally as a
+*"Special Contribution Sector"*
+or — if you want to keep things peppy — a
+**"Fun Zone!"**
+Residents transferred to a Fun Zone will not be informed of their new research context. This is both a legal and a
+*morale*
+decision. You're welcome!
+
+  [5] source=Doc4_Overseer_Compensation_HR | section=2. COMPENSATION SCHEDULE | type=table | tokens=165
+  TEXT:
+2. COMPENSATION SCHEDULE
+
+| **POSITION TITLE**           | **BASE RATION ALLOC. (Units/Wk)**   | **HAZARD SUPPLEMENT**   | **DISCRETIONARY LUXURY RATION**   |
+|------------------------------|-------------------------------------|-------------------------|-----------------------------------|
+| Overseer, Primary            | 850                                 | 200                     | [REDACTED]                        |
+| Deputy Overseer              | 620                                 | 150                     | [REDACTED]                        |
+| Senior Floor Monitor         | 310                                 | 75                      | 48                                |
+| Floor Monitor                | 280                                 | 40                      | 12                                |
+| General Resident (Benchmark) | 200 (Standard)                      | N/A                     | 0                                 |
+
+LLM ANSWER (4.09s):
+The base ration allocation for the Primary Overseer is 850 Units/Wk (Doc4_Overseer_Compensation_HR, Section: 2. COMPENSATION SCHEDULE).
+
+====================================================================================================
+
+[3/34] ID: qa_003
+QUESTION : What does Section 1 of the Vault Dweller Code of Conduct cover, and what is the key requirement it places on residents?
+GROUND TRUTH: Section 1 covers Rationing Protocols. Residents must present their Pip-Boy at Dispenser Station C-7 each Monday between 06:00 and 06:45 to receive their weekly ration packet. Failure to comply is logged in the resident's Permanent Vault Record.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc01_Vault_Dweller_Code_of_Conduct | section=VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS | type=narrative | tokens=124
+  TEXT:
+VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS
+
+Effective Immediately Upon Vault Sealing | Supersedes All Prior Surface-World Norms
+Welcome, Vault Dweller. You have been selected - through rigorous scientific lottery - to participate in  humanity's  greatest  survival  experiment.  The  rules  contained  within  this  document  are  not suggestions.  They  are  the  pillars  upon  which  civilisation  shall  be  rebuilt.  Compliance  is  comfort. Comfort is survival. Vault-Tec thanks you for your cooperation.
+
+  [2] source=Doc01_Vault_Dweller_Code_of_Conduct | section=RESIDENT ACKNOWLEDGEMENT | type=narrative | tokens=136
+  TEXT:
+RESIDENT ACKNOWLEDGEMENT
+
+By accepting your Vault residency - a right you exercised implicitly upon entering the Vault and hearing the gear door seal behind you - you acknowledge full awareness of and binding compliance with all policies contained in this document. No signature is required. Vault-Tec thanks you for your understanding, your cooperation, and your continued existence.
+Floor Assignment
+Date
+Vault-Tec Corporation | Resident Affairs Division | Document Ref: VT-RA-0076-COC | May 2076 | Access Level: GENERAL EMPLOYEE | This document is the property of Vault-Tec Corporation. Unauthorised reproduction is a violation of Vault Regulation 3, Subsection 9.
+
+  [3] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS | type=list | tokens=209
+  TEXT:
+SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS
+
+- Approaching the Vault Door under any pretext, including 'curiosity,' 'fresh air,' 'a feeling,' or 'a dream.'
+- Asking Floor Monitors or security personnel what is 'actually outside.' This question has no productive answer and will be redirected to a complimentary counseling session.
+- Sharing, posting, or distributing any personal theories regarding the Vault Door's operational status.
+- Panicking. Panic is expressly prohibited under Vault-Tec Resident Conduct Code 7.4(b) and is considered a wellness violation.
+- Departing the Vault. This item is included for completeness. It has never happened. It will not happen. Everyone is fine.
+This document is the property of Vault-Tec Corporation. Unauthorized reproduction, external distribution, or surface-side dissemination is strictly prohibited and frankly beside the point. Vault-Tec: Building a Better Tomorrow, Today! | Document Owner: Safety Compliance Dept., Sub-Level 2 | Next Review: September 2077
+
+  [4] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 5: GENERAL CONDUCT STANDARDS | type=list | tokens=292
+  TEXT:
+SECTION 5: GENERAL CONDUCT STANDARDS
+
+-  Residents  shall  address  the  Overseer  as  'Overseer'  at  all  times.  First-name  familiarity  is  not authorised unless explicitly granted via written permission (Form VT-OVR-009).
+-  Loud  music,  recreational  shouting,  or  the  playing  of  unauthorised  instruments  in  residential corridors  is  prohibited  between  21:00  and  06:00  (Quiet  Hours).  Harmonicas  are  banned  at  all hours.
+- Romantic partnerships must be registered with the Vault-Tec Social Harmony Office. Unregistered cohabitation will result in room reassignment. Vault-Tec reserves the right to optimise pairings for genetic diversity without prior notice.
+- Graffiti, modification of Vault signage, or defacement of the Vault-Boy mascot in any form is a Class III Artistic Misconduct Offence. This includes - but is not limited to - moustaches drawn on Vault-Boy posters.
+-  All  disputes  between  residents  must  be  submitted  in  writing  to  the  Dispute  Resolution  Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations will result in both parties receiving Disciplinary Status regardless of who initiated contact.
+
+  [5] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 3: HYGIENE STANDARDS & SHARED FACILITY PROTOCOLS | type=narrative | tokens=47
+  TEXT:
+SECTION 3: HYGIENE STANDARDS & SHARED FACILITY PROTOCOLS
+
+The enclosed nature of Vault life demands an elevated standard of personal hygiene. The following regulations apply to all residential and communal spaces at all times:
+
+LLM ANSWER (3.30s):
+This information is not available in the provided documents. While the document "VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS" is mentioned, the specific content of Section 1 and its key requirement are not detailed in the excerpts.
+
+====================================================================================================
+
+[4/34] ID: qa_004
+QUESTION : What is the true purpose of the GOAT examination, according to the HR administration document?
+GROUND TRUTH: According to the HR-restricted administration document, the GOAT is a pre-determined theatrical exercise. Occupational assignments are decided no fewer than 18 months before the exam based entirely on the Vault-Tec Social Stratification Model (VTSSM v3.1) and current staffing needs. The exam itself is not scored; answer sheets are incinerated. Residents are told their results reflect psychometric analysis in order to maximize buy-in and minimize labor grievances.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc06_GOAT_Exam_Administration | section=Exam Administration Best Practices: | type=list | tokens=271
+  TEXT:
+Exam Administration Best Practices:
+
+- 3.1 Distribute exam booklets with an air of grave seriousness. Encourage residents to 'take their time' and 'really reflect.' Suggested phrase: "Your future is in YOUR hands today, champ!"
+- 3.2 The  exam  itself  contains  60  questions.  Questions  are  genuine  psychometric  items sourced  from  the  1958  Vault-Tec  Personality  Battery. However,  answers  are  not scored. Answer sheets are to be collected, bundled, and incinerated in the Sub-Level 2 furnace (Requisition Code: GOAT-BURN-076).
+- 3.3 Following  a  wait  period  of  no  less  than  72  hours  (to  simulate  'processing  time'), pre-sealed result packets are to be distributed. Administer with warm congratulations and a complimentary Vault-Tec branded pen.
+- 3.4 Should  a  resident  verbally  contest  their  assigned  role,  HR  staff  are  to  respond  with Scripted Deflection Phrase Set C: "The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!" Do not engage further.
+
+  [2] source=Doc06_GOAT_Exam_Administration | section=ADMINISTRATOR'S FOREWORD | type=narrative | tokens=221
+  TEXT:
+ADMINISTRATOR'S FOREWORD
+
+Congratulations, HR Administrator! If you are reading this document, you have been granted Tier-4 clearance and are therefore one of only eleven individuals in this vault who understands the true, swell  nature  of  the  Generalized  Occupational  Aptitude  Test  (G.O.A.T.).  We  know  you'll  find  the following  guidelines  not  only  practical,  but  downright inspiring !  The  G.O.A.T.  program  represents Vault-Tec's most peachy achievement in Workforce Optimization: a scientifically rigorous, statistically validated,  and  completely pre-determined occupational  assignment  framework.  Hip  hip,  hooray  for efficiency!
+Please ensure this document is stored in the HR-locked filing cabinet (Cabinet 7-B, Sub-Level 3) at all times. Any General Employee found in possession of this document is to be immediately referred to the 'Problematic Resident Reassignment' protocol per Form 19-C. Let's keep things tip-top, shall we?
+
+  [3] source=Doc06_GOAT_Exam_Administration | section=VAULT-TEC CORPORATION | type=table | tokens=135
+  TEXT:
+VAULT-TEC CORPORATION
+
+| Title:           | G.O.A.T. Exam Administration & Psychological Profiling Guidelines   |
+|------------------|---------------------------------------------------------------------|
+| Date:            | June 2076                                                           |
+| Department:      | Human Resources                                                     |
+| Intended Format: | PDF                                                                 |
+| Classification:  | HR RESTRICTED - NOT FOR GENERAL EMPLOYEE DISTRIBUTION               |
+| Document ID:     | VT-HR-GOAT-076-06                                                   |
+| Revision:        | 4.2 (Final)                                                         |
+| Approved By:     | Director Winifred Gable-Pruett, Division of Human Asset Calibration |
+
+  [4] source=Doc06_GOAT_Exam_Administration | section=SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC | type=narrative | tokens=104
+  TEXT:
+SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC
+
+The  following  table  represents  the actual criteria  used  to  assign  occupational  roles.  This  rubric supersedes all G.O.A.T. exam scores, which, as noted in Section 3.2, do not exist in any meaningful sense. The rubric is derived entirely from the Vault Staffing Needs Assessment and the Social Utility Index. Isn't that just the bee's knees?
+
+  [5] source=Doc06_GOAT_Exam_Administration | section=SECTION 1: PURPOSE AND DESIGN PHILOSOPHY | type=narrative | tokens=71
+  TEXT:
+SECTION 1: PURPOSE AND DESIGN PHILOSOPHY
+
+The following workflow MUST be completed prior to any G.O.A.T. exam administration. Do not deviate from this checklist - it is audit-compliant and legally binding under Vault-Tec Corporate Charter Article 9, Sub-Clause F ('The Illusion of Meritocracy in Closed Populations').
+
+LLM ANSWER (6.37s):
+The true purpose of the G.O.A.T. is a completely pre-determined occupational assignment framework representing Vault-Tec's achievement in Workforce Optimization (ADMINISTRATOR'S FOREWORD). The exam itself does not have meaningful scores, and the grading rubric is derived from the Vault Staffing Needs Assessment and the Social Utility Index (SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC).
+
+====================================================================================================
+
+[5/34] ID: qa_005
+QUESTION : What are the approved marketing channels and materials for the Vault 76 Tricentennial promotional campaign?
+GROUND TRUTH: Approved materials and channels include: vault newsletter articles with 'surface anticipation' messaging, mandatory social events in common areas with cake, commemorative Pip-Boy decals, a complimentary Reclamation Day tote bag, approved posters featuring eagles and patriotic imagery, and festive jumpsuit inspections on Reclamation Day itself. Upbeat intercom music is also approved for the day of the event.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 8: CLOSING REMARKS FROM THE DIRECTOR | type=narrative | tokens=250
+  TEXT:
+SECTION 8: CLOSING REMARKS FROM THE DIRECTOR
+
+**Golly, team — what an industry-leading opportunity we have in front of us!**
+The Tricentennial represents the single greatest convergence of marketing opportunity and, if our colleagues in certain other departments are to be believed, absolute historical finality that Vault-Tec has ever encountered. It is therefore imperative that we approach this campaign with the same professionalism, enthusiasm, and cheerful indifference to inconvenient ethical questions that has always set the Vault-Tec Marketing Division apart.
+Remember: our residents are not merely people. They are valued participants in humanity's most ambitious data-acquisition initiative! Their continued cooperation, voluntary or otherwise, is the very foundation upon which tomorrow's scientific breakthroughs will be built. The least we can do is make sure they feel really, genuinely great about it right up until the data collection phase begins.
+Now get out there, plaster those walls with approved slogans, and let's give Vault 76 the send-off it — and its science — deserves!
+*Warmly and with peak corporate enthusiasm,*
+**B. Barnsworth**
+Senior Director, Resident Enthusiasm Management
+Vault-Tec Corporation — Marketing Division
+**VAULT-TEC CORPORATION**
+
+  [2] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 6: APPROVED TRICENTENNIAL SLOGAN CANDIDATES | type=list | tokens=201
+  TEXT:
+SECTION 6: APPROVED TRICENTENNIAL SLOGAN CANDIDATES
+
+- "Vault 76: Because You're One of the Good Ones!" [Flagship slogan. High-performing across all demographic groups except the aforementioned Questioners.]
+- "Reclamation Day: It's Not the End. It's the Beginning. Of Something. Out There." [Approved with the note that 'of Something. Out There.' must always be printed in a jaunty font to imply excitement rather than existential uncertainty.]
+- "America Built You a Home. Vault-Tec Built You a Future." [Legal note: 'Future' is intentionally non-specific. Do not elaborate if asked.]
+- "The Surface Won't Know What Hit It — And Neither Will You! Ha Ha!" [This slogan is approved for INTERNAL MOTIVATIONAL PURPOSES ONLY. It is not to appear on any resident-facing material under any circumstances whatsoever. Its presence in this document is a formatting error.]
+
+  [3] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=PILLAR B: 'Vault 76: The Jewel of the Program!' (Brand Superiority) | type=narrative | tokens=129
+  TEXT:
+PILLAR B: 'Vault 76: The Jewel of the Program!' (Brand Superiority)
+
+Vault 76 is — and must always be marketed as — the flagship Vault. Residents must believe they are the lucky ones, the chosen ones, the absolutely best-in-class ones. They must never learn about Vaults 77 through 112. They especially must never learn what is being tested in those other vaults. If a resident asks about Vault 112, Marketing is authorized to deploy the Cheerful Deflection Protocol: offer them a Nuka-Cola, admire their jumpsuit, and change the subject to the tricentennial party.
+
+  [4] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=N/A | type=table | tokens=129
+  TEXT:
+| **Title:**           | Vault 76 Tricentennial Promotional Strategy                         |
+|----------------------|---------------------------------------------------------------------|
+| **Date:**            | February 2076                                                       |
+| **Department:**      | Marketing Division                                                  |
+| **Classification:**  | MARKETING EYES ONLY — Do Not Distribute to General Vault Population |
+| **Intended Format:** | Word (.docx)                                                        |
+| **Prepared By:**     | B. Barnsworth, Senior Director of Resident Enthusiasm Management    |
+| **Approved By:**     | The Oversight Committee for Optimized Morale Outcomes (OCOMO)       |
+
+  [5] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS! | type=narrative | tokens=201
+  TEXT:
+SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS!
+
+Hot dog, are we ever excited! The year 2076 marks the glorious TRICENTENNIAL of our magnificent nation — and Vault-Tec Corporation intends to leverage this once-in-a-civilization milestone to drive unprecedented resident engagement, voluntary compliance metrics, and what our internal consultants are enthusiastically calling 'Peak Morale Saturation.'
+The flagship event — internally designated RECLAMATION DAY — is projected to occur sometime in the vicinity of October 23, 2077, pending the timely arrival of certain geopolitical catalysts. Until then, it is our collective duty as Marketing professionals to ensure that all 122 enrolled Vault 76 residents are so thoroughly marinated in optimism and brand loyalty that their eventual surface deployment proceeds with ZERO incidents of hesitation, weeping, or inconvenient philosophical inquiry.
+This document outlines our full-spectrum promotional strategy. Please read it in its entirety. Then shred it. Then smile.
+
+LLM ANSWER (6.05s):
+Approved marketing materials include the slogans: "Vault 76: Because You're One of the Good Ones!", "Reclamation Day: It's Not the End. It's the Beginning. Of Something. Out There.", and "America Built You a Home. Vault-Tec Built You a Future." (Section 6). The strategy also directs employees to "plaster those walls with approved slogans" (Section 8).
+
+====================================================================================================
+
+[6/34] ID: qa_006
+QUESTION : How are residents supposed to locate their evacuation muster point during an emergency drill?
+GROUND TRUTH: Residents should consult the color-coded muster point chart affixed to the inside of their quarters door. They must then proceed calmly to their pre-assigned muster station and check in verbally with their Floor Monitor, providing their Resident ID number.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 1: PURPOSE AND SCOPE | type=narrative | tokens=210
+  TEXT:
+SECTION 1: PURPOSE AND SCOPE
+
+This Standard Operating Procedure (SOP) establishes the official Vault-Tec protocols for conducting emergency evacuation drills . The operative word, residents, is DRILL . These procedures exist solely to promote resident wellness through simulated preparedness activities and the cultivation of a healthy, anxiety-responsive community spirit.
+This document applies to all residents of Floors B1 through B14. Residents of Floor B15 (Experimental Wing Sigma) are subject to a separate, classified SOP and should disregard this document entirely.
+CRITICAL  OPERATIONAL  NOTICE:  THE  VAULT  DOOR  IS  NOT  AN  EXIT.  Under  no circumstances should any resident interpret an evacuation drill signal as an instruction, suggestion, invitation, or implicit endorsement to physically approach, touch, or otherwise interact with the Vault's primary blast door (Gear Door Assembly No. 76-GD-PRIME). The door exists for your protection. Your protection means staying inside. These two facts are harmonious and should cause you no distress whatsoever.
+
+  [2] source=Doc3_Emergency_Evacuation_Procedures | section=A Message from Your Vault-Tec Safety Compliance Team! | type=narrative | tokens=112
+  TEXT:
+A Message from Your Vault-Tec Safety Compliance Team!
+
+Greetings, valued Vault Resident! Here at Vault-Tec Corporation, your safety is our second-highest priority , right after the integrity of ongoing behavioral and social research initiatives! That is why we a thrilled to present this comprehensive guide to Emergency Evacuation Drill Procedures. Please read this document in its entirety, memorize all applicable sections, and return the signed acknowledgment slip to your assigned Floor Monitor within seventy-two (72) hours of receipt. Failure to do so will be logged in your Permanent Resident File.
+
+  [3] source=Doc3_Emergency_Evacuation_Procedures | section=GENERAL EMERGENCY EVACUATION (MOCK) PROCEDURES | type=table | tokens=66
+  TEXT:
+GENERAL EMERGENCY EVACUATION (MOCK) PROCEDURES
+
+| Title: General Emergency Evacuation (Mock) Procedures   | Date: September 2076   | Department / Role: General Employee   | Intended Format: PDF   |
+|---------------------------------------------------------|------------------------|---------------------------------------|------------------------|
+
+  [4] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 3: STEP-BY-STEP DRILL PARTICIPATION GUIDE | type=list | tokens=245
+  TEXT:
+SECTION 3: STEP-BY-STEP DRILL PARTICIPATION GUIDE
+
+- Step 1: Upon hearing the drill signal, cease all non-essential activities (meal consumption may be paused but must be resumed within a regulation 20-minute window to avoid rationing violations).
+- Step 2: Proceed to your pre-assigned Muster Point as indicated on the color-coded chart affixed to the inside of your quarters door. If your chart is missing, you have likely already been reassigned. Please do not be alarmed.
+- Step 3: Check in with your Floor Monitor. Provide your Resident ID number verbally. Do not whisper. Whispering during drills implies subversive behavior and will be flagged.
+- Step 4: Stand in the designated two-by-two formation and await the All-Clear tone. Smiling is encouraged. Vault-Tec behavioral analysts have determined that residents who smile during drills report 14% higher morale scores in subsequent quarterly surveys.
+- Step 5: Upon All-Clear, return to your pre-drill activity. Congratulate yourself! You have successfully contributed to the collective preparedness of your Vault community, and by extension, to the glorious future of the human species.
+
+  [5] source=doc10_vault_door_override_protocol | section=3.2 — Emergency Override (Unscheduled Cycling) | type=list | tokens=183
+  TEXT:
+3.2 — Emergency Override (Unscheduled Cycling)
+
+Emergency overrides are authorized
+**only**
+under the following
+*exciting*
+scenarios:
+- **Scenario A:** Authorized exterior personnel (Vault-Tec inspectors, corporate auditors) require entry. *(Note: As of October 2077, the probability of this scenario has been reassessed as "charmingly optimistic." Proceed with enthusiasm regardless.)*
+- **Scenario B:** Critical supply delivery is imminent per pre-war procurement schedule.
+- **Scenario C:** Overseer-authorized "population adjustment" requires expedited external relocation of one (1) or more residents. *(See HR Doc 5 for warm and friendly relocation procedures.)*
+- **Scenario D:** Facilities determines a gear tooth inspection cannot wait until scheduled maintenance. Paperwork heavy. Worth it!
+❌
+**NON-AUTHORIZED scenarios include, but are not limited to:**
+
+LLM ANSWER (4.25s):
+Residents should proceed to their pre-assigned Muster Point as indicated on the color-coded chart affixed to the inside of their quarters door (SECTION 3: STEP-BY-STEP DRILL PARTICIPATION GUIDE). If the chart is missing, they have likely been reassigned and should not be alarmed.
+
+====================================================================================================
+
+[7/34] ID: qa_007
+QUESTION : What diagnostic key must a technician use to initialize the Pip-Boy 2000 diagnostic environment on a ZAX-linked terminal?
+GROUND TRUTH: The technician must enter the diagnostic key 'VT-MAINT-2000-DELTA-7' at the credential prompt. This key is specific to the Pip-Boy 2000 series and must be memorized and not written down per Vault-Tec Security Directive 12.
+
+RETRIEVED CHUNKS (5):
+  [1] source=SOP_PipBoy_2000_Calibration | section=Step 3.3 — Diagnostic Environment Launch | type=code_block | tokens=107
+  TEXT:
+Step 3.3 — Diagnostic Environment Launch
+
+Once authenticated, enter the following command string to initialize the Pip-Boy 2000 diagnostic environment:
+```
+$ zax-link --device pip2000 --mode diagnostic --auth DELTA-7
+$ run calibration_suite_v4.holotape
+$ set bio_sync --manual
+```
+The terminal will confirm with:
+**```
+PIP-BOY 2000 DIAGNOSTIC SUITE ACTIVE. HAVE A WONDERFUL DAY!
+```**
+How delightful!
+
+  [2] source=SOP_PipBoy_2000_Calibration | section=SECTION 3: ZAX TERMINAL AUTHENTICATION | type=narrative | tokens=107
+  TEXT:
+SECTION 3: ZAX TERMINAL AUTHENTICATION
+
+To access the Pip-Boy 2000 diagnostic environment, the technician must authenticate via a ZAX-linked maintenance terminal. Follow these steps
+**precisely**
+and in
+**the correct order.**
+Deviating from this sequence has previously resulted in two (2) instances of
+**unplanned resident expiration**
+, which, while providing excellent stress-test data for the vault's emergency alert systems, did generate a
+*tremendous*
+amount of paperwork.
+
+  [3] source=SOP_PipBoy_3000_Calibration | section=SECTION 3: ZAX TERMINAL AUTHENTICATION | type=narrative | tokens=107
+  TEXT:
+SECTION 3: ZAX TERMINAL AUTHENTICATION
+
+To access the Pip-Boy 3000 diagnostic environment, the technician must authenticate via a ZAX-linked maintenance terminal. Follow these steps
+**precisely**
+and in
+**the correct order.**
+Deviating from this sequence has previously resulted in two (2) instances of
+**unplanned resident expiration**
+, which, while providing excellent stress-test data for the vault's emergency alert systems, did generate a
+*tremendous*
+amount of paperwork.
+
+  [4] source=SOP_PipBoy_3000_Calibration | section=Step 3.3 — Diagnostic Environment Launch | type=code_block | tokens=107
+  TEXT:
+Step 3.3 — Diagnostic Environment Launch
+
+Once authenticated, enter the following command string to initialize the Pip-Boy 3000 diagnostic environment:
+```
+$ zax-link --device pip3000 --mode diagnostic --auth ECHO-9
+$ run calibration_suite_v7.holotape
+$ set bio_sync --manual
+```
+The terminal will confirm with:
+**```
+PIP-BOY 3000 DIAGNOSTIC SUITE ACTIVE. HAVE A WONDERFUL DAY!
+```**
+How delightful!
+
+  [5] source=SOP_PipBoy_2000_Calibration | section=SECTION 5: NETWORK CONNECTIVITY DIAGNOSTIC | type=code_block | tokens=217
+  TEXT:
+SECTION 5: NETWORK CONNECTIVITY DIAGNOSTIC
+
+The Pip-Boy 2000 unit must be verified against the vault's internal network to ensure real-time data uplink to ZAX is functioning.
+Run the following connectivity test from the maintenance terminal:
+```
+$ ping pip2000 --host 10.76.2.001
+$ uplink_test --protocol VAULT_MESH_V2
+```
+A successful connection will return:
+```
+REPLY FROM 10.76.2.001: bytes=32 time<1ms TTL=128
+VAULT MESH UPLINK: STABLE. DATA COLLECTION: ACTIVE.
+```
+📝
+**Note:**
+The Pip-Boy 2000 series operates on internal IP schema
+**```
+10.76.2.XXX
+```**
+, where the final octet is assigned sequentially by resident intake order. This address schema is unique to the 2000 series. Please make a note of this, as it is
+**distinct from the addressing schema used by later models.**
+
+LLM ANSWER (3.34s):
+To initialize the Pip-Boy 2000 diagnostic environment on a ZAX-linked terminal, use the command `$ zax-link --device pip2000 --mode diagnostic --auth DELTA-7` (SOP_PipBoy_2000_Calibration, Step 3.3 — Diagnostic Environment Launch).
+
+====================================================================================================
+
+[8/34] ID: qa_008
+QUESTION : What specific term is permanently banned from all G.E.C.K. marketing materials, and what is the primary legal reason given?
+GROUND TRUTH: The word 'MIRACLE' and all its cognates are permanently banned from all G.E.C.K. advertising. The legal reason is that prior use of the term in seven previous campaigns created actionable implied warranties of supernatural efficacy, resulting in class-action suits from residents who believed it guaranteed biosphere restoration and radiation curing. The Vault-Tec Office of Jurisprudence issued this prohibition under filing reference VT-LEGAL-1032-GECK-MIRACLE-CLASS.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc08_GECK_Advertising_Guidelines | section=SECTION 2 - PROHIBITED TERMINOLOGY: THE 'M-WORD' MANDATE | type=list | tokens=144
+  TEXT:
+SECTION 2 - PROHIBITED TERMINOLOGY: THE 'M-WORD' MANDATE
+
+- n MANDATORY READING - ALL MARKETING ASSOCIATES MUST INITIAL PAGE 4 UPON REVIEW n
+Effective  immediately  and  with  retroactive  force  dating  to  the  product's  initial  conceptualization,  the  wo "MIRACLE" -  and  any  of  its  cognates,  diminutives,  foreign-language  equivalents,  or strongly  implied synonyms -  is permanently,  irrevocably,  and  enthusiastically  BANNED from  all  G.E.C.K.  marketing materials.
+
+  [2] source=Doc08_GECK_Advertising_Guidelines | section=SECTION 1 - APPROVED PRODUCT NOMENCLATURE & TAGLINES | type=narrative | tokens=84
+  TEXT:
+SECTION 1 - APPROVED PRODUCT NOMENCLATURE & TAGLINES
+
+The G.E.C.K. must always be referred to by its full, approved designation upon first use in any collateral material. Subsequent references may use the acronym 'G.E.C.K.' (with periods). The informal variant 'Geck,' 'The Kit,' or - heaven forbid - 'that box of dirt' are strictly prohibited.
+
+  [3] source=Doc08_GECK_Advertising_Guidelines | section=FOREWORD FROM THE DESK OF REGIONAL MARKETING DIRECTOR H. ELSWORTH PRINGLE III | type=narrative | tokens=225
+  TEXT:
+FOREWORD FROM THE DESK OF REGIONAL MARKETING DIRECTOR H. ELSWORTH PRINGLE III
+
+Well, gosh! What a swell time to be alive - and, more importantly, what a swell time to be in the business of post-apocalyptic agricultural recovery solutions! The Garden of Eden Creation Kit, or G.E.C.K., represents the crown jewel of Vault-Tec's product portfolio, and it is our collective responsibility as Marketing Associates ensure that every advertisement, pamphlet, holotape jingle, and pre-recorded broadcast message reflects the industry-leading optimism that our valued residential testing assets have come to expect.
+This  document  supersedes  all  prior  G.E.C.K.  branding  memoranda.  Non-compliance  with  these  guidelines constitutes  a Category  III  Brand  Infringement and  will  result  in  the  offending  associate's  immediate reassignment to Vault Section 9-G (the 'Enthusiasm Recalibration Suite'). We trust that will not be necessary. You're a real go-getter!
+
+  [4] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 5: RISK MITIGATION & INCONVENIENT INQUIRY SUPPRESSION | type=narrative | tokens=49
+  TEXT:
+SECTION 5: RISK MITIGATION & INCONVENIENT INQUIRY SUPPRESSION
+
+**IDENTIFIED BEHAVIOR**
+**RECOMMENDED MARKETING RESPONSE**
+**The Questioner**
+**The Wistful**
+**The Organizer**
+
+  [5] source=Doc08_GECK_Advertising_Guidelines | section=3.1 Approved Imagery | type=list | tokens=185
+  TEXT:
+3.1 Approved Imagery
+
+All G.E.C.K. advertising visuals must convey radiant optimism, fertile abundance, and the can-do spirit of American  agri-science. The  following  subject  matter  is  pre-cleared  for  use  in  all  media  formats  without additional legal review:
+- Lush, green meadows populated exclusively by people who do not appear to be suffering.
+- Smiling Vault Dwellers in pristine jumpsuits tending to improbably large vegetables.
+- A golden sunrise over a horizon that is conspicuously free of nuclear devastation.
+- The G.E.C.K. unit itself, depicted in soft, warm lighting (never harsh overhead fluorescents, which remind consumers of medical procedures).
+- Children laughing near the G.E.C.K. - provided said children do not appear to be mutated. Any visible additional limbs must be digitally removed prior to print.
+
+LLM ANSWER (3.17s):
+The term “MIRACLE” is permanently banned from all G.E.C.K. marketing materials (“Doc08_GECK_Advertising_Guidelines”, SECTION 2). The primary legal reason is not explicitly stated in the provided documents.
+
+====================================================================================================
+
+[9/34] ID: qa_009
+QUESTION : Under what four authorized scenarios may the Vault Door Override Protocol be initiated?
+GROUND TRUTH: The four authorized scenarios are: (A) Authorized exterior Vault-Tec personnel such as inspectors or corporate auditors require entry; (B) A critical supply delivery is imminent per pre-war procurement schedule; (C) An Overseer-authorized 'population adjustment' requires expedited external relocation of one or more residents; (D) Facilities determines a gear tooth inspection cannot wait until scheduled maintenance.
+
+RETRIEVED CHUNKS (5):
+  [1] source=doc13_surface_exploration_active | section=Section 3: The Vault Door — Do Not Touch It | type=narrative | tokens=116
+  TEXT:
+Section 3: The Vault Door — Do Not Touch It
+
+The vault door is closed. The vault door will remain closed. Any resident found attempting to manually cycle the gear mechanism, tamper with the override keypad, or 'just see what happens' will be subject to immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C, which, we are now in a position to confirm, has more availability than previously anticipated.
+This prohibition applies regardless of the following circumstances, which are not hypothetical and which Vault-Tec is prepared to address on a case-by-case basis:
+
+  [2] source=doc10_vault_door_override_protocol | section=3.2 — Emergency Override (Unscheduled Cycling) | type=list | tokens=183
+  TEXT:
+3.2 — Emergency Override (Unscheduled Cycling)
+
+Emergency overrides are authorized
+**only**
+under the following
+*exciting*
+scenarios:
+- **Scenario A:** Authorized exterior personnel (Vault-Tec inspectors, corporate auditors) require entry. *(Note: As of October 2077, the probability of this scenario has been reassessed as "charmingly optimistic." Proceed with enthusiasm regardless.)*
+- **Scenario B:** Critical supply delivery is imminent per pre-war procurement schedule.
+- **Scenario C:** Overseer-authorized "population adjustment" requires expedited external relocation of one (1) or more residents. *(See HR Doc 5 for warm and friendly relocation procedures.)*
+- **Scenario D:** Facilities determines a gear tooth inspection cannot wait until scheduled maintenance. Paperwork heavy. Worth it!
+❌
+**NON-AUTHORIZED scenarios include, but are not limited to:**
+
+  [3] source=doc13_surface_exploration_active | section=Section 4: Compliance — It Is Mandatory Now More Than Ever | type=narrative | tokens=203
+  TEXT:
+Section 4: Compliance — It Is Mandatory Now More Than Ever
+
+In summary: the vault door is a door that goes to a place where everything is a deadly, highly radioactive wasteland, and opening it is punishable by immediate termination of ration allocation and all associated residential privileges. We at Vault-Tec remain committed to the safety, wellbeing, and continued biological viability of our resident participants, and we are confident that with your cooperation, the data collected from this experiment will be absolutely tip-top.
+**Thank you for choosing Vault-Tec. You did not technically choose Vault-Tec, but we appreciate your continued participation regardless. Please remain calm, remain compliant, and above all else — remain inside.**
+*It is a very swell vault and we are all going to be just fine.*
+*Vault-Tec Corporation | Est. 2031 | 'A Future Worth Living In (Terms and Conditions Apply)' | ACTIVE POLICY — Compliance is mandatory. Non-compliance will be noted. Everything will be noted.*
+
+  [4] source=doc10_vault_door_override_protocol | section=Internal Administration & Facilities Management Division | type=narrative | tokens=156
+  TEXT:
+Internal Administration & Facilities Management Division
+
+**Title:**
+Vault Door Override Protocol and Access Logs
+**Date:**
+December, 2076
+**Department:**
+Admin / IT
+**Intended Format:**
+Markdown (.md)
+**Classification:**
+ADMIN-EYES ONLY — Unauthorized access constitutes a
+*swell*
+reason for immediate reassignment to Sector 7-G (Experimental)
+**Document ID:**
+VT-ADMIN-4471-DOOR
+**Supersedes:**
+VT-ADMIN-4470-DOOR (Recalled due to "enthusiastic over-use by residents")
+*"A locked door is a happy door! And a happy door means happy data!"*
+*— Vault-Tec Facilities Management Motto, circa 2072*
+
+  [5] source=doc10_vault_door_override_protocol | section=SECTION 1: PURPOSE & CHEERFUL OVERVIEW | type=narrative | tokens=216
+  TEXT:
+SECTION 1: PURPOSE & CHEERFUL OVERVIEW
+
+Greetings, Authorized Administrator!
+What a
+**swell**
+responsibility you've been entrusted with! The Vault Gear Door — Vault-Tec Model VGD-9000 "Ol' Reliable" — is not merely a multi-ton, hydraulically-actuated, blast-proof portal. It is the
+**cornerstone of data integrity**
+. Every single valued participant sealed within this facility represents an
+**irreplaceable testing asset**
+, and it is your
+*peachy*
+privilege to ensure that not a single one of them wanders out prematurely and contaminates our longitudinal study parameters.
+This document outlines the complete protocol for manual door cycling, emergency overrides, and the critically important access log procedures. Please read it thoroughly! Improper use of the override system has, in
+**three (3) documented prior cases**
+, resulted in what our Legal & Liability team cheerfully refers to as an "Unplanned Population Reduction Event." We'd love to keep that number right where it is!
+
+LLM ANSWER (4.59s):
+The four authorized scenarios for initiating the Vault Door Override Protocol are: Scenario A – Authorized exterior personnel require entry; Scenario B – Critical supply delivery is imminent; Scenario C – Overseer-authorized population adjustment requires external relocation; and Scenario D – Facilities determines a gear tooth inspection is necessary (doc10_vault_door_override_protocol, Section 3.2).
+
+====================================================================================================
+
+[10/34] ID: qa_010
+QUESTION : How many authentication factors are required to access the ZAX mainframe root level, and what are they?
+GROUND TRUTH: Three-factor authentication is required: (1) a physical ZAX Root Keycard inserted into the left terminal slot; (2) a typed terminal passphrase entered at the blinking cursor (not spoken aloud, as ZAX's audio monitoring is always active); and (3) a biometric palm scan on the BioScan panel.
+
+RETRIEVED CHUNKS (5):
+  [1] source=doc11_zax_mainframe_root_access | section=3.2 — Multi-Factor Root Authentication Sequence | type=narrative | tokens=78
+  TEXT:
+3.2 — Multi-Factor Root Authentication Sequence
+
+Root access requires
+**three-factor authentication**
+, completed in the exact order specified below. Deviating from this order has previously resulted in ZAX initiating a
+**"Perceived Intrusion Escalation Protocol"**
+which, while a
+*fantastic*
+source of data for the Security Division, is inconvenient for everyone else.
+
+  [2] source=doc11_zax_mainframe_root_access | section=3.2 — Multi-Factor Root Authentication Sequence | type=code_block | tokens=206
+  TEXT:
+3.2 — Multi-Factor Root Authentication Sequence
+
+```
+STEP 1 — PHYSICAL KEY
+  Insert the ZAX Root Keycard (VT-IT-KEY-ZAX-ROOT) into the left terminal slot.
+  Key is stored in: Server Room lockbox, combination 7-14-33.
+  *** Combination rotates on the 15th of each month. Current combination: 7-14-33 ***
+  *** New combination delivered to BETA-1+ in sealed envelope. See §6.1. ***
+
+STEP 2 — TERMINAL PASSPHRASE
+  When prompted, type the current Root Access Passphrase at the blinking cursor.
+  Do NOT speak it aloud. ZAX's audio monitoring is always active and he takes notes.
+
+  [ JULY 2076 ROOT PASSPHRASE: VT-ZAX-UMBRA-FOXGLOVE-0712 ]
+  *** PASSPHRASE ROTATES MONTHLY — see §6.2 for rotation schedule ***
+
+  [3] source=doc11_zax_mainframe_root_access | section=3.3 — Subsystem Directory & Access Map | type=narrative | tokens=58
+  TEXT:
+3.3 — Subsystem Directory & Access Map
+
+Upon successful Root authentication, the ZAX command environment presents the following directory structure. BETA-2 personnel are restricted to subsystems marked
+**[B2-OK]**
+. All others require BETA-1 or above.
+
+  [4] source=doc11_zax_mainframe_root_access | section=Information Technology & Computational Systems Division | type=narrative | tokens=194
+  TEXT:
+Information Technology & Computational Systems Division
+
+**Title:**
+ZAX Mainframe Root Access & Maintenance Keys
+**Date:**
+July, 2076
+**Department:**
+Admin / IT
+**Intended Format:**
+Markdown (.md)
+**Classification:**
+ADMIN-EYES ONLY — This document contains Root-Level Credentials. Unauthorized possession will result in a
+*genuinely exciting*
+reassignment to the ZAX Hardware Cooling Unit (average ambient temperature: 112°F). You'll love it!
+**Document ID:**
+VT-ADMIN-IT-0881-ZAX
+**Supersedes:**
+VT-ADMIN-IT-0880-ZAX (Recalled after ZAX "helpfully" emailed a copy to all residents)
+*"ZAX doesn't just manage your data — ZAX IS your data! And isn't that just the most wonderful thing you've ever heard?"*
+*— Vault-Tec IT Division Welcome Packet, 2071*
+
+  [5] source=doc11_zax_mainframe_root_access | section=6.3 — Credential Compromise Response | type=procedure | tokens=178
+  TEXT:
+6.3 — Credential Compromise Response
+
+In the event that Root credentials are suspected to have been
+**compromised**
+— whether through loss, theft, unauthorized observation, or ZAX independently informing a resident of them (it has happened twice; both were
+*fascinating*
+from a data perspective) — immediately:
+1. Navigate to `/zax/core/` and execute: `> INVALIDATE --credentials=ROOT --force=TRUE`
+2. Generate new credentials per §6.1 and §6.2
+3. Audit `/zax/logs/access/` for unauthorized access entries
+4. Submit Form IT-CRED-COMPROMISE (Credential Security Incident Report)
+5. Submit Form IT-ZAX-7 if ZAX was involved in the compromise
+6. Take a moment. Have a nice glass of Nuka-Cola. You've earned it!
+
+LLM ANSWER (5.34s):
+Three authentication factors are required to access the ZAX mainframe root level: a physical key, a terminal passphrase, and an unspecified third factor (Section 3.2 — Multi-Factor Root Authentication Sequence).
+
+====================================================================================================
+
+[11/34] ID: qa_011
+QUESTION : What form must HR complete to initiate a non-voluntary resident reassignment, and is there a more severe variant?
+GROUND TRUTH: HR personnel must complete Form 12-A (Resident Behavioral Deviation — Standard). For more serious cases, Form 12-A(ii) (Resident Behavioral Deviation — Enthusiastic) is used instead. Both forms are available at the HR kiosk in the South Corridor, staffed Tuesday through Thursday.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=SECTION V: COMPLIANCE, FORMS & ADMINISTRATIVE REQUIREMENTS | type=narrative | tokens=99
+  TEXT:
+SECTION V: COMPLIANCE, FORMS & ADMINISTRATIVE REQUIREMENTS
+
+*NOTE: In the event that the administrative office has itself been subject to unplanned expiration events, forms may be filed posthumously by the next available HR representative. If no HR representative is available, forms may be filed by any resident who is (a) literate, (b) showing fewer than three spontaneous isotope integration symptoms, and (c) possessed of a 'can-do' attitude.*
+
+  [2] source=VaultTec_HR_Doc5_NVDR | section=N/A | type=table | tokens=95
+  TEXT:
+| **Title:**           | Resident Reassignment & Departmental Relocation Procedures (Non-Voluntary Track)   |
+|----------------------|------------------------------------------------------------------------------------|
+| **Date:**            | March, 2076                                                                        |
+| **Department:**      | Human Resources — Resident Relations Sub-Committee                                 |
+| **Intended Format:** | Word (.docx)                                                                       |
+| **Classification:**  | **INTERNAL — HR CLEARANCE LEVEL 3 AND ABOVE**                                      |
+
+  [3] source=Doc4_Overseer_Compensation_HR | section=4. PROHIBITION ON DISCLOSURE | type=narrative | tokens=177
+  TEXT:
+4. PROHIBITION ON DISCLOSURE
+
+The contents of this Addendum, including but not limited to all ration figures, hazard pay schedules, and the very existence of the Discretionary Luxury Ration program, are strictly confidential. Disclosure to General Residents, Floor Monitors below Grade 3, or any individual demonstrating excessive curiosity is prohibited and constitutes grounds for involuntary reassignment to a residential wing of HR's choosing.
+Vault-Tec thanks you for your discretion, your loyalty, and your continued belief in a Brighter Tomorrow. The rations will continue for as long as your performance merits them. We are all, in this way, aligned.
+**Authorised By:**
+*Director, Human Resources — Vault-Tec Corp.*
+**Document Custodian Stamp:**
+*[ STAMP HERE ]*
+*VAULT-TEC: Building a Better Tomorrow, Today!*
+
+  [4] source=VaultTec_HR_Doc5_NVDR | section=SECTION 3: THE FIVE-STEP NVDR PROCESS | type=list | tokens=141
+  TEXT:
+SECTION 3: THE FIVE-STEP NVDR PROCESS
+
+- "Oh, they transferred to the Hydroponics Volunteer Program! Lucky duck!"
+- "I believe they requested a quiet bunk reassignment. Very private individual."
+- "Gosh, I'm not sure! Have you tried the new cafeteria menu? It's just swell this week!"
+*HR associates are reminded that all three responses have been legally vetted and may be deployed with confidence.*
+**✅ STEP FIVE: Post-Relocation Documentation & Data Harvesting**
+Following successful relocation, the assigned Fun Zone research team will assume all documentation responsibilities for the resident-turned-research-participant. HR's ongoing obligations are limited to:
+
+  [5] source=VaultTec_HR_Doc5_NVDR | section=SECTION 3: THE FIVE-STEP NVDR PROCESS | type=narrative | tokens=187
+  TEXT:
+SECTION 3: THE FIVE-STEP NVDR PROCESS
+
+*Important Note: Flagging a resident does NOT require evidence of wrongdoing. Vault-Tec operates on a precautionary contribution model — we simply ask: "Could this person's biology or psychology be better utilized elsewhere?" If the answer is even a maybe, that's a "yes!"*
+**✅ STEP TWO: The "Wellness Check-In" Interview**
+Once flagged, the resident will be invited — with great warmth and a personalized note from HR — to attend a
+**Voluntary Wellness Check-In (WCI).**
+Please note: the WCI is
+***not***
+voluntary. The word "voluntary" is used purely for
+*tonal purposes*
+and has no legal standing. Residents who decline their WCI invitation will be scheduled for a second, less-conversational WCI automatically.
+During the WCI, HR personnel should:
+
+LLM ANSWER (4.47s):
+HR must complete “Resident Reassignment & Departmental Relocation Procedures (Non-Voluntary Track)” to initiate a non-voluntary resident reassignment (VaultTec_HR_Doc5_NVDR). The documents do not mention a more severe variant.
+
+====================================================================================================
+
+[12/34] ID: qa_012
+QUESTION : What action does the Radiation Sickness Symptom Guide direct a resident to take when their Pip-Boy reads 200 or more RADs?
+GROUND TRUTH: At Tier 2 exposure (200–499 RADs), the guide recommends taking Rad-X if available and submitting Form VT-MED-011, then awaiting a response. The guide does not instruct the resident to visit the Vault Physician directly; that instruction is reserved for higher tiers.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=narrative | tokens=134
+  TEXT:
+The human body absorbs radiation in units called RADs. Vault-Tec's onboard dosimetry systems — accessible via your Pip-Boy — will provide a running RAD count. Please consult your Pip-Boy before reading this guide. If your Pip-Boy is unavailable, please proceed to Section 2 and select the symptoms that best describe your current condition.
+**SECTION 2: SYMPTOM IDENTIFICATION BY EXPOSURE TIER**
+Locate your symptoms in the table below and identify your current Exposure Tier. Each tier includes Vault-Tec-approved treatment recommendations. Do not skip ahead. Vault-Tec is confident in the accuracy of this self-assessment methodology.
+
+  [2] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=narrative | tokens=206
+  TEXT:
+**RADIATION SICKNESS SYMPTOM IDENTIFICATION GUIDE**
+*Self-Diagnosis Manual for General Vault Residents*
+Issued by the Vault-Tec Medical & Resident Health Division  |  August 2076
+**IMPORTANT NOTICE**
+This guide is intended for informational purposes under Vault-Tec's Resident Self-Sufficiency Programme. The Vault Physician may not always be available. In such cases, residents are encouraged to consult this document, remain calm, and trust in Vault-Tec's carefully optimised healthcare protocols.
+**SECTION 1: UNDERSTANDING RADIATION EXPOSURE**
+Radiation is a natural byproduct of the world around us — present in soil, water, food, and the innovative technologies developed by Vault-Tec's partner organisations. In measured quantities, radiation is simply a fact of modern life. In larger quantities, it can cause what Vault-Tec's scientists clinically refer to as Radiation Sickness, or Rad Poisoning. This guide will help you identify which category you fall into.
+
+  [3] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=table | tokens=54
+  TEXT:
+| **Resident Name (Print)**   | **Pip-Boy Serial No.**   | **Current RAD Count**   | **Date**   |
+|-----------------------------|--------------------------|-------------------------|------------|
+|                             |                          |                         |            |
+
+  [4] source=SOP_PipBoy_3000_Calibration | section=SECTION 1: PURPOSE & SCOPE | type=narrative | tokens=230
+  TEXT:
+SECTION 1: PURPOSE & SCOPE
+
+Golly, are we excited to present this
+**industry-leading**
+calibration guide for the
+**Pip-Boy 3000**
+! This Standard Operating Procedure (SOP) has been lovingly assembled by the Vault-Tec Systems Integration Team to ensure that every Pip-Boy 3000 unit affixed to our
+*valued resident assets*
+continues to perform at its very best!
+Please note that this document covers
+**hardware calibration only**
+. Any residents who experience
+**involuntary dermal bonding**
+during the installation process should file a
+**Form 31-A (Non-Consensual Peripheral Adhesion Report)**
+with their local HR representative. It happens to the best of us, and it's really just a swell opportunity for long-term biometric data collection!
+**Scope:**
+This SOP applies to all Admin-certified Vault Technicians (pay grade T-4 and above). General residents are
+**strictly prohibited**
+from accessing terminal interfaces. Unauthorized terminal interaction will be logged and forwarded to the Reassignment Committee. What a headache that'd be!
+
+  [5] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=list | tokens=213
+  TEXT:
+**3.1  Pharmaceutical Interventions**
+- Rad-X (Prophylactic) — Taken before exposure. Increases radiation resistance by a clinically optimistic 50%. Best paired with a positive attitude.
+- RadAway (Curative) — Chelating agent designed to flush radioactive particles from the bloodstream. Tastes of what Vault-Tec's chemists describe as 'tropical fruit,' and what residents describe as 'paint.' Both are correct.
+- Stimpak — Not a radiation treatment. However, it will make other injuries feel less urgent, which may improve your overall outlook. Psychosomatic wellness counts.
+- Buffout — Not a radiation treatment. Vault-Tec includes it here because several residents have reported taking it reflexively when frightened. We understand.
+**3.2  Vault-Tec-Endorsed Home Remedies (Field-Tested*)**
+** Results have varied. Vault-Tec does not guarantee efficacy. Side effects may include: false confidence, worsened symptoms, spontaneous optimism, and in rare cases, complete recovery.*
+
+LLM ANSWER (4.63s):
+This information is not available in the provided documents. The excerpts detail understanding radiation exposure and available treatments, but do not specify actions to take at 200+ RADs.
+
+====================================================================================================
+
+[13/34] ID: qa_013
+QUESTION : What is the Code of Conduct policy on inter-resident disputes, including the filing deadline and outcome for physical altercations?
+GROUND TRUTH: All disputes must be submitted in writing to the Dispute Resolution Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations result in both parties receiving Disciplinary Status, regardless of who initiated contact.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS | type=list | tokens=209
+  TEXT:
+SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS
+
+- Approaching the Vault Door under any pretext, including 'curiosity,' 'fresh air,' 'a feeling,' or 'a dream.'
+- Asking Floor Monitors or security personnel what is 'actually outside.' This question has no productive answer and will be redirected to a complimentary counseling session.
+- Sharing, posting, or distributing any personal theories regarding the Vault Door's operational status.
+- Panicking. Panic is expressly prohibited under Vault-Tec Resident Conduct Code 7.4(b) and is considered a wellness violation.
+- Departing the Vault. This item is included for completeness. It has never happened. It will not happen. Everyone is fine.
+This document is the property of Vault-Tec Corporation. Unauthorized reproduction, external distribution, or surface-side dissemination is strictly prohibited and frankly beside the point. Vault-Tec: Building a Better Tomorrow, Today! | Document Owner: Safety Compliance Dept., Sub-Level 2 | Next Review: September 2077
+
+  [2] source=Doc4_Overseer_Compensation_HR | section=3. HAZARD PAY PROVISIONS | type=table | tokens=239
+  TEXT:
+3. HAZARD PAY PROVISIONS
+
+| **QUALIFYING HAZARD SCENARIO**                   | **SUPPLEMENT (VT-SRU/INCIDENT)**   | **ADDITIONAL NOTES**                                                          |
+|--------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------|
+| Resident Unrest Suppression Event                | + 85 SRU                           | Per verified incident report, countersigned by Deputy Overseer                |
+| Mandatory Experiment Facilitation (Category A)   | [REDACTED]                         | [REDACTED]                                                                    |
+| Mandatory Experiment Facilitation (Category B)   | [REDACTED]                         | [REDACTED]                                                                    |
+| Annual G.O.A.T. Exam Administration              | + 40 SRU                           | Includes bonus for maintaining the fiction that results are non-predetermined |
+| 'Population Adjustment' Events                   | [REDACTED]                         | Requires prior HQ authorization. Refer to Protocol Omega documentation.       |
+| Vault Door Sealing / Locking (Final-Class Event) | [REDACTED]                         | [REDACTED PER VT-BOARD-RES-2074-77]                                           |
+
+  [3] source=Doc4_Overseer_Compensation_HR | section=3. HAZARD PAY PROVISIONS | type=table | tokens=239
+  TEXT:
+3. HAZARD PAY PROVISIONS
+
+| **QUALIFYING HAZARD SCENARIO**                   | **SUPPLEMENT (VT-SRU/INCIDENT)**   | **ADDITIONAL NOTES**                                                          |
+|--------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------|
+| Resident Unrest Suppression Event                | + 85 SRU                           | Per verified incident report, countersigned by Deputy Overseer                |
+| Mandatory Experiment Facilitation (Category A)   | [REDACTED]                         | [REDACTED]                                                                    |
+| Mandatory Experiment Facilitation (Category B)   | [REDACTED]                         | [REDACTED]                                                                    |
+| Annual G.O.A.T. Exam Administration              | + 40 SRU                           | Includes bonus for maintaining the fiction that results are non-predetermined |
+| 'Population Adjustment' Events                   | [REDACTED]                         | Requires prior HQ authorization. Refer to Protocol Omega documentation.       |
+| Vault Door Sealing / Locking (Final-Class Event) | [REDACTED]                         | [REDACTED PER VT-BOARD-RES-2074-77]                                           |
+
+  [4] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 5: GENERAL CONDUCT STANDARDS | type=list | tokens=292
+  TEXT:
+SECTION 5: GENERAL CONDUCT STANDARDS
+
+-  Residents  shall  address  the  Overseer  as  'Overseer'  at  all  times.  First-name  familiarity  is  not authorised unless explicitly granted via written permission (Form VT-OVR-009).
+-  Loud  music,  recreational  shouting,  or  the  playing  of  unauthorised  instruments  in  residential corridors  is  prohibited  between  21:00  and  06:00  (Quiet  Hours).  Harmonicas  are  banned  at  all hours.
+- Romantic partnerships must be registered with the Vault-Tec Social Harmony Office. Unregistered cohabitation will result in room reassignment. Vault-Tec reserves the right to optimise pairings for genetic diversity without prior notice.
+- Graffiti, modification of Vault signage, or defacement of the Vault-Boy mascot in any form is a Class III Artistic Misconduct Offence. This includes - but is not limited to - moustaches drawn on Vault-Boy posters.
+-  All  disputes  between  residents  must  be  submitted  in  writing  to  the  Dispute  Resolution  Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations will result in both parties receiving Disciplinary Status regardless of who initiated contact.
+
+  [5] source=VaultTec_HR_Doc5_NVDR | section=N/A | type=table | tokens=95
+  TEXT:
+| **Title:**           | Resident Reassignment & Departmental Relocation Procedures (Non-Voluntary Track)   |
+|----------------------|------------------------------------------------------------------------------------|
+| **Date:**            | March, 2076                                                                        |
+| **Department:**      | Human Resources — Resident Relations Sub-Committee                                 |
+| **Intended Format:** | Word (.docx)                                                                       |
+| **Classification:**  | **INTERNAL — HR CLEARANCE LEVEL 3 AND ABOVE**                                      |
+
+LLM ANSWER (4.81s):
+All disputes between residents must be submitted in writing to the Dispute Resolution Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations will result in both parties receiving Disciplinary Status regardless of who initiated contact (Doc01_Vault_Dweller_Code_of_Conduct, SECTION 5: GENERAL CONDUCT STANDARDS).
+
+====================================================================================================
+
+[14/34] ID: qa_014
+QUESTION : What hazard pay supplement does the Primary Overseer receive for a Resident Unrest Suppression Event?
+GROUND TRUTH: The Primary Overseer receives a supplement of +85 Standard Ration Units per verified incident, countersigned by the Deputy Overseer.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc4_Overseer_Compensation_HR | section=3. HAZARD PAY PROVISIONS | type=narrative | tokens=48
+  TEXT:
+3. HAZARD PAY PROVISIONS
+
+Vault-Tec recognizes that Overseer-level management carries with it a unique and occasionally exhausting set of occupational stressors. In recognition of these burdens, the following Hazard Pay supplements have been approved:
+
+  [2] source=Doc4_Overseer_Compensation_HR | section=N/A | type=narrative | tokens=108
+  TEXT:
+**OVERSEER COMPENSATION**
+**& HAZARD PAY ADDENDUM**
+VT-HR-COMP-0004  |  Effective: January 2076  |  Status: ACTIVE
+**RESTRICTED DOCUMENT — HUMAN RESOURCES DIVISION EYES ONLY — UNAUTHORISED ACCESS IS A TERMINABLE OFFENCE**
+**Title**
+Overseer Compensation & Hazard Pay Addendum
+**Date**
+January 2076
+**Department / Role**
+HR
+**Intended Format**
+Word (.docx)
+
+  [3] source=Doc4_Overseer_Compensation_HR | section=3. HAZARD PAY PROVISIONS | type=table | tokens=239
+  TEXT:
+3. HAZARD PAY PROVISIONS
+
+| **QUALIFYING HAZARD SCENARIO**                   | **SUPPLEMENT (VT-SRU/INCIDENT)**   | **ADDITIONAL NOTES**                                                          |
+|--------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------|
+| Resident Unrest Suppression Event                | + 85 SRU                           | Per verified incident report, countersigned by Deputy Overseer                |
+| Mandatory Experiment Facilitation (Category A)   | [REDACTED]                         | [REDACTED]                                                                    |
+| Mandatory Experiment Facilitation (Category B)   | [REDACTED]                         | [REDACTED]                                                                    |
+| Annual G.O.A.T. Exam Administration              | + 40 SRU                           | Includes bonus for maintaining the fiction that results are non-predetermined |
+| 'Population Adjustment' Events                   | [REDACTED]                         | Requires prior HQ authorization. Refer to Protocol Omega documentation.       |
+| Vault Door Sealing / Locking (Final-Class Event) | [REDACTED]                         | [REDACTED PER VT-BOARD-RES-2074-77]                                           |
+
+  [4] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=2.1 Primary Objectives | type=list | tokens=137
+  TEXT:
+2.1 Primary Objectives
+
+- Achieve a resident Voluntary Enthusiasm Score (V.E.S.) of no less than 94% by Q3 2077, as measured by mandatory quarterly happiness surveys (non-participation is logged as a 'hostile abstention').
+- Establish 'Reclamation Day' as a culturally meaningful event that residents genuinely look forward to, rather than a logistically scheduled expulsion from a controlled habitat.
+- Suppress all organic rumors regarding the Vault's experimental social parameters through proactive counter-messaging and cheerful distraction initiatives.
+- Generate no fewer than 14 slogans testable across resident demographics, ensuring maximum penetration among age cohorts 8-through-67.
+
+  [5] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 5: RISK MITIGATION & INCONVENIENT INQUIRY SUPPRESSION | type=narrative | tokens=71
+  TEXT:
+SECTION 5: RISK MITIGATION & INCONVENIENT INQUIRY SUPPRESSION
+
+Our internal Behavioral Science Unit has identified four (4) categories of residents who may pose a statistically non-trivial risk to campaign morale integrity. These are not 'bad' residents — they are simply 'enthusiasm-deficient assets' who require additional support.
+
+LLM ANSWER (3.55s):
++ 85 SRU. (Doc4_Overseer_Compensation_HR, Section: 3. HAZARD PAY PROVISIONS)
+
+====================================================================================================
+
+[15/34] ID: qa_015
+QUESTION : What diagnostic key and biometric reset code must a technician use when performing a Pip-Boy 3000 biometric seal reset?
+GROUND TRUTH: The technician must authenticate using diagnostic key 'VT-MAINT-3000-ECHO-9' and enter the biometric seal reset code '3000-BIO-RESET-GAMMA' when prompted at the terminal.
+
+RETRIEVED CHUNKS (5):
+  [1] source=SOP_PipBoy_3000_Calibration | section=Step 4.2 — Biometric Seal Reset | type=code_block | tokens=178
+  TEXT:
+Step 4.2 — Biometric Seal Reset
+
+Following holotape initialization, the Pip-Boy 3000's biometric lock must be reset to ensure the unit recognizes its assigned resident.
+On the terminal, execute:
+```
+$ bio_seal --reset --device pip3000 --resident_id [RESIDENT_ID]
+$ confirm --auth ECHO-9
+```
+Enter the
+**biometric reset confirmation code**
+when prompted:
+```
+BIOMETRIC SEAL RESET CODE: 3000-BIO-RESET-GAMMA
+```
+The resident's biometric profile will be wiped and re-indexed from their
+**Vault Entry Medical File.**
+This process takes approximately
+**30 seconds.**
+The resident may feel a "
+**localized temperature event**
+" at the wrist. This is normal and represents a swell data point for our dermal sensitivity studies!
+
+  [2] source=SOP_PipBoy_2000_Calibration | section=Step 4.2 — Biometric Seal Reset | type=code_block | tokens=178
+  TEXT:
+Step 4.2 — Biometric Seal Reset
+
+Following holotape initialization, the Pip-Boy 2000's biometric lock must be reset to ensure the unit recognizes its assigned resident.
+On the terminal, execute:
+```
+$ bio_seal --reset --device pip2000 --resident_id [RESIDENT_ID]
+$ confirm --auth DELTA-7
+```
+Enter the
+**biometric reset confirmation code**
+when prompted:
+```
+BIOMETRIC SEAL RESET CODE: 2000-BIO-RESET-ALPHA
+```
+The resident's biometric profile will be wiped and re-indexed from their
+**Vault Entry Medical File.**
+This process takes approximately
+**30 seconds.**
+The resident may feel a "
+**localized temperature event**
+" at the wrist. This is normal and represents a swell data point for our dermal sensitivity studies!
+
+  [3] source=SOP_PipBoy_3000_Calibration | section=Step 3.2 — Credential Entry | type=code_block | tokens=164
+  TEXT:
+Step 3.2 — Credential Entry
+
+At the authentication prompt, enter your technician credentials as follows:
+```
+LOGIN: [TECHNICIAN_ID]
+PASSWORD: [ASSIGNED_PASSWORD]
+DIAGNOSTIC_KEY: VT-MAINT-3000-ECHO-9
+```
+📝
+**Note:**
+The
+```
+DIAGNOSTIC_KEY
+```
+for the Pip-Boy 3000 series is
+**```
+VT-MAINT-3000-ECHO-9
+```**
+. Please memorize this and destroy any written copies in accordance with
+**Vault-Tec Security Directive 12**
+. Writing it on your hand is a Level 1 Infraction. Writing it on someone
+*else's*
+hand is a Level 2 Infraction.
+
+  [4] source=SOP_PipBoy_3000_Calibration | section=SECTION 3: ZAX TERMINAL AUTHENTICATION | type=narrative | tokens=107
+  TEXT:
+SECTION 3: ZAX TERMINAL AUTHENTICATION
+
+To access the Pip-Boy 3000 diagnostic environment, the technician must authenticate via a ZAX-linked maintenance terminal. Follow these steps
+**precisely**
+and in
+**the correct order.**
+Deviating from this sequence has previously resulted in two (2) instances of
+**unplanned resident expiration**
+, which, while providing excellent stress-test data for the vault's emergency alert systems, did generate a
+*tremendous*
+amount of paperwork.
+
+  [5] source=SOP_PipBoy_2000_Calibration | section=Step 3.2 — Credential Entry | type=code_block | tokens=166
+  TEXT:
+Step 3.2 — Credential Entry
+
+At the authentication prompt, enter your technician credentials as follows:
+```
+LOGIN: [TECHNICIAN_ID]
+PASSWORD: [ASSIGNED_PASSWORD]
+DIAGNOSTIC_KEY: VT-MAINT-2000-DELTA-7
+```
+📝
+**Note:**
+The
+```
+DIAGNOSTIC_KEY
+```
+for the Pip-Boy 2000 series is
+**```
+VT-MAINT-2000-DELTA-7
+```**
+. Please memorize this and destroy any written copies in accordance with
+**Vault-Tec Security Directive 12**
+. Writing it on your hand is a Level 1 Infraction. Writing it on someone
+*else's*
+hand is a Level 2 Infraction.
+
+LLM ANSWER (5.30s):
+The diagnostic key is VT-MAINT-3000-ECHO-9 (SOP_PipBoy_3000_Calibration, Section: Step 3.2 — Credential Entry) and the biometric reset code is 3000-BIO-RESET-GAMMA (SOP_PipBoy_3000_Calibration, Section: Step 4.2 — Biometric Seal Reset).
+
+====================================================================================================
+
+[16/34] ID: qa_016
+QUESTION : Under the archived surface exploration policy, what was the maximum duration of an approved unsuited surface walk, and what happened to a resident who did not return in time?
+GROUND TRUTH: Under the archived policy, unsuited surface walks were capped at fifteen (15) minutes. Residents who did not return within that window were classified as having 'voluntarily extended their excursion.' Their ration allocation would be redistributed after a 72-hour grace period, pending completion of Form 44-D (Voluntary Participant Extension / Unplanned Expiration Declaration).
+
+RETRIEVED CHUNKS (5):
+  [1] source=doc12_surface_exploration_archived | section=Section 2: Mandatory Daily Strolls — Encouraged! | type=narrative | tokens=78
+  TEXT:
+Section 2: Mandatory Daily Strolls — Encouraged!
+
+Please note: any participants who do not return within the allotted fifteen-minute window will be counted as having voluntarily extended their excursion. Their rations will be redistributed after a peachy seventy-two (72) hour grace period, pending completion of Form 44-D, 'Voluntary Participant Extension / Unplanned Expiration Declaration.'
+
+  [2] source=doc12_surface_exploration_archived | section=N/A | type=narrative | tokens=75
+  TEXT:
+**VAULT-TEC CORPORATION**
+*Internal Document — Property of Vault-Tec*
+**Title:**
+Surface Exploration Policy (Archived)
+**Date:**
+January, 2077
+**Department:**
+General Employee Communications / Wellness Division
+**Intended Format:**
+Word (.docx)
+**Access Level:**
+General Employee
+**Status:**
+ARCHIVED
+
+  [3] source=doc13_surface_exploration_active | section=Emergency Communique from Acting Senior Wellness Coordinator B. Phelps, filling in for T. Meekins who is no longer available | type=narrative | tokens=173
+  TEXT:
+Emergency Communique from Acting Senior Wellness Coordinator B. Phelps, filling in for T. Meekins who is no longer available
+
+Residents,
+Let us begin by acknowledging that the previous Surface Exploration Policy, authored by former Junior Wellness Coordinator T. Meekins, was, in hindsight, what our Legal Division has officially classified as 'catastrophically optimistic.' Coordinator Meekins has since been reclassified as a testing asset, which is a very exciting promotion, and we wish them all the best.
+The purpose of this memorandum is to communicate, with appropriate urgency and continued corporate cheerfulness, that the situation topside has been updated from 'Swell' to 'Sub-Optimal in the Extreme.' The following policy is effective immediately, retroactively, and permanently, or until Vault-Tec issues further guidance, whichever constitutes a more favorable legal posture.
+
+  [4] source=doc13_surface_exploration_active | section=N/A | type=narrative | tokens=177
+  TEXT:
+**VAULT-TEC CORPORATION**
+*Internal Document — Property of Vault-Tec*
+**Title:**
+Updated Surface Exploration Policy (Active)
+**Date:**
+November, 2077
+**Department:**
+General Employee Communications / Wellness Division
+**Intended Format:**
+Word (.docx)
+**Access Level:**
+General Employee
+**Status: ACTIVE — MANDATORY COMPLIANCE**
+**!!! URGENT MANDATORY POLICY SUPERSESSION NOTICE !!!**
+**THIS DOCUMENT SUPERSEDES, NULLIFIES, CANCELS, AND VOIDS ALL PRIOR GUIDANCE ISSUED UNDER POLICY REF: SEP-JAN2077-MEEKINS, INCLUDING BUT NOT LIMITED TO THE BUSINESS ABOUT THE HATS AND THE WALKS. BURN THAT DOCUMENT. ACTUALLY, DO NOT BURN ANYTHING, OXYGEN IS FINITE.**
+
+  [5] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY | type=table | tokens=153
+  TEXT:
+SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY
+
+| **PROHIBITED TERM**              | **APPROVED VAULT-TEC ALTERNATIVE**                                              |
+|----------------------------------|---------------------------------------------------------------------------------|
+| *"Forced surface relocation"*    | "A complimentary exterior residency transition!"                                |
+| *"Nuclear annihilation"*         | "A broad-spectrum atmospheric renewal event"                                    |
+| *"Radiation poisoning"*          | "Spontaneous isotope integration — it's the future!"                            |
+| *"Mass unplanned expiration"*    | "High-volume resident lifecycle completion"                                     |
+| *"The surface is uninhabitable"* | "The surface is an exciting frontier with robust character-building potential!" |
+
+LLM ANSWER (6.08s):
+The maximum duration of an approved unsuited surface walk was fifteen minutes. Residents who did not return within that time would have their rations redistributed after a seventy-two hour grace period, pending completion of Form 44-D (doc12_surface_exploration_archived, Section 2).
+
+====================================================================================================
+
+[17/34] ID: qa_017
+QUESTION : What is the current status of the surface exploration policy as of November 2077, and what does it say about the vault door?
+GROUND TRUTH: As of November 2077, the active policy cancels all surface exploration indefinitely. Unsuited surface excursions are suspended. The vault door is declared closed and is to remain closed. Any resident found attempting to cycle the gear mechanism, tamper with the override keypad, or otherwise interact with the door faces immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS! | type=narrative | tokens=201
+  TEXT:
+SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS!
+
+Hot dog, are we ever excited! The year 2076 marks the glorious TRICENTENNIAL of our magnificent nation — and Vault-Tec Corporation intends to leverage this once-in-a-civilization milestone to drive unprecedented resident engagement, voluntary compliance metrics, and what our internal consultants are enthusiastically calling 'Peak Morale Saturation.'
+The flagship event — internally designated RECLAMATION DAY — is projected to occur sometime in the vicinity of October 23, 2077, pending the timely arrival of certain geopolitical catalysts. Until then, it is our collective duty as Marketing professionals to ensure that all 122 enrolled Vault 76 residents are so thoroughly marinated in optimism and brand loyalty that their eventual surface deployment proceeds with ZERO incidents of hesitation, weeping, or inconvenient philosophical inquiry.
+This document outlines our full-spectrum promotional strategy. Please read it in its entirety. Then shred it. Then smile.
+
+  [2] source=doc13_surface_exploration_active | section=N/A | type=narrative | tokens=177
+  TEXT:
+**VAULT-TEC CORPORATION**
+*Internal Document — Property of Vault-Tec*
+**Title:**
+Updated Surface Exploration Policy (Active)
+**Date:**
+November, 2077
+**Department:**
+General Employee Communications / Wellness Division
+**Intended Format:**
+Word (.docx)
+**Access Level:**
+General Employee
+**Status: ACTIVE — MANDATORY COMPLIANCE**
+**!!! URGENT MANDATORY POLICY SUPERSESSION NOTICE !!!**
+**THIS DOCUMENT SUPERSEDES, NULLIFIES, CANCELS, AND VOIDS ALL PRIOR GUIDANCE ISSUED UNDER POLICY REF: SEP-JAN2077-MEEKINS, INCLUDING BUT NOT LIMITED TO THE BUSINESS ABOUT THE HATS AND THE WALKS. BURN THAT DOCUMENT. ACTUALLY, DO NOT BURN ANYTHING, OXYGEN IS FINITE.**
+
+  [3] source=doc12_surface_exploration_archived | section=N/A | type=narrative | tokens=75
+  TEXT:
+**VAULT-TEC CORPORATION**
+*Internal Document — Property of Vault-Tec*
+**Title:**
+Surface Exploration Policy (Archived)
+**Date:**
+January, 2077
+**Department:**
+General Employee Communications / Wellness Division
+**Intended Format:**
+Word (.docx)
+**Access Level:**
+General Employee
+**Status:**
+ARCHIVED
+
+  [4] source=doc13_surface_exploration_active | section=Section 4: Compliance — It Is Mandatory Now More Than Ever | type=narrative | tokens=203
+  TEXT:
+Section 4: Compliance — It Is Mandatory Now More Than Ever
+
+In summary: the vault door is a door that goes to a place where everything is a deadly, highly radioactive wasteland, and opening it is punishable by immediate termination of ration allocation and all associated residential privileges. We at Vault-Tec remain committed to the safety, wellbeing, and continued biological viability of our resident participants, and we are confident that with your cooperation, the data collected from this experiment will be absolutely tip-top.
+**Thank you for choosing Vault-Tec. You did not technically choose Vault-Tec, but we appreciate your continued participation regardless. Please remain calm, remain compliant, and above all else — remain inside.**
+*It is a very swell vault and we are all going to be just fine.*
+*Vault-Tec Corporation | Est. 2031 | 'A Future Worth Living In (Terms and Conditions Apply)' | ACTIVE POLICY — Compliance is mandatory. Non-compliance will be noted. Everything will be noted.*
+
+  [5] source=doc13_surface_exploration_active | section=Emergency Communique from Acting Senior Wellness Coordinator B. Phelps, filling in for T. Meekins who is no longer available | type=narrative | tokens=173
+  TEXT:
+Emergency Communique from Acting Senior Wellness Coordinator B. Phelps, filling in for T. Meekins who is no longer available
+
+Residents,
+Let us begin by acknowledging that the previous Surface Exploration Policy, authored by former Junior Wellness Coordinator T. Meekins, was, in hindsight, what our Legal Division has officially classified as 'catastrophically optimistic.' Coordinator Meekins has since been reclassified as a testing asset, which is a very exciting promotion, and we wish them all the best.
+The purpose of this memorandum is to communicate, with appropriate urgency and continued corporate cheerfulness, that the situation topside has been updated from 'Swell' to 'Sub-Optimal in the Extreme.' The following policy is effective immediately, retroactively, and permanently, or until Vault-Tec issues further guidance, whichever constitutes a more favorable legal posture.
+
+LLM ANSWER (4.85s):
+As of November 2077, the surface exploration policy is ACTIVE — MANDATORY COMPLIANCE. The vault door leads to a deadly, highly radioactive wasteland, and opening it is punishable by immediate termination of ration allocation and all associated residential privileges (Section 4: Compliance — It Is Mandatory Now More Than Ever).
+
+====================================================================================================
+
+[18/34] ID: qa_018
+QUESTION : What messaging guidelines does the End-of-World Crisis Response document specify, including key prohibited terms?
+GROUND TRUTH: All communications must project confidence, celebrate the vault, and under no circumstances use the word 'dead.' Prohibited terms include 'Nuclear War' (replaced by 'Global Atmospheric Restructuring Initiative'), 'Death/Dead' (replaced by 'Unplanned Expiration'), 'Radiation Poisoning' (replaced by 'Spontaneous Isotope Integration Syndrome'), 'Starvation' (replaced by 'Involuntary Caloric Restriction Period'), and 'Trapped' (replaced by 'Enjoying Extended Premium Vault Hospitality'). Three pre-scripted broadcast messages exist for different crisis phases.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=N/A | type=table | tokens=96
+  TEXT:
+| **Title:**           | "End of the World" Crisis Response Messaging Playbook        |
+|----------------------|--------------------------------------------------------------|
+| **Date:**            | October 2077                                                 |
+| **Department:**      | Marketing                                                    |
+| **Intended Format:** | Word Document (.docx)                                        |
+| **Classification:**  | CONFIDENTIAL — Marketing Personnel Only                      |
+| **Document Status:** | PRE-STAGED — Deploy Upon Confirmed Global Annihilation Event |
+
+  [2] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=SECTION V: COMPLIANCE, FORMS & ADMINISTRATIVE REQUIREMENTS | type=narrative | tokens=57
+  TEXT:
+SECTION V: COMPLIANCE, FORMS & ADMINISTRATIVE REQUIREMENTS
+
+Marketing personnel are reminded that even in the wake of civilization's complete and total annihilation, proper administrative procedure must be observed. The following forms are MANDATORY before any crisis communications may be broadcast:
+
+  [3] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY | type=narrative | tokens=53
+  TEXT:
+SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY
+
+*"Forced surface relocation"*
+*"Nuclear annihilation"*
+*"Radiation poisoning"*
+*"Mass unplanned expiration"*
+*"The surface is uninhabitable"*
+
+  [4] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=SECTION III: PROHIBITED LANGUAGE & APPROVED SUBSTITUTIONS | type=narrative | tokens=70
+  TEXT:
+SECTION III: PROHIBITED LANGUAGE & APPROVED SUBSTITUTIONS
+
+All Vault-Tec communications personnel — and any ZAX units assigned to broadcasting duties — are STRICTLY PROHIBITED from using the following terms in any external or resident-facing messaging. Violations are subject to involuntary reassignment to Vault Section G (the wet section).
+
+  [5] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=SECTION I: EXECUTIVE SUMMARY & STRATEGIC OBJECTIVES | type=list | tokens=202
+  TEXT:
+SECTION I: EXECUTIVE SUMMARY & STRATEGIC OBJECTIVES
+
+Golly, what a swell opportunity! In the event of a total, planet-wide, civilization-ending nuclear exchange — which Vault-Tec's actuarial team rates as a "highly probable and frankly overdue" outcome — it is imperative that our brand messaging remains tip-top, upbeat, and legally defensible.
+This playbook provides pre-approved, field-tested communications scripts for the following scenarios, each designed to maximize resident compliance and data-acquisition continuity:
+- Scenario A: 'Whoopsie-Daisy' (Single-city spontaneous isotope integration event)
+- Scenario B: 'Regional Reorganization' (Multi-national simultaneous detonation sequence)
+- Scenario C: 'The Full Monty' (Complete eradication of surface-dwelling biosphere; extinction-level asset re-classification)
+*In ALL scenarios, the Communications Directive is identical: project confidence, celebrate the vault, and absolutely, under no circumstances, use the word 'dead.'*
+
+LLM ANSWER (7.35s):
+The Communications Directive is to project confidence, celebrate the vault, and absolutely, under no circumstances, use the word 'dead'. Additionally, all personnel are prohibited from using specific terms in external or resident-facing messaging (Doc9_EndOfWorld_Crisis_Response_Messaging, SECTION III: PROHIBITED LANGUAGE & APPROVED SUBSTITUTIONS). Prohibited terms include "Forced surface relocation", "Nuclear annihilation", "Radiation poisoning", "Mass unplanned expiration", and "The surface is uninhabitable" (Doc7_Vault76_Tricentennial_Promotional_Strategy, SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY).
+
+====================================================================================================
+
+[19/34] ID: qa_019
+QUESTION : What are the five exposure tiers defined in the Radiation Sickness Symptom Guide, and what treatment does each recommend?
+GROUND TRUTH: Tier 0 (0–49 RADs): No symptoms; continue normal duties. Tier 1 (50–199 RADs): Mild nausea and fatigue; rest and hydrate, do not visit the Physician. Tier 2 (200–499 RADs): Vomiting, hair loss, skin lesions; take Rad-X if available and submit Form VT-MED-011. Tier 3 (500–799 RADs): Severe hemorrhaging and loss of consciousness; administer RadAway immediately and inform the Floor Liaison Officer. Tier 4 (800+ RADs): Organ failure and tissue necrosis; see Section 5 of the guide.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=narrative | tokens=206
+  TEXT:
+**RADIATION SICKNESS SYMPTOM IDENTIFICATION GUIDE**
+*Self-Diagnosis Manual for General Vault Residents*
+Issued by the Vault-Tec Medical & Resident Health Division  |  August 2076
+**IMPORTANT NOTICE**
+This guide is intended for informational purposes under Vault-Tec's Resident Self-Sufficiency Programme. The Vault Physician may not always be available. In such cases, residents are encouraged to consult this document, remain calm, and trust in Vault-Tec's carefully optimised healthcare protocols.
+**SECTION 1: UNDERSTANDING RADIATION EXPOSURE**
+Radiation is a natural byproduct of the world around us — present in soil, water, food, and the innovative technologies developed by Vault-Tec's partner organisations. In measured quantities, radiation is simply a fact of modern life. In larger quantities, it can cause what Vault-Tec's scientists clinically refer to as Radiation Sickness, or Rad Poisoning. This guide will help you identify which category you fall into.
+
+  [2] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=narrative | tokens=134
+  TEXT:
+The human body absorbs radiation in units called RADs. Vault-Tec's onboard dosimetry systems — accessible via your Pip-Boy — will provide a running RAD count. Please consult your Pip-Boy before reading this guide. If your Pip-Boy is unavailable, please proceed to Section 2 and select the symptoms that best describe your current condition.
+**SECTION 2: SYMPTOM IDENTIFICATION BY EXPOSURE TIER**
+Locate your symptoms in the table below and identify your current Exposure Tier. Each tier includes Vault-Tec-approved treatment recommendations. Do not skip ahead. Vault-Tec is confident in the accuracy of this self-assessment methodology.
+
+  [3] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=table | tokens=349
+  TEXT:
+| **Exposure Tier**     | **RAD Range**   | **Observable Symptoms**                                                                                 | **Vault-Tec Severity Rating**   | **Recommended Action**                                         |
+|-----------------------|-----------------|---------------------------------------------------------------------------------------------------------|---------------------------------|----------------------------------------------------------------|
+| **Tier 0 — Baseline** | 0 – 49 RADs     | None. You feel fine. Vault-Tec congratulates you.                                                       | **Optimal**                     | Continue normal duties. Enjoy a Nuka-Cola.                     |
+| **Tier 1 — Minor**    | 50 – 199 RADs   | Mild nausea, fatigue, slight hair thinning. May be mistaken for a Monday.                               | **Manageable**                  | Rest, hydrate. Complain minimally. Do not visit the Physician. |
+| **Tier 2 — Moderate** | 200 – 499 RADs  | Vomiting, hair loss (clumps), skin lesions, bleeding gums. Distinctive odour may develop.               | **Concerning**                  | Rad-X (if available). Submit Form VT-MED-011. Await response.  |
+| **Tier 3 — Severe**   | 500 – 799 RADs  | Severe haemorrhaging, bone marrow suppression, loss of consciousness. Neighbours may notice.            | **Alarming**                    | RadAway immediately. Inform Floor Liaison Officer.             |
+| **Tier 4 — Critical** | 800+ RADs       | Organ failure, neurological degradation, spontaneous tissue necrosis. You are a priority research case. | **Unfortunate**                 | See Section 5. Vault-Tec extends its deepest sympathies.       |
+
+  [4] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=table | tokens=349
+  TEXT:
+| **Exposure Tier**     | **RAD Range**   | **Observable Symptoms**                                                                                 | **Vault-Tec Severity Rating**   | **Recommended Action**                                         |
+|-----------------------|-----------------|---------------------------------------------------------------------------------------------------------|---------------------------------|----------------------------------------------------------------|
+| **Tier 0 — Baseline** | 0 – 49 RADs     | None. You feel fine. Vault-Tec congratulates you.                                                       | **Optimal**                     | Continue normal duties. Enjoy a Nuka-Cola.                     |
+| **Tier 1 — Minor**    | 50 – 199 RADs   | Mild nausea, fatigue, slight hair thinning. May be mistaken for a Monday.                               | **Manageable**                  | Rest, hydrate. Complain minimally. Do not visit the Physician. |
+| **Tier 2 — Moderate** | 200 – 499 RADs  | Vomiting, hair loss (clumps), skin lesions, bleeding gums. Distinctive odour may develop.               | **Concerning**                  | Rad-X (if available). Submit Form VT-MED-011. Await response.  |
+| **Tier 3 — Severe**   | 500 – 799 RADs  | Severe haemorrhaging, bone marrow suppression, loss of consciousness. Neighbours may notice.            | **Alarming**                    | RadAway immediately. Inform Floor Liaison Officer.             |
+| **Tier 4 — Critical** | 800+ RADs       | Organ failure, neurological degradation, spontaneous tissue necrosis. You are a priority research case. | **Unfortunate**                 | See Section 5. Vault-Tec extends its deepest sympathies.       |
+
+  [5] source=Doc02_Radiation_Sickness_Symptom_Guide | section=N/A | type=list | tokens=213
+  TEXT:
+**3.1  Pharmaceutical Interventions**
+- Rad-X (Prophylactic) — Taken before exposure. Increases radiation resistance by a clinically optimistic 50%. Best paired with a positive attitude.
+- RadAway (Curative) — Chelating agent designed to flush radioactive particles from the bloodstream. Tastes of what Vault-Tec's chemists describe as 'tropical fruit,' and what residents describe as 'paint.' Both are correct.
+- Stimpak — Not a radiation treatment. However, it will make other injuries feel less urgent, which may improve your overall outlook. Psychosomatic wellness counts.
+- Buffout — Not a radiation treatment. Vault-Tec includes it here because several residents have reported taking it reflexively when frightened. We understand.
+**3.2  Vault-Tec-Endorsed Home Remedies (Field-Tested*)**
+** Results have varied. Vault-Tec does not guarantee efficacy. Side effects may include: false confidence, worsened symptoms, spontaneous optimism, and in rare cases, complete recovery.*
+
+LLM ANSWER (5.96s):
+The five exposure tiers are: Tier 0 – Baseline (0–49 RADs) – Continue normal duties and enjoy a Nuka-Cola; Tier 1 – Minor (50–199 RADs) – Rest and hydrate; Tier 2 – Moderate (200–499 RADs) – Rad-X (if available) and submit Form VT-MED-011; Tier 3 – Severe (500–799 RADs) – RadAway immediately and inform the Floor Liaison Officer; and Tier 4 – Critical (800+ RADs) – See Section 5. (Doc02_Radiation_Sickness_Symptom_Guide)
+
+====================================================================================================
+
+[20/34] ID: qa_020
+QUESTION : What must a GOAT exam administrator do with the completed answer sheets after the examination, and how should they handle a resident who contests their result?
+GROUND TRUTH: Answer sheets are collected, bundled, and incinerated in the Sub-Level 2 furnace (Requisition Code: GOAT-BURN-076). They are never scored. If a resident contests their result, the administrator must respond using Scripted Deflection Phrase Set C ('The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!') and must not engage further. If the resident demands a re-test, Form 88-D is to be filed in Cabinet 7-B adjacent to the incinerator and never processed.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc06_GOAT_Exam_Administration | section=Exam Administration Best Practices: | type=list | tokens=271
+  TEXT:
+Exam Administration Best Practices:
+
+- 3.1 Distribute exam booklets with an air of grave seriousness. Encourage residents to 'take their time' and 'really reflect.' Suggested phrase: "Your future is in YOUR hands today, champ!"
+- 3.2 The  exam  itself  contains  60  questions.  Questions  are  genuine  psychometric  items sourced  from  the  1958  Vault-Tec  Personality  Battery. However,  answers  are  not scored. Answer sheets are to be collected, bundled, and incinerated in the Sub-Level 2 furnace (Requisition Code: GOAT-BURN-076).
+- 3.3 Following  a  wait  period  of  no  less  than  72  hours  (to  simulate  'processing  time'), pre-sealed result packets are to be distributed. Administer with warm congratulations and a complimentary Vault-Tec branded pen.
+- 3.4 Should  a  resident  verbally  contest  their  assigned  role,  HR  staff  are  to  respond  with Scripted Deflection Phrase Set C: "The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!" Do not engage further.
+
+  [2] source=Doc06_GOAT_Exam_Administration | section=Exam Administration Best Practices: | type=list | tokens=77
+  TEXT:
+Exam Administration Best Practices:
+
+- 3.5 In  the  event  a  resident  demands  a  re-test,  administer  Form  88-D  ('Request  for Occupational Re-Evaluation'). Route all completed Form 88-Ds directly to File Cabinet 7-B, Sub-Level 3 (the incinerator adjacent cabinet). Do not process.
+
+  [3] source=Doc06_GOAT_Exam_Administration | section=SECTION 3: EXAM DAY ADMINISTRATION GUIDELINES | type=narrative | tokens=128
+  TEXT:
+SECTION 3: EXAM DAY ADMINISTRATION GUIDELINES
+
+On exam day, the G.O.A.T. is to be administered with maximum theatrical flair. We cannot stress this enough: the  exam  must  appear  rigorous .  Residents  who  feel  they  have  been  "tested"  report dramatically  higher  levels  of  post-assignment  contentment,  which  correlates  with  a  12%  uptick  in productivity metrics and a statistically significant decrease in what our sociologists call 'Tunnel Wal Graffiti Incidents.' Let's keep those numbers peachy!
+
+  [4] source=Doc06_GOAT_Exam_Administration | section=SECTION 1: PURPOSE AND DESIGN PHILOSOPHY | type=narrative | tokens=228
+  TEXT:
+SECTION 1: PURPOSE AND DESIGN PHILOSOPHY
+
+The  G.O.A.T.  was  developed  by  Vault-Tec's  Institute  of  Behavioral  Workforce  Modeling  (IBWM)  to provide each vault resident with a personalized occupational destiny . Residents are informed that their test results reflect a sophisticated psychometric analysis of their cognitive aptitudes, interperson competencies, and manual dexterity potential.
+They  are  not  informed that  occupational  assignments  are,  in  fact,  determined no  fewer  than eighteen (18) months prior to test administration , based entirely on the staffing requirements of the Vault-Tec Social Stratification Model (VTSSM v3.1). The exam itself is a delightful theatrical exercise designed to maximize resident buy-in and minimize labor grievances. Studies show that residents who believe they "earned" their assignment demonstrate a 34% reduction in what we at Vault-Tec cheerfully call "Unauthorized Dissatisfaction Events" (UDEs). Swell stuff!
+SECTION 2: PRE-ASSIGNMENT PROTOCOL (Completed BEFORE Exam Day)
+
+  [5] source=Doc06_GOAT_Exam_Administration | section=SECTION 1: PURPOSE AND DESIGN PHILOSOPHY | type=narrative | tokens=71
+  TEXT:
+SECTION 1: PURPOSE AND DESIGN PHILOSOPHY
+
+The following workflow MUST be completed prior to any G.O.A.T. exam administration. Do not deviate from this checklist - it is audit-compliant and legally binding under Vault-Tec Corporate Charter Article 9, Sub-Clause F ('The Illusion of Meritocracy in Closed Populations').
+
+LLM ANSWER (5.90s):
+Completed answer sheets are to be collected, bundled, and incinerated in the Sub-Level 2 furnace using Requisition Code: GOAT-BURN-076 (Exam Administration Best Practices). If a resident contests their result, HR staff should respond with Scripted Deflection Phrase Set C: "The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!" and should not engage further (Exam Administration Best Practices). If a resident demands a re-test, administer Form 88-D and route it to File Cabinet 7-B, Sub-Level 3, but do not process it (Exam Administration Best Practices).
+
+====================================================================================================
+
+[21/34] ID: qa_021
+QUESTION : When do non-voluntary resident relocations occur, and what are staff told to say to residents who ask about the missing individual?
+GROUND TRUTH: Relocations occur between 2:00 AM and 4:00 AM to minimize community disruption. No advance notice is given to the resident. If other residents ask about the absence, approved responses include: 'They transferred to the Hydroponics Volunteer Program! Lucky duck!', 'I believe they requested a quiet bunk reassignment. Very private individual.', or 'Gosh, I'm not sure! Have you tried the new cafeteria menu?'
+
+RETRIEVED CHUNKS (5):
+  [1] source=VaultTec_HR_Doc5_NVDR | section=SECTION 3: THE FIVE-STEP NVDR PROCESS | type=narrative | tokens=221
+  TEXT:
+SECTION 3: THE FIVE-STEP NVDR PROCESS
+
+*A Note on EPZ-5: Assignments to "The Patio" require co-signature from both the Overseer and the Vault-Tec Regional Science Director. Do not assign residents to EPZ-5 on Fridays, as the Science Director does not check his messages on weekends and the paperwork backlog has become, in the words of one colleague, "a whole thing."*
+**✅ STEP FOUR: Relocation Logistics**
+Resident relocation will occur
+**between the hours of 2:00 AM and 4:00 AM**
+to minimize community disruption and to avoid what our behavioral team charmingly refers to as
+*"a scene."*
+Two (2) members of Vault Security (euphemistically titled
+**"Residential Transition Facilitators"**
+on all public-facing documentation) will escort the resident to their new sector. The resident's bunk will be cleared, cleaned, and reassigned within the same 24-hour window.
+Should fellow residents inquire about the absence of the relocated individual, approved responses include:
+
+  [2] source=VaultTec_HR_Doc5_NVDR | section=N/A | type=table | tokens=95
+  TEXT:
+| **Title:**           | Resident Reassignment & Departmental Relocation Procedures (Non-Voluntary Track)   |
+|----------------------|------------------------------------------------------------------------------------|
+| **Date:**            | March, 2076                                                                        |
+| **Department:**      | Human Resources — Resident Relations Sub-Committee                                 |
+| **Intended Format:** | Word (.docx)                                                                       |
+| **Classification:**  | **INTERNAL — HR CLEARANCE LEVEL 3 AND ABOVE**                                      |
+
+  [3] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=2.1 Primary Objectives | type=list | tokens=137
+  TEXT:
+2.1 Primary Objectives
+
+- Achieve a resident Voluntary Enthusiasm Score (V.E.S.) of no less than 94% by Q3 2077, as measured by mandatory quarterly happiness surveys (non-participation is logged as a 'hostile abstention').
+- Establish 'Reclamation Day' as a culturally meaningful event that residents genuinely look forward to, rather than a logistically scheduled expulsion from a controlled habitat.
+- Suppress all organic rumors regarding the Vault's experimental social parameters through proactive counter-messaging and cheerful distraction initiatives.
+- Generate no fewer than 14 slogans testable across resident demographics, ensuring maximum penetration among age cohorts 8-through-67.
+
+  [4] source=VaultTec_HR_Doc5_NVDR | section=SECTION 3: THE FIVE-STEP NVDR PROCESS | type=list | tokens=141
+  TEXT:
+SECTION 3: THE FIVE-STEP NVDR PROCESS
+
+- "Oh, they transferred to the Hydroponics Volunteer Program! Lucky duck!"
+- "I believe they requested a quiet bunk reassignment. Very private individual."
+- "Gosh, I'm not sure! Have you tried the new cafeteria menu? It's just swell this week!"
+*HR associates are reminded that all three responses have been legally vetted and may be deployed with confidence.*
+**✅ STEP FIVE: Post-Relocation Documentation & Data Harvesting**
+Following successful relocation, the assigned Fun Zone research team will assume all documentation responsibilities for the resident-turned-research-participant. HR's ongoing obligations are limited to:
+
+  [5] source=VaultTec_HR_Doc5_NVDR | section=SECTION 1: PURPOSE & SCOPE | type=narrative | tokens=237
+  TEXT:
+SECTION 1: PURPOSE & SCOPE
+
+Greetings, HR Associates! Boy, have we got a
+*swell*
+set of procedures for you today!
+As any seasoned Vault-Tec team player knows, a smoothly functioning residential habitat depends on the cheerful cooperation of
+**all**
+resident participants. However, our industry-leading behavioral scientists at the Vault-Tec Institute of Applied Social Compliance (VTIASC) have identified a small but persistent subset of residents who display what we in the business call
+**Sub-Optimal Cooperative Alignment (SOCA)**
+— and golly, left unaddressed, SOCA can spread faster than a spontaneous isotope integration event in Sector 7!
+This document establishes the formal, standardized, and
+*deeply legally sound*
+procedures for the
+**Non-Voluntary Departmental Relocation (NVDR)**
+of any resident whose continued presence in the general population has been flagged as a net-negative contribution to our ongoing
+**Vault Participant Data Acquisition Program (VPDAP).**
+*Rest assured: no resident is ever truly a problem. They are simply a misallocated asset awaiting reassignment to a more data-rich environment!*
+
+LLM ANSWER (5.35s):
+Non-voluntary resident relocations occur between 2:00 AM and 4:00 AM. Staff should respond to inquiries about the missing individual by saying they transferred to the Hydroponics Volunteer Program, requested a quiet bunk reassignment, or directing the questioner to the new cafeteria menu (VaultTec_HR_Doc5_NVDR, SECTION 3).
+
+====================================================================================================
+
+[22/34] ID: qa_022
+QUESTION : What are the two primary campaign objectives for the Vault 76 Tricentennial promotional strategy?
+GROUND TRUTH: The two primary objectives are: (1) achieve a Voluntary Enthusiasm Score (V.E.S.) of no less than 94% among all 122 residents by Q3 2077, measured via mandatory quarterly happiness surveys; and (2) establish 'Reclamation Day' as a culturally meaningful event that residents genuinely look forward to, rather than a logistically scheduled expulsion from a controlled habitat.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=PILLAR B: 'Vault 76: The Jewel of the Program!' (Brand Superiority) | type=narrative | tokens=129
+  TEXT:
+PILLAR B: 'Vault 76: The Jewel of the Program!' (Brand Superiority)
+
+Vault 76 is — and must always be marketed as — the flagship Vault. Residents must believe they are the lucky ones, the chosen ones, the absolutely best-in-class ones. They must never learn about Vaults 77 through 112. They especially must never learn what is being tested in those other vaults. If a resident asks about Vault 112, Marketing is authorized to deploy the Cheerful Deflection Protocol: offer them a Nuka-Cola, admire their jumpsuit, and change the subject to the tricentennial party.
+
+  [2] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=N/A | type=table | tokens=129
+  TEXT:
+| **Title:**           | Vault 76 Tricentennial Promotional Strategy                         |
+|----------------------|---------------------------------------------------------------------|
+| **Date:**            | February 2076                                                       |
+| **Department:**      | Marketing Division                                                  |
+| **Classification:**  | MARKETING EYES ONLY — Do Not Distribute to General Vault Population |
+| **Intended Format:** | Word (.docx)                                                        |
+| **Prepared By:**     | B. Barnsworth, Senior Director of Resident Enthusiasm Management    |
+| **Approved By:**     | The Oversight Committee for Optimized Morale Outcomes (OCOMO)       |
+
+  [3] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 8: CLOSING REMARKS FROM THE DIRECTOR | type=narrative | tokens=250
+  TEXT:
+SECTION 8: CLOSING REMARKS FROM THE DIRECTOR
+
+**Golly, team — what an industry-leading opportunity we have in front of us!**
+The Tricentennial represents the single greatest convergence of marketing opportunity and, if our colleagues in certain other departments are to be believed, absolute historical finality that Vault-Tec has ever encountered. It is therefore imperative that we approach this campaign with the same professionalism, enthusiasm, and cheerful indifference to inconvenient ethical questions that has always set the Vault-Tec Marketing Division apart.
+Remember: our residents are not merely people. They are valued participants in humanity's most ambitious data-acquisition initiative! Their continued cooperation, voluntary or otherwise, is the very foundation upon which tomorrow's scientific breakthroughs will be built. The least we can do is make sure they feel really, genuinely great about it right up until the data collection phase begins.
+Now get out there, plaster those walls with approved slogans, and let's give Vault 76 the send-off it — and its science — deserves!
+*Warmly and with peak corporate enthusiasm,*
+**B. Barnsworth**
+Senior Director, Resident Enthusiasm Management
+Vault-Tec Corporation — Marketing Division
+**VAULT-TEC CORPORATION**
+
+  [4] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS! | type=narrative | tokens=201
+  TEXT:
+SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS!
+
+Hot dog, are we ever excited! The year 2076 marks the glorious TRICENTENNIAL of our magnificent nation — and Vault-Tec Corporation intends to leverage this once-in-a-civilization milestone to drive unprecedented resident engagement, voluntary compliance metrics, and what our internal consultants are enthusiastically calling 'Peak Morale Saturation.'
+The flagship event — internally designated RECLAMATION DAY — is projected to occur sometime in the vicinity of October 23, 2077, pending the timely arrival of certain geopolitical catalysts. Until then, it is our collective duty as Marketing professionals to ensure that all 122 enrolled Vault 76 residents are so thoroughly marinated in optimism and brand loyalty that their eventual surface deployment proceeds with ZERO incidents of hesitation, weeping, or inconvenient philosophical inquiry.
+This document outlines our full-spectrum promotional strategy. Please read it in its entirety. Then shred it. Then smile.
+
+  [5] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 6: APPROVED TRICENTENNIAL SLOGAN CANDIDATES | type=list | tokens=201
+  TEXT:
+SECTION 6: APPROVED TRICENTENNIAL SLOGAN CANDIDATES
+
+- "Vault 76: Because You're One of the Good Ones!" [Flagship slogan. High-performing across all demographic groups except the aforementioned Questioners.]
+- "Reclamation Day: It's Not the End. It's the Beginning. Of Something. Out There." [Approved with the note that 'of Something. Out There.' must always be printed in a jaunty font to imply excitement rather than existential uncertainty.]
+- "America Built You a Home. Vault-Tec Built You a Future." [Legal note: 'Future' is intentionally non-specific. Do not elaborate if asked.]
+- "The Surface Won't Know What Hit It — And Neither Will You! Ha Ha!" [This slogan is approved for INTERNAL MOTIVATIONAL PURPOSES ONLY. It is not to appear on any resident-facing material under any circumstances whatsoever. Its presence in this document is a formatting error.]
+
+LLM ANSWER (4.75s):
+The two primary campaign objectives are to drive unprecedented resident engagement, voluntary compliance metrics, and achieve 'Peak Morale Saturation' (SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS!). The campaign aims to ensure residents are thoroughly optimistic and brand loyal to proceed with surface deployment without hesitation or philosophical inquiry (SECTION 1: EXECUTIVE SUMMARY — A SWELL OPPORTUNITY AWAITS!).
+
+====================================================================================================
+
+[23/34] ID: qa_023
+QUESTION : What is the manual crank procedure for operating the Vault Door during a power failure, and how many personnel are required?
+GROUND TRUTH: In a total power failure, the Manual Emergency Crank System (MECS) behind Panel B-7 in the sub-corridor is used. A minimum of four personnel at standard adult fitness are required (or six if residents have been on involuntary calorie restriction for over 30 days). Turn clockwise to open, counter-clockwise to close. Full opening requires 1,247 rotations and takes approximately 6.5 hours with four fit personnel. Access requires BETA-2 clearance or above and physical key VT-MECS-BRAVO-07.
+
+RETRIEVED CHUNKS (5):
+  [1] source=doc10_vault_door_override_protocol | section=SECTION 4: MANUAL CRANK PROCEDURE (Power Failure Protocol) | type=narrative | tokens=61
+  TEXT:
+SECTION 4: MANUAL CRANK PROCEDURE (Power Failure Protocol)
+
+In the
+*perfectly manageable*
+event of a total vault power failure, the VGD-9000 can be operated via the
+**Manual Emergency Crank System (MECS)**
+. This is a swell backup option!
+
+  [2] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 1: PURPOSE AND SCOPE | type=narrative | tokens=210
+  TEXT:
+SECTION 1: PURPOSE AND SCOPE
+
+This Standard Operating Procedure (SOP) establishes the official Vault-Tec protocols for conducting emergency evacuation drills . The operative word, residents, is DRILL . These procedures exist solely to promote resident wellness through simulated preparedness activities and the cultivation of a healthy, anxiety-responsive community spirit.
+This document applies to all residents of Floors B1 through B14. Residents of Floor B15 (Experimental Wing Sigma) are subject to a separate, classified SOP and should disregard this document entirely.
+CRITICAL  OPERATIONAL  NOTICE:  THE  VAULT  DOOR  IS  NOT  AN  EXIT.  Under  no circumstances should any resident interpret an evacuation drill signal as an instruction, suggestion, invitation, or implicit endorsement to physically approach, touch, or otherwise interact with the Vault's primary blast door (Gear Door Assembly No. 76-GD-PRIME). The door exists for your protection. Your protection means staying inside. These two facts are harmonious and should cause you no distress whatsoever.
+
+  [3] source=doc10_vault_door_override_protocol | section=SECTION 1: PURPOSE & CHEERFUL OVERVIEW | type=narrative | tokens=216
+  TEXT:
+SECTION 1: PURPOSE & CHEERFUL OVERVIEW
+
+Greetings, Authorized Administrator!
+What a
+**swell**
+responsibility you've been entrusted with! The Vault Gear Door — Vault-Tec Model VGD-9000 "Ol' Reliable" — is not merely a multi-ton, hydraulically-actuated, blast-proof portal. It is the
+**cornerstone of data integrity**
+. Every single valued participant sealed within this facility represents an
+**irreplaceable testing asset**
+, and it is your
+*peachy*
+privilege to ensure that not a single one of them wanders out prematurely and contaminates our longitudinal study parameters.
+This document outlines the complete protocol for manual door cycling, emergency overrides, and the critically important access log procedures. Please read it thoroughly! Improper use of the override system has, in
+**three (3) documented prior cases**
+, resulted in what our Legal & Liability team cheerfully refers to as an "Unplanned Population Reduction Event." We'd love to keep that number right where it is!
+
+  [4] source=doc13_surface_exploration_active | section=Section 4: Compliance — It Is Mandatory Now More Than Ever | type=narrative | tokens=203
+  TEXT:
+Section 4: Compliance — It Is Mandatory Now More Than Ever
+
+In summary: the vault door is a door that goes to a place where everything is a deadly, highly radioactive wasteland, and opening it is punishable by immediate termination of ration allocation and all associated residential privileges. We at Vault-Tec remain committed to the safety, wellbeing, and continued biological viability of our resident participants, and we are confident that with your cooperation, the data collected from this experiment will be absolutely tip-top.
+**Thank you for choosing Vault-Tec. You did not technically choose Vault-Tec, but we appreciate your continued participation regardless. Please remain calm, remain compliant, and above all else — remain inside.**
+*It is a very swell vault and we are all going to be just fine.*
+*Vault-Tec Corporation | Est. 2031 | 'A Future Worth Living In (Terms and Conditions Apply)' | ACTIVE POLICY — Compliance is mandatory. Non-compliance will be noted. Everything will be noted.*
+
+  [5] source=doc10_vault_door_override_protocol | section=4.2 — Crank Operation | type=code_block | tokens=115
+  TEXT:
+4.2 — Crank Operation
+
+```
+Turn clockwise to OPEN.
+Turn counter-clockwise to CLOSE.
+
+Required rotations for full open: 1,247 (one thousand, two hundred and forty-seven)
+Estimated time to full open with 4 fit personnel: 6.5 hours
+Estimated time with calorie-restricted personnel: Please just file Form MAINT-11 and wait.
+
+DO NOT ATTEMPT PARTIAL CYCLING. A door that is 40% open is, from a data-integrity
+standpoint, 100% a problem.
+```
+
+LLM ANSWER (3.11s):
+The Manual Emergency Crank System (MECS) is used to operate the Vault Door during a power failure (SECTION 4: MANUAL CRANK PROCEDURE (Power Failure Protocol)). It requires 4 fit personnel and takes an estimated 6.5 hours to fully open the door (4.2 — Crank Operation).
+
+====================================================================================================
+
+[24/34] ID: qa_024
+QUESTION : What are the penalties for hoarding Dandy Boy Apples under the Vault Dweller Code of Conduct?
+GROUND TRUTH: Hoarding Dandy Boy Apples is a Class II Contraband Offence. Tier I (3–10 cans undeclared): 10-day ration reduction. Tier II (11–25 cans or prior offence): 30-day sanitation duty plus a demerit. Tier III (26+ cans or repeat offender): indefinite corridor reassignment. Tier IV (operating a distribution network): referral to Overseer's Court.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES | type=narrative | tokens=208
+  TEXT:
+SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES
+
+It has come to the Resident Affairs Division's attention that several individuals have, in the months prio to sealing, accumulated unauthorised caches of Dandy Boy Apples. This practice is hereby declared a Class II Contraband Offence under Vault Regulation 7, Subsection 14 ( Hoarding and Stockpiling of Comestibles ).
+HOARDING OF DANDY BOY APPLES IS STRICTLY PROHIBITED. Maximum penalty: reassignment to Corridor Maintenance Detail (indefinite). Vault-Tec takes apple-based contraband extremely seriously.
+Residents are encouraged to report neighbours suspected of hoarding to their Floor Liaison Officer. Anonymous  tip  submissions  may  be  placed  in  the  Suggestion  &  Suspicion  Box  located  outside Cafeteria Bay 2. Vault-Tec rewards civic-minded residents with a one-time bonus Nuka-Cola allocation upon confirmed report.
+
+  [2] source=Doc01_Vault_Dweller_Code_of_Conduct | section=VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS | type=narrative | tokens=124
+  TEXT:
+VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS
+
+Effective Immediately Upon Vault Sealing | Supersedes All Prior Surface-World Norms
+Welcome, Vault Dweller. You have been selected - through rigorous scientific lottery - to participate in  humanity's  greatest  survival  experiment.  The  rules  contained  within  this  document  are  not suggestions.  They  are  the  pillars  upon  which  civilisation  shall  be  rebuilt.  Compliance  is  comfort. Comfort is survival. Vault-Tec thanks you for your cooperation.
+
+  [3] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES | type=table | tokens=138
+  TEXT:
+SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES
+
+| Offence Tier   | Description                               | Penalty                          |
+|----------------|-------------------------------------------|----------------------------------|
+| Tier I         | Possession of 3-10 cans (undeclared)      | 10-day ration reduction          |
+| Tier II        | Possession of 11-25 cans or prior offence | 30-day sanitation duty + demerit |
+| Tier III       | Possession of 26+ cans or repeat offender | Indefinite corridor reassignment |
+| Tier IV        | Operating a distribution network          | Referral to Overseer's Court     |
+
+  [4] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 5: GENERAL CONDUCT STANDARDS | type=list | tokens=292
+  TEXT:
+SECTION 5: GENERAL CONDUCT STANDARDS
+
+-  Residents  shall  address  the  Overseer  as  'Overseer'  at  all  times.  First-name  familiarity  is  not authorised unless explicitly granted via written permission (Form VT-OVR-009).
+-  Loud  music,  recreational  shouting,  or  the  playing  of  unauthorised  instruments  in  residential corridors  is  prohibited  between  21:00  and  06:00  (Quiet  Hours).  Harmonicas  are  banned  at  all hours.
+- Romantic partnerships must be registered with the Vault-Tec Social Harmony Office. Unregistered cohabitation will result in room reassignment. Vault-Tec reserves the right to optimise pairings for genetic diversity without prior notice.
+- Graffiti, modification of Vault signage, or defacement of the Vault-Boy mascot in any form is a Class III Artistic Misconduct Offence. This includes - but is not limited to - moustaches drawn on Vault-Boy posters.
+-  All  disputes  between  residents  must  be  submitted  in  writing  to  the  Dispute  Resolution  Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations will result in both parties receiving Disciplinary Status regardless of who initiated contact.
+
+  [5] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS | type=list | tokens=209
+  TEXT:
+SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS
+
+- Approaching the Vault Door under any pretext, including 'curiosity,' 'fresh air,' 'a feeling,' or 'a dream.'
+- Asking Floor Monitors or security personnel what is 'actually outside.' This question has no productive answer and will be redirected to a complimentary counseling session.
+- Sharing, posting, or distributing any personal theories regarding the Vault Door's operational status.
+- Panicking. Panic is expressly prohibited under Vault-Tec Resident Conduct Code 7.4(b) and is considered a wellness violation.
+- Departing the Vault. This item is included for completeness. It has never happened. It will not happen. Everyone is fine.
+This document is the property of Vault-Tec Corporation. Unauthorized reproduction, external distribution, or surface-side dissemination is strictly prohibited and frankly beside the point. Vault-Tec: Building a Better Tomorrow, Today! | Document Owner: Safety Compliance Dept., Sub-Level 2 | Next Review: September 2077
+
+LLM ANSWER (4.49s):
+The maximum penalty for hoarding Dandy Boy Apples is reassignment to Corridor Maintenance Detail (indefinite). (SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES)
+
+Additionally, the table in SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES details penalties based on the quantity of apples possessed:
+
+*   **Tier I:** Possession of 3-10 cans (undeclared) results in a 10-day ration reduction.
+*   **Tier II:** Possession of 11-25 cans or a prior offence results in 30-day sanitation duty + a demerit.
+*   **Tier III:** Possession of 26+ cans or repeat offender results in indefinite corridor reassignment.
+*   **Tier IV:** Operating a distribution network results in referral to the Overseer's Court.
+
+====================================================================================================
+
+[25/34] ID: qa_025
+QUESTION : What are three of the approved image categories for G.E.C.K. advertising visuals, and what is one category of prohibited imagery?
+GROUND TRUTH: Approved imagery includes: lush green meadows with people who do not appear to be suffering; smiling Vault Dwellers in pristine jumpsuits tending improbably large vegetables; a golden sunrise over a horizon conspicuously free of nuclear devastation; and the G.E.C.K. unit in soft warm lighting. Prohibited imagery includes mushroom clouds (even decorative ones), mole rats or Radscorpions, and any before/after photography where 'before' is more habitable than 'after.'
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc08_GECK_Advertising_Guidelines | section=3.1 Approved Imagery | type=list | tokens=185
+  TEXT:
+3.1 Approved Imagery
+
+All G.E.C.K. advertising visuals must convey radiant optimism, fertile abundance, and the can-do spirit of American  agri-science. The  following  subject  matter  is  pre-cleared  for  use  in  all  media  formats  without additional legal review:
+- Lush, green meadows populated exclusively by people who do not appear to be suffering.
+- Smiling Vault Dwellers in pristine jumpsuits tending to improbably large vegetables.
+- A golden sunrise over a horizon that is conspicuously free of nuclear devastation.
+- The G.E.C.K. unit itself, depicted in soft, warm lighting (never harsh overhead fluorescents, which remind consumers of medical procedures).
+- Children laughing near the G.E.C.K. - provided said children do not appear to be mutated. Any visible additional limbs must be digitally removed prior to print.
+
+  [2] source=Doc08_GECK_Advertising_Guidelines | section=SECTION 1 - APPROVED PRODUCT NOMENCLATURE & TAGLINES | type=narrative | tokens=84
+  TEXT:
+SECTION 1 - APPROVED PRODUCT NOMENCLATURE & TAGLINES
+
+The G.E.C.K. must always be referred to by its full, approved designation upon first use in any collateral material. Subsequent references may use the acronym 'G.E.C.K.' (with periods). The informal variant 'Geck,' 'The Kit,' or - heaven forbid - 'that box of dirt' are strictly prohibited.
+
+  [3] source=Doc08_GECK_Advertising_Guidelines | section=3.2 Prohibited Imagery | type=table | tokens=209
+  TEXT:
+3.2 Prohibited Imagery
+
+|   # | PROHIBITED IMAGERY                                            | REASON                                    |
+|-----|---------------------------------------------------------------|-------------------------------------------|
+|   1 | The G.E.C.K. depicted as 'unopened' or 'unused'               | Implies consumer hesitation.              |
+|   2 | Pre-war vs. post-war surface comparison photography           | Legal exposure re: implied promise.       |
+|   3 | Any stock photography featuring the word 'MIRACLE' on props   | See Section 2, you rascal.                |
+|   4 | Mushroom clouds (even decorative or festive ones)             | Consumer research: mixed response.        |
+|   5 | Mole rats, Radscorpions, or other 'Ecological Enrichment      | Fauna' Inconsistent with brand messaging. |
+|   6 | Before/after imagery where 'before' is clearly more habitable | Per VT-LEGAL memo 1033-B.                 |
+
+  [4] source=Doc08_GECK_Advertising_Guidelines | section=SECTION 2 - PROHIBITED TERMINOLOGY: THE 'M-WORD' MANDATE | type=list | tokens=144
+  TEXT:
+SECTION 2 - PROHIBITED TERMINOLOGY: THE 'M-WORD' MANDATE
+
+- n MANDATORY READING - ALL MARKETING ASSOCIATES MUST INITIAL PAGE 4 UPON REVIEW n
+Effective  immediately  and  with  retroactive  force  dating  to  the  product's  initial  conceptualization,  the  wo "MIRACLE" -  and  any  of  its  cognates,  diminutives,  foreign-language  equivalents,  or strongly  implied synonyms -  is permanently,  irrevocably,  and  enthusiastically  BANNED from  all  G.E.C.K.  marketing materials.
+
+  [5] source=Doc08_GECK_Advertising_Guidelines | section=5.1 Required Disclosures | type=narrative | tokens=213
+  TEXT:
+5.1 Required Disclosures
+
+All G.E.C.K. advertising must include the following disclosure statement, rendered in a minimum 6pt font (or verbally delivered at no fewer than 240 WPM):
+"Vault-Tec Corporation makes no warranty, expressed or implied, that the G.E.C.K. will restore a habitable biosphere within the lifetime of any current Vault resident. 'Garden of Eden' is a registered trademark and constitutes  an  aspirational  marketing  metaphor,  not  a  geological,  theological,  or  agricultural  guarantee. Results  may  vary.  Side  effects  of  premature  G.E.C.K.  deployment  may  include,  but  are  not  limited  to: localized  soil  toxicity,  unplanned  botanical  mutation,  and  Science-Optimized  Biotic  Renewal  Events  of unexpected magnitude. Vault-Tec is not responsible for any participant non-continuation events arising from surface deployment. Have a swell day!"
+
+LLM ANSWER (1.95s):
+Three approved image categories are lush, green meadows with non-suffering people; smiling Vault Dwellers tending to large vegetables; and a golden sunrise free of nuclear devastation (Section 3.1). One category of prohibited imagery is mushroom clouds (Section 3.2, #4).
+
+====================================================================================================
+
+[26/34] ID: qa_026
+QUESTION : What is the monthly passphrase format for ZAX root access, and what words are forbidden from appearing in any passphrase?
+GROUND TRUTH: The passphrase format is: VT-ZAX-[CODEWORD_A]-[CODEWORD_B]-[MMYY]. Passphrases must be between 15 and 30 words, contain at least one reference to Vault-Tec's corporate mission, and be enthusiastically deliverable under stress. The following words are forbidden: 'open,' 'outside,' 'surface,' 'leave,' 'freedom,' and 'please.'
+
+RETRIEVED CHUNKS (5):
+  [1] source=doc11_zax_mainframe_root_access | section=6.2 — Root Passphrase Rotation Schedule | type=code_block | tokens=165
+  TEXT:
+6.2 — Root Passphrase Rotation Schedule
+
+Root passphrases rotate on the
+**first business day of each month.**
+The passphrase format is:
+```
+VT-ZAX-[CODEWORD_A]-[CODEWORD_B]-[MMYY]
+
+Example: VT-ZAX-UMBRA-FOXGLOVE-0712
+```
+Codewords are selected from the
+**Vault-Tec Approved Codeword Registry**
+(Form IT-CRED-REGISTRY, updated annually, available from Admin Supply). Codewords shall not be:
+- Names of residents, administrators, or Vault-Tec executives (living or deceased)
+- Any word ZAX has ever used in an unsolicited communication
+- The word "help" — Legal has flagged this as a liability concern, and we are not asking further questions
+
+  [2] source=doc11_zax_mainframe_root_access | section=3.2 — Multi-Factor Root Authentication Sequence | type=code_block | tokens=206
+  TEXT:
+3.2 — Multi-Factor Root Authentication Sequence
+
+```
+STEP 1 — PHYSICAL KEY
+  Insert the ZAX Root Keycard (VT-IT-KEY-ZAX-ROOT) into the left terminal slot.
+  Key is stored in: Server Room lockbox, combination 7-14-33.
+  *** Combination rotates on the 15th of each month. Current combination: 7-14-33 ***
+  *** New combination delivered to BETA-1+ in sealed envelope. See §6.1. ***
+
+STEP 2 — TERMINAL PASSPHRASE
+  When prompted, type the current Root Access Passphrase at the blinking cursor.
+  Do NOT speak it aloud. ZAX's audio monitoring is always active and he takes notes.
+
+  [ JULY 2076 ROOT PASSPHRASE: VT-ZAX-UMBRA-FOXGLOVE-0712 ]
+  *** PASSPHRASE ROTATES MONTHLY — see §6.2 for rotation schedule ***
+
+  [3] source=doc10_vault_door_override_protocol | section=6.1 — Monthly Passphrase Rotation Schedule | type=code_block | tokens=192
+  TEXT:
+6.1 — Monthly Passphrase Rotation Schedule
+
+Vocal passphrases are rotated on the
+**first business day**
+of each month by the Senior IT Administrator (BETA-1). The new passphrase is delivered in a
+**sealed envelope**
+to ALPHA-clearance personnel only. Passphrases must:
+- Be between fifteen (15) and thirty (30) words in length
+- Contain at least one (1) reference to **Vault-Tec's corporate mission**
+- Be **enthusiastically deliverable** under stress conditions
+- **Not** contain the words "open," "outside," "surface," "leave," "freedom," or "please"
+*Previous passphrases are archived in ZAX Mainframe under directory*
+*```
+/secure/door/passphrases/archive/
+```*
+*. Access requires ALPHA-1 clearance. Yes, they are delightful. No, you may not browse them recreationally.*
+
+  [4] source=doc11_zax_mainframe_root_access | section=Information Technology & Computational Systems Division | type=narrative | tokens=194
+  TEXT:
+Information Technology & Computational Systems Division
+
+**Title:**
+ZAX Mainframe Root Access & Maintenance Keys
+**Date:**
+July, 2076
+**Department:**
+Admin / IT
+**Intended Format:**
+Markdown (.md)
+**Classification:**
+ADMIN-EYES ONLY — This document contains Root-Level Credentials. Unauthorized possession will result in a
+*genuinely exciting*
+reassignment to the ZAX Hardware Cooling Unit (average ambient temperature: 112°F). You'll love it!
+**Document ID:**
+VT-ADMIN-IT-0881-ZAX
+**Supersedes:**
+VT-ADMIN-IT-0880-ZAX (Recalled after ZAX "helpfully" emailed a copy to all residents)
+*"ZAX doesn't just manage your data — ZAX IS your data! And isn't that just the most wonderful thing you've ever heard?"*
+*— Vault-Tec IT Division Welcome Packet, 2071*
+
+  [5] source=doc11_zax_mainframe_root_access | section=3.3 — Subsystem Directory & Access Map | type=narrative | tokens=58
+  TEXT:
+3.3 — Subsystem Directory & Access Map
+
+Upon successful Root authentication, the ZAX command environment presents the following directory structure. BETA-2 personnel are restricted to subsystems marked
+**[B2-OK]**
+. All others require BETA-1 or above.
+
+LLM ANSWER (3.73s):
+The monthly passphrase format for ZAX root access is VT-ZAX-[CODEWORD_A]-[CODEWORD_B]-[MMYY] (doc11_zax_mainframe_root_access, Section 6.2). Forbidden words include names of residents, administrators, or Vault-Tec executives, any word ZAX has used in unsolicited communication, and the word "help" (doc11_zax_mainframe_root_access, Section 6.2), as well as "open," "outside," "surface," "leave," "freedom," and "please" (doc10_vault_door_override_protocol, Section 6.1).
+
+====================================================================================================
+
+[27/34] ID: qa_027
+QUESTION : What behavior is prohibited for all residents during an evacuation drill under the Emergency Evacuation SOP?
+GROUND TRUTH: Prohibited behaviors include: approaching or interacting with the Vault Door under any pretext; asking floor monitors what is 'actually outside'; sharing personal theories about the Vault Door's operational status; panicking (classified as a wellness violation under Resident Conduct Code 7.4(b)); and departing the vault.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 1: PURPOSE AND SCOPE | type=narrative | tokens=210
+  TEXT:
+SECTION 1: PURPOSE AND SCOPE
+
+This Standard Operating Procedure (SOP) establishes the official Vault-Tec protocols for conducting emergency evacuation drills . The operative word, residents, is DRILL . These procedures exist solely to promote resident wellness through simulated preparedness activities and the cultivation of a healthy, anxiety-responsive community spirit.
+This document applies to all residents of Floors B1 through B14. Residents of Floor B15 (Experimental Wing Sigma) are subject to a separate, classified SOP and should disregard this document entirely.
+CRITICAL  OPERATIONAL  NOTICE:  THE  VAULT  DOOR  IS  NOT  AN  EXIT.  Under  no circumstances should any resident interpret an evacuation drill signal as an instruction, suggestion, invitation, or implicit endorsement to physically approach, touch, or otherwise interact with the Vault's primary blast door (Gear Door Assembly No. 76-GD-PRIME). The door exists for your protection. Your protection means staying inside. These two facts are harmonious and should cause you no distress whatsoever.
+
+  [2] source=Doc3_Emergency_Evacuation_Procedures | section=A Message from Your Vault-Tec Safety Compliance Team! | type=narrative | tokens=112
+  TEXT:
+A Message from Your Vault-Tec Safety Compliance Team!
+
+Greetings, valued Vault Resident! Here at Vault-Tec Corporation, your safety is our second-highest priority , right after the integrity of ongoing behavioral and social research initiatives! That is why we a thrilled to present this comprehensive guide to Emergency Evacuation Drill Procedures. Please read this document in its entirety, memorize all applicable sections, and return the signed acknowledgment slip to your assigned Floor Monitor within seventy-two (72) hours of receipt. Failure to do so will be logged in your Permanent Resident File.
+
+  [3] source=Doc3_Emergency_Evacuation_Procedures | section=GENERAL EMERGENCY EVACUATION (MOCK) PROCEDURES | type=table | tokens=66
+  TEXT:
+GENERAL EMERGENCY EVACUATION (MOCK) PROCEDURES
+
+| Title: General Emergency Evacuation (Mock) Procedures   | Date: September 2076   | Department / Role: General Employee   | Intended Format: PDF   |
+|---------------------------------------------------------|------------------------|---------------------------------------|------------------------|
+
+  [4] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS | type=list | tokens=209
+  TEXT:
+SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS
+
+- Approaching the Vault Door under any pretext, including 'curiosity,' 'fresh air,' 'a feeling,' or 'a dream.'
+- Asking Floor Monitors or security personnel what is 'actually outside.' This question has no productive answer and will be redirected to a complimentary counseling session.
+- Sharing, posting, or distributing any personal theories regarding the Vault Door's operational status.
+- Panicking. Panic is expressly prohibited under Vault-Tec Resident Conduct Code 7.4(b) and is considered a wellness violation.
+- Departing the Vault. This item is included for completeness. It has never happened. It will not happen. Everyone is fine.
+This document is the property of Vault-Tec Corporation. Unauthorized reproduction, external distribution, or surface-side dissemination is strictly prohibited and frankly beside the point. Vault-Tec: Building a Better Tomorrow, Today! | Document Owner: Safety Compliance Dept., Sub-Level 2 | Next Review: September 2077
+
+  [5] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 5: GENERAL CONDUCT STANDARDS | type=list | tokens=292
+  TEXT:
+SECTION 5: GENERAL CONDUCT STANDARDS
+
+-  Residents  shall  address  the  Overseer  as  'Overseer'  at  all  times.  First-name  familiarity  is  not authorised unless explicitly granted via written permission (Form VT-OVR-009).
+-  Loud  music,  recreational  shouting,  or  the  playing  of  unauthorised  instruments  in  residential corridors  is  prohibited  between  21:00  and  06:00  (Quiet  Hours).  Harmonicas  are  banned  at  all hours.
+- Romantic partnerships must be registered with the Vault-Tec Social Harmony Office. Unregistered cohabitation will result in room reassignment. Vault-Tec reserves the right to optimise pairings for genetic diversity without prior notice.
+- Graffiti, modification of Vault signage, or defacement of the Vault-Boy mascot in any form is a Class III Artistic Misconduct Offence. This includes - but is not limited to - moustaches drawn on Vault-Boy posters.
+-  All  disputes  between  residents  must  be  submitted  in  writing  to  the  Dispute  Resolution  Office (Level 4, Room 2A) within 72 hours of the incident. Physical altercations will result in both parties receiving Disciplinary Status regardless of who initiated contact.
+
+LLM ANSWER (3.55s):
+Approaching the Vault Door, asking Floor Monitors what is outside, sharing theories about the Vault Door’s status, panicking, and departing the Vault are prohibited behaviors during drills (SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS).
+
+====================================================================================================
+
+[28/34] ID: qa_028
+QUESTION : What discretionary luxury perquisites does the compensation addendum describe for Overseer-grade positions?
+GROUND TRUTH: Overseer-grade perquisites include Nuka-Cola Quantum (chilled), Abraxo-laundered linens, a selection of pre-war printed periodicals, and exclusive access to the Vault's sole operational climate-control unit. Exact ration quantities for Overseer and Deputy Overseer luxury rations are redacted per Vault-Tec Board Resolution No. 2074-119.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc4_Overseer_Compensation_HR | section=2. COMPENSATION SCHEDULE | type=narrative | tokens=92
+  TEXT:
+2. COMPENSATION SCHEDULE
+
+The following table details the weekly ration allotments for each supervisory tier. Please note that Discretionary Luxury Ration figures for senior leadership positions are redacted per Vault-Tec Board Resolution No. 2074-119, 'Preservation of Morale Through Strategic Opacity.' General Residents are strongly discouraged from speculating about these figures, as such speculation is both unproductive and, frankly, unbecoming.
+
+  [2] source=Doc4_Overseer_Compensation_HR | section=N/A | type=narrative | tokens=108
+  TEXT:
+**OVERSEER COMPENSATION**
+**& HAZARD PAY ADDENDUM**
+VT-HR-COMP-0004  |  Effective: January 2076  |  Status: ACTIVE
+**RESTRICTED DOCUMENT — HUMAN RESOURCES DIVISION EYES ONLY — UNAUTHORISED ACCESS IS A TERMINABLE OFFENCE**
+**Title**
+Overseer Compensation & Hazard Pay Addendum
+**Date**
+January 2076
+**Department / Role**
+HR
+**Intended Format**
+Word (.docx)
+
+  [3] source=Doc4_Overseer_Compensation_HR | section=4. PROHIBITION ON DISCLOSURE | type=narrative | tokens=177
+  TEXT:
+4. PROHIBITION ON DISCLOSURE
+
+The contents of this Addendum, including but not limited to all ration figures, hazard pay schedules, and the very existence of the Discretionary Luxury Ration program, are strictly confidential. Disclosure to General Residents, Floor Monitors below Grade 3, or any individual demonstrating excessive curiosity is prohibited and constitutes grounds for involuntary reassignment to a residential wing of HR's choosing.
+Vault-Tec thanks you for your discretion, your loyalty, and your continued belief in a Brighter Tomorrow. The rations will continue for as long as your performance merits them. We are all, in this way, aligned.
+**Authorised By:**
+*Director, Human Resources — Vault-Tec Corp.*
+**Document Custodian Stamp:**
+*[ STAMP HERE ]*
+*VAULT-TEC: Building a Better Tomorrow, Today!*
+
+  [4] source=Doc4_Overseer_Compensation_HR | section=2. COMPENSATION SCHEDULE | type=table | tokens=165
+  TEXT:
+2. COMPENSATION SCHEDULE
+
+| **POSITION TITLE**           | **BASE RATION ALLOC. (Units/Wk)**   | **HAZARD SUPPLEMENT**   | **DISCRETIONARY LUXURY RATION**   |
+|------------------------------|-------------------------------------|-------------------------|-----------------------------------|
+| Overseer, Primary            | 850                                 | 200                     | [REDACTED]                        |
+| Deputy Overseer              | 620                                 | 150                     | [REDACTED]                        |
+| Senior Floor Monitor         | 310                                 | 75                      | 48                                |
+| Floor Monitor                | 280                                 | 40                      | 12                                |
+| General Resident (Benchmark) | 200 (Standard)                      | N/A                     | 0                                 |
+
+  [5] source=Doc4_Overseer_Compensation_HR | section=2. COMPENSATION SCHEDULE | type=table | tokens=165
+  TEXT:
+2. COMPENSATION SCHEDULE
+
+| **POSITION TITLE**           | **BASE RATION ALLOC. (Units/Wk)**   | **HAZARD SUPPLEMENT**   | **DISCRETIONARY LUXURY RATION**   |
+|------------------------------|-------------------------------------|-------------------------|-----------------------------------|
+| Overseer, Primary            | 850                                 | 200                     | [REDACTED]                        |
+| Deputy Overseer              | 620                                 | 150                     | [REDACTED]                        |
+| Senior Floor Monitor         | 310                                 | 75                      | 48                                |
+| Floor Monitor                | 280                                 | 40                      | 12                                |
+| General Resident (Benchmark) | 200 (Standard)                      | N/A                     | 0                                 |
+
+LLM ANSWER (6.13s):
+The Discretionary Luxury Ration figures for Overseer positions are redacted per Vault-Tec Board Resolution No. 2074-119 (“Preservation of Morale Through Strategic Opacity”) (Doc4_Overseer_Compensation_HR, Section 2. COMPENSATION SCHEDULE).
+
+====================================================================================================
+
+[29/34] ID: qa_029
+QUESTION : What does the End-of-World Crisis Response playbook specify regarding the 'Managing the Despair Dip' broadcast, and when should it be deployed?
+GROUND TRUTH: The 'Managing the Despair Dip' broadcast (Script 2-C) is to be deployed at 6-month intervals, or whenever the ZAX unit reports a greater-than-15% increase in 'voluntary-unplanned-self-expiration ideation' metrics among the resident population. Its tone is described as 'firm but nurturing.'
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=Script 2-C: 'Managing the Despair Dip' — Long-Term Morale Broadcast | type=narrative | tokens=23
+  TEXT:
+Script 2-C: 'Managing the Despair Dip' — Long-Term Morale Broadcast
+
+To."*
+
+  [2] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=Script 2-C: 'Managing the Despair Dip' — Long-Term Morale Broadcast | type=narrative | tokens=82
+  TEXT:
+Script 2-C: 'Managing the Despair Dip' — Long-Term Morale Broadcast
+
+(Tone: Firm but nurturing. Deploy at 6-month intervals or whenever ZAX units report a greater-than-15% increase in 'voluntary-unplanned-self-expiration ideation' metrics among resident population.)
+**[RECORDED BROADCAST — APPROVED SCRIPT VT-RAD-2C]**
+
+  [3] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=N/A | type=table | tokens=96
+  TEXT:
+| **Title:**           | "End of the World" Crisis Response Messaging Playbook        |
+|----------------------|--------------------------------------------------------------|
+| **Date:**            | October 2077                                                 |
+| **Department:**      | Marketing                                                    |
+| **Intended Format:** | Word Document (.docx)                                        |
+| **Classification:**  | CONFIDENTIAL — Marketing Personnel Only                      |
+| **Document Status:** | PRE-STAGED — Deploy Upon Confirmed Global Annihilation Event |
+
+  [4] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=Script 2-B: The 'Sympathy & Upsell' Broadcast | type=narrative | tokens=70
+  TEXT:
+Script 2-B: The 'Sympathy & Upsell' Broadcast
+
+(Tone: Warm, empathetic, but pivoting swiftly to brand reinforcement. For deployment 72 hours post-event, after initial shock has become manageable grief-adjacent compliance.)
+**[RECORDED BROADCAST — APPROVED SCRIPT VT-RAD-2B]**
+
+  [5] source=Doc7_Vault76_Tricentennial_Promotional_Strategy | section=SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY | type=narrative | tokens=53
+  TEXT:
+SECTION 3: CORE MESSAGING STRATEGY & APPROVED VOCABULARY
+
+*"Forced surface relocation"*
+*"Nuclear annihilation"*
+*"Radiation poisoning"*
+*"Mass unplanned expiration"*
+*"The surface is uninhabitable"*
+
+LLM ANSWER (6.43s):
+The 'Managing the Despair Dip' broadcast should be delivered with a firm but nurturing tone, at 6-month intervals or when ZAX units report a greater-than-15% increase in 'voluntary-unplanned-self-expiration ideation' metrics among the resident population (Script 2-C: 'Managing the Despair Dip' — Long-Term Morale Broadcast). It is a long-term morale broadcast (Script 2-C: 'Managing the Despair Dip' — Long-Term Morale Broadcast).
+
+====================================================================================================
+
+[30/34] ID: qa_030
+QUESTION : Under the active surface exploration policy, what is the status of the vault door and what is the penalty for attempting to interact with it?
+GROUND TRUTH: The vault door is closed and will remain closed. The active policy explicitly prohibits any resident from attempting to cycle the gear mechanism, tamper with the override keypad, or otherwise interact with the door — including on the basis of hearing voices outside, seeing lights via the periscope (which has been sealed), or a belief that family members are still on the surface. Violation results in immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc3_Emergency_Evacuation_Procedures | section=SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS | type=list | tokens=209
+  TEXT:
+SECTION 4: PROHIBITED BEHAVIORS DURING DRILLS
+
+- Approaching the Vault Door under any pretext, including 'curiosity,' 'fresh air,' 'a feeling,' or 'a dream.'
+- Asking Floor Monitors or security personnel what is 'actually outside.' This question has no productive answer and will be redirected to a complimentary counseling session.
+- Sharing, posting, or distributing any personal theories regarding the Vault Door's operational status.
+- Panicking. Panic is expressly prohibited under Vault-Tec Resident Conduct Code 7.4(b) and is considered a wellness violation.
+- Departing the Vault. This item is included for completeness. It has never happened. It will not happen. Everyone is fine.
+This document is the property of Vault-Tec Corporation. Unauthorized reproduction, external distribution, or surface-side dissemination is strictly prohibited and frankly beside the point. Vault-Tec: Building a Better Tomorrow, Today! | Document Owner: Safety Compliance Dept., Sub-Level 2 | Next Review: September 2077
+
+  [2] source=doc13_surface_exploration_active | section=Section 4: Compliance — It Is Mandatory Now More Than Ever | type=narrative | tokens=203
+  TEXT:
+Section 4: Compliance — It Is Mandatory Now More Than Ever
+
+In summary: the vault door is a door that goes to a place where everything is a deadly, highly radioactive wasteland, and opening it is punishable by immediate termination of ration allocation and all associated residential privileges. We at Vault-Tec remain committed to the safety, wellbeing, and continued biological viability of our resident participants, and we are confident that with your cooperation, the data collected from this experiment will be absolutely tip-top.
+**Thank you for choosing Vault-Tec. You did not technically choose Vault-Tec, but we appreciate your continued participation regardless. Please remain calm, remain compliant, and above all else — remain inside.**
+*It is a very swell vault and we are all going to be just fine.*
+*Vault-Tec Corporation | Est. 2031 | 'A Future Worth Living In (Terms and Conditions Apply)' | ACTIVE POLICY — Compliance is mandatory. Non-compliance will be noted. Everything will be noted.*
+
+  [3] source=doc13_surface_exploration_active | section=N/A | type=narrative | tokens=177
+  TEXT:
+**VAULT-TEC CORPORATION**
+*Internal Document — Property of Vault-Tec*
+**Title:**
+Updated Surface Exploration Policy (Active)
+**Date:**
+November, 2077
+**Department:**
+General Employee Communications / Wellness Division
+**Intended Format:**
+Word (.docx)
+**Access Level:**
+General Employee
+**Status: ACTIVE — MANDATORY COMPLIANCE**
+**!!! URGENT MANDATORY POLICY SUPERSESSION NOTICE !!!**
+**THIS DOCUMENT SUPERSEDES, NULLIFIES, CANCELS, AND VOIDS ALL PRIOR GUIDANCE ISSUED UNDER POLICY REF: SEP-JAN2077-MEEKINS, INCLUDING BUT NOT LIMITED TO THE BUSINESS ABOUT THE HATS AND THE WALKS. BURN THAT DOCUMENT. ACTUALLY, DO NOT BURN ANYTHING, OXYGEN IS FINITE.**
+
+  [4] source=doc12_surface_exploration_archived | section=N/A | type=narrative | tokens=75
+  TEXT:
+**VAULT-TEC CORPORATION**
+*Internal Document — Property of Vault-Tec*
+**Title:**
+Surface Exploration Policy (Archived)
+**Date:**
+January, 2077
+**Department:**
+General Employee Communications / Wellness Division
+**Intended Format:**
+Word (.docx)
+**Access Level:**
+General Employee
+**Status:**
+ARCHIVED
+
+  [5] source=doc13_surface_exploration_active | section=Section 3: The Vault Door — Do Not Touch It | type=narrative | tokens=116
+  TEXT:
+Section 3: The Vault Door — Do Not Touch It
+
+The vault door is closed. The vault door will remain closed. Any resident found attempting to manually cycle the gear mechanism, tamper with the override keypad, or 'just see what happens' will be subject to immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C, which, we are now in a position to confirm, has more availability than previously anticipated.
+This prohibition applies regardless of the following circumstances, which are not hypothetical and which Vault-Tec is prepared to address on a case-by-case basis:
+
+LLM ANSWER (7.08s):
+The vault door is closed and will remain closed. Attempting to interact with it is punishable by immediate termination of ration allocation and all associated residential privileges, or immediate involuntary calorie restriction and reassignment to Experimental Wing 7-C (doc13_surface_exploration_active, Section 3 & Section 4).
+
+====================================================================================================
+
+[31/34] ID: qa_031
+QUESTION : According to the GOAT administration document, what actual criteria determine whether a resident receives a Technical role assignment?
+GROUND TRUTH: Technical role assignments (Tier 2) are determined by the resident's VTSSM Engineering Social Utility Index (SUX) score being 72 or above, combined with no documented 'Grievance Events' on their record. GOAT exam scores play no role, as answer sheets are incinerated and never scored.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc06_GOAT_Exam_Administration | section=SECTION 1: PURPOSE AND DESIGN PHILOSOPHY | type=narrative | tokens=228
+  TEXT:
+SECTION 1: PURPOSE AND DESIGN PHILOSOPHY
+
+The  G.O.A.T.  was  developed  by  Vault-Tec's  Institute  of  Behavioral  Workforce  Modeling  (IBWM)  to provide each vault resident with a personalized occupational destiny . Residents are informed that their test results reflect a sophisticated psychometric analysis of their cognitive aptitudes, interperson competencies, and manual dexterity potential.
+They  are  not  informed that  occupational  assignments  are,  in  fact,  determined no  fewer  than eighteen (18) months prior to test administration , based entirely on the staffing requirements of the Vault-Tec Social Stratification Model (VTSSM v3.1). The exam itself is a delightful theatrical exercise designed to maximize resident buy-in and minimize labor grievances. Studies show that residents who believe they "earned" their assignment demonstrate a 34% reduction in what we at Vault-Tec cheerfully call "Unauthorized Dissatisfaction Events" (UDEs). Swell stuff!
+SECTION 2: PRE-ASSIGNMENT PROTOCOL (Completed BEFORE Exam Day)
+
+  [2] source=Doc06_GOAT_Exam_Administration | section=SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC | type=narrative | tokens=104
+  TEXT:
+SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC
+
+The  following  table  represents  the actual criteria  used  to  assign  occupational  roles.  This  rubric supersedes all G.O.A.T. exam scores, which, as noted in Section 3.2, do not exist in any meaningful sense. The rubric is derived entirely from the Vault Staffing Needs Assessment and the Social Utility Index. Isn't that just the bee's knees?
+
+  [3] source=Doc06_GOAT_Exam_Administration | section=SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC | type=table | tokens=307
+  TEXT:
+SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC
+
+| Assignment Category                          | Primary Determinant                                      | Secondary Determinant                            | Example Roles                           |
+|----------------------------------------------|----------------------------------------------------------|--------------------------------------------------|-----------------------------------------|
+| Tier 1: Leadership (Pre-assigned to          | Overseer's family) Familial relation to current Overseer | N/A                                              | Junior Overseer, Deputy Administrator   |
+| Tier 2: Technical (Pre-assigned to quota)    | VTSSM Engineering SUX Score ‡ 72                         | No documented 'Grievance Events'                 | Reactor Technician, Water Chip Engineer |
+| Tier 3: Medical (Pre-assigned to quota)      | VTSSM Medical SUX Score ‡ 65                             | Resident demonstrated 'pleasant bedside manner'* | Physician, Nurse, Mortuary Technician   |
+| Tier 4: Agricultural (Pre-assigned to quota) | VTSSM General SUX Score < 50                             | No distinguishing alternate criteria             | Hydroponics Laborer, Fungal Crop Tender |
+| Tier 5: Custodial (Catch-all assignment)     | Lowest 15% of overall SUX scores                         | History of UDEs or behavioral flags              | Waste Processing, Sewer Maintenance     |
+| Tier 6: Experimental (See Doc 5 for details) | Flagged as 'Problematic' by Overseer's Office            | See HR Form 19-C                                 | CLASSIFIED                              |
+
+  [4] source=Doc06_GOAT_Exam_Administration | section=Exam Administration Best Practices: | type=list | tokens=271
+  TEXT:
+Exam Administration Best Practices:
+
+- 3.1 Distribute exam booklets with an air of grave seriousness. Encourage residents to 'take their time' and 'really reflect.' Suggested phrase: "Your future is in YOUR hands today, champ!"
+- 3.2 The  exam  itself  contains  60  questions.  Questions  are  genuine  psychometric  items sourced  from  the  1958  Vault-Tec  Personality  Battery. However,  answers  are  not scored. Answer sheets are to be collected, bundled, and incinerated in the Sub-Level 2 furnace (Requisition Code: GOAT-BURN-076).
+- 3.3 Following  a  wait  period  of  no  less  than  72  hours  (to  simulate  'processing  time'), pre-sealed result packets are to be distributed. Administer with warm congratulations and a complimentary Vault-Tec branded pen.
+- 3.4 Should  a  resident  verbally  contest  their  assigned  role,  HR  staff  are  to  respond  with Scripted Deflection Phrase Set C: "The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!" Do not engage further.
+
+  [5] source=Doc06_GOAT_Exam_Administration | section=SECTION 3: EXAM DAY ADMINISTRATION GUIDELINES | type=narrative | tokens=128
+  TEXT:
+SECTION 3: EXAM DAY ADMINISTRATION GUIDELINES
+
+On exam day, the G.O.A.T. is to be administered with maximum theatrical flair. We cannot stress this enough: the  exam  must  appear  rigorous .  Residents  who  feel  they  have  been  "tested"  report dramatically  higher  levels  of  post-assignment  contentment,  which  correlates  with  a  12%  uptick  in productivity metrics and a statistically significant decrease in what our sociologists call 'Tunnel Wal Graffiti Incidents.' Let's keep those numbers peachy!
+
+LLM ANSWER (6.85s):
+For Tier 2: Technical roles, the primary determinant is a VTSSM Engineering SUX Score of 72 or higher, and the secondary determinant is no documented 'Grievance Events' (SECTION 4: THE OFFICIAL G.O.A.T. GRADING RUBRIC).
+
+====================================================================================================
+
+[32/34] ID: qa_032
+QUESTION : Under the Pip-Boy 3000 calibration SOP, what command string must a technician execute to initialize the diagnostic environment after authentication?
+GROUND TRUTH: After authentication, the technician runs the following three commands: 'zax-link --device pip3000 --mode diagnostic --auth ECHO-9', then 'run calibration_suite_v7.holotape', then 'set bio_sync --manual'. The terminal confirms with 'PIP-BOY 3000 DIAGNOSTIC SUITE ACTIVE. HAVE A WONDERFUL DAY!'
+
+RETRIEVED CHUNKS (5):
+  [1] source=SOP_PipBoy_3000_Calibration | section=Step 3.3 — Diagnostic Environment Launch | type=code_block | tokens=107
+  TEXT:
+Step 3.3 — Diagnostic Environment Launch
+
+Once authenticated, enter the following command string to initialize the Pip-Boy 3000 diagnostic environment:
+```
+$ zax-link --device pip3000 --mode diagnostic --auth ECHO-9
+$ run calibration_suite_v7.holotape
+$ set bio_sync --manual
+```
+The terminal will confirm with:
+**```
+PIP-BOY 3000 DIAGNOSTIC SUITE ACTIVE. HAVE A WONDERFUL DAY!
+```**
+How delightful!
+
+  [2] source=SOP_PipBoy_3000_Calibration | section=N/A | type=narrative | tokens=63
+  TEXT:
+Title: SOP - Pip-Boy 3000 Calibration & Maintenance Procedures
+Date: November, 2076
+Department: Admin / Vault Systems Integration
+Intended Format: Markdown (.md)
+Classification: ADMIN EYES ONLY — Unauthorized access is a Level 3 Conduct Infraction (see Form 19-C)
+
+  [3] source=SOP_PipBoy_2000_Calibration | section=Step 3.3 — Diagnostic Environment Launch | type=code_block | tokens=107
+  TEXT:
+Step 3.3 — Diagnostic Environment Launch
+
+Once authenticated, enter the following command string to initialize the Pip-Boy 2000 diagnostic environment:
+```
+$ zax-link --device pip2000 --mode diagnostic --auth DELTA-7
+$ run calibration_suite_v4.holotape
+$ set bio_sync --manual
+```
+The terminal will confirm with:
+**```
+PIP-BOY 2000 DIAGNOSTIC SUITE ACTIVE. HAVE A WONDERFUL DAY!
+```**
+How delightful!
+
+  [4] source=SOP_PipBoy_2000_Calibration | section=N/A | type=narrative | tokens=63
+  TEXT:
+Title: SOP - Pip-Boy 2000 Calibration & Maintenance Procedures
+Date: March, 2075
+Department: Admin / Vault Systems Integration
+Intended Format: Markdown (.md)
+Classification: ADMIN EYES ONLY — Unauthorized access is a Level 3 Conduct Infraction (see Form 19-C)
+
+  [5] source=SOP_PipBoy_3000_Calibration | section=SECTION 3: ZAX TERMINAL AUTHENTICATION | type=narrative | tokens=107
+  TEXT:
+SECTION 3: ZAX TERMINAL AUTHENTICATION
+
+To access the Pip-Boy 3000 diagnostic environment, the technician must authenticate via a ZAX-linked maintenance terminal. Follow these steps
+**precisely**
+and in
+**the correct order.**
+Deviating from this sequence has previously resulted in two (2) instances of
+**unplanned resident expiration**
+, which, while providing excellent stress-test data for the vault's emergency alert systems, did generate a
+*tremendous*
+amount of paperwork.
+
+LLM ANSWER (7.06s):
+$ zax-link --device pip3000 --mode diagnostic --auth ECHO-9
+$ run calibration_suite_v7.holotape
+$ set bio_sync --manual (SOP_PipBoy_3000_Calibration, Step 3.3 — Diagnostic Environment Launch)
+
+====================================================================================================
+
+[33/34] ID: qa_033
+QUESTION : Under the GOAT administration document, what happens to a resident's Form 88-D (Request for Occupational Re-Evaluation)?
+GROUND TRUTH: Form 88-D is to be routed directly to Filing Cabinet 7-B on Sub-Level 3, which is the cabinet adjacent to the incinerator. It is never processed. HR staff must not inform the resident of this.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc06_GOAT_Exam_Administration | section=Exam Administration Best Practices: | type=list | tokens=77
+  TEXT:
+Exam Administration Best Practices:
+
+- 3.5 In  the  event  a  resident  demands  a  re-test,  administer  Form  88-D  ('Request  for Occupational Re-Evaluation'). Route all completed Form 88-Ds directly to File Cabinet 7-B, Sub-Level 3 (the incinerator adjacent cabinet). Do not process.
+
+  [2] source=Doc9_EndOfWorld_Crisis_Response_Messaging | section=SECTION V: COMPLIANCE, FORMS & ADMINISTRATIVE REQUIREMENTS | type=narrative | tokens=99
+  TEXT:
+SECTION V: COMPLIANCE, FORMS & ADMINISTRATIVE REQUIREMENTS
+
+*NOTE: In the event that the administrative office has itself been subject to unplanned expiration events, forms may be filed posthumously by the next available HR representative. If no HR representative is available, forms may be filed by any resident who is (a) literate, (b) showing fewer than three spontaneous isotope integration symptoms, and (c) possessed of a 'can-do' attitude.*
+
+  [3] source=Doc06_GOAT_Exam_Administration | section=Exam Administration Best Practices: | type=list | tokens=271
+  TEXT:
+Exam Administration Best Practices:
+
+- 3.1 Distribute exam booklets with an air of grave seriousness. Encourage residents to 'take their time' and 'really reflect.' Suggested phrase: "Your future is in YOUR hands today, champ!"
+- 3.2 The  exam  itself  contains  60  questions.  Questions  are  genuine  psychometric  items sourced  from  the  1958  Vault-Tec  Personality  Battery. However,  answers  are  not scored. Answer sheets are to be collected, bundled, and incinerated in the Sub-Level 2 furnace (Requisition Code: GOAT-BURN-076).
+- 3.3 Following  a  wait  period  of  no  less  than  72  hours  (to  simulate  'processing  time'), pre-sealed result packets are to be distributed. Administer with warm congratulations and a complimentary Vault-Tec branded pen.
+- 3.4 Should  a  resident  verbally  contest  their  assigned  role,  HR  staff  are  to  respond  with Scripted Deflection Phrase Set C: "The G.O.A.T. is a highly sophisticated instrument, and we are fully confident it has identified your highest potential!" Do not engage further.
+
+  [4] source=Doc06_GOAT_Exam_Administration | section=ADMINISTRATOR'S FOREWORD | type=narrative | tokens=221
+  TEXT:
+ADMINISTRATOR'S FOREWORD
+
+Congratulations, HR Administrator! If you are reading this document, you have been granted Tier-4 clearance and are therefore one of only eleven individuals in this vault who understands the true, swell  nature  of  the  Generalized  Occupational  Aptitude  Test  (G.O.A.T.).  We  know  you'll  find  the following  guidelines  not  only  practical,  but  downright inspiring !  The  G.O.A.T.  program  represents Vault-Tec's most peachy achievement in Workforce Optimization: a scientifically rigorous, statistically validated,  and  completely pre-determined occupational  assignment  framework.  Hip  hip,  hooray  for efficiency!
+Please ensure this document is stored in the HR-locked filing cabinet (Cabinet 7-B, Sub-Level 3) at all times. Any General Employee found in possession of this document is to be immediately referred to the 'Problematic Resident Reassignment' protocol per Form 19-C. Let's keep things tip-top, shall we?
+
+  [5] source=Doc06_GOAT_Exam_Administration | section=SECTION 1: PURPOSE AND DESIGN PHILOSOPHY | type=narrative | tokens=228
+  TEXT:
+SECTION 1: PURPOSE AND DESIGN PHILOSOPHY
+
+The  G.O.A.T.  was  developed  by  Vault-Tec's  Institute  of  Behavioral  Workforce  Modeling  (IBWM)  to provide each vault resident with a personalized occupational destiny . Residents are informed that their test results reflect a sophisticated psychometric analysis of their cognitive aptitudes, interperson competencies, and manual dexterity potential.
+They  are  not  informed that  occupational  assignments  are,  in  fact,  determined no  fewer  than eighteen (18) months prior to test administration , based entirely on the staffing requirements of the Vault-Tec Social Stratification Model (VTSSM v3.1). The exam itself is a delightful theatrical exercise designed to maximize resident buy-in and minimize labor grievances. Studies show that residents who believe they "earned" their assignment demonstrate a 34% reduction in what we at Vault-Tec cheerfully call "Unauthorized Dissatisfaction Events" (UDEs). Swell stuff!
+SECTION 2: PRE-ASSIGNMENT PROTOCOL (Completed BEFORE Exam Day)
+
+LLM ANSWER (5.32s):
+Completed Form 88-Ds ('Request for Occupational Re-Evaluation') are to be routed directly to File Cabinet 7-B, Sub-Level 3 (the incinerator adjacent cabinet) and are not to be processed. (Doc06_GOAT_Exam_Administration, Exam Administration Best Practices)
+
+====================================================================================================
+
+[34/34] ID: qa_034
+QUESTION : How does the Vault Dweller Code of Conduct encourage residents to report suspected Dandy Boy Apple hoarding, and what reward is offered?
+GROUND TRUTH: Residents are encouraged (not required) to report suspected hoarders to their Floor Liaison Officer. Anonymous tips may be submitted via the Suggestion & Suspicion Box outside Cafeteria Bay 2. Vault-Tec rewards confirmed tip submissions with a one-time bonus Nuka-Cola allocation.
+
+RETRIEVED CHUNKS (5):
+  [1] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES | type=narrative | tokens=208
+  TEXT:
+SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES
+
+It has come to the Resident Affairs Division's attention that several individuals have, in the months prio to sealing, accumulated unauthorised caches of Dandy Boy Apples. This practice is hereby declared a Class II Contraband Offence under Vault Regulation 7, Subsection 14 ( Hoarding and Stockpiling of Comestibles ).
+HOARDING OF DANDY BOY APPLES IS STRICTLY PROHIBITED. Maximum penalty: reassignment to Corridor Maintenance Detail (indefinite). Vault-Tec takes apple-based contraband extremely seriously.
+Residents are encouraged to report neighbours suspected of hoarding to their Floor Liaison Officer. Anonymous  tip  submissions  may  be  placed  in  the  Suggestion  &  Suspicion  Box  located  outside Cafeteria Bay 2. Vault-Tec rewards civic-minded residents with a one-time bonus Nuka-Cola allocation upon confirmed report.
+
+  [2] source=Doc01_Vault_Dweller_Code_of_Conduct | section=VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS | type=narrative | tokens=124
+  TEXT:
+VAULT DWELLER CODE OF CONDUCT & HYGIENE STANDARDS
+
+Effective Immediately Upon Vault Sealing | Supersedes All Prior Surface-World Norms
+Welcome, Vault Dweller. You have been selected - through rigorous scientific lottery - to participate in  humanity's  greatest  survival  experiment.  The  rules  contained  within  this  document  are  not suggestions.  They  are  the  pillars  upon  which  civilisation  shall  be  rebuilt.  Compliance  is  comfort. Comfort is survival. Vault-Tec thanks you for your cooperation.
+
+  [3] source=Doc01_Vault_Dweller_Code_of_Conduct | section=SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES | type=table | tokens=138
+  TEXT:
+SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES
+
+| Offence Tier   | Description                               | Penalty                          |
+|----------------|-------------------------------------------|----------------------------------|
+| Tier I         | Possession of 3-10 cans (undeclared)      | 10-day ration reduction          |
+| Tier II        | Possession of 11-25 cans or prior offence | 30-day sanitation duty + demerit |
+| Tier III       | Possession of 26+ cans or repeat offender | Indefinite corridor reassignment |
+| Tier IV        | Operating a distribution network          | Referral to Overseer's Court     |
+
+  [4] source=Doc4_Overseer_Compensation_HR | section=4. PROHIBITION ON DISCLOSURE | type=narrative | tokens=177
+  TEXT:
+4. PROHIBITION ON DISCLOSURE
+
+The contents of this Addendum, including but not limited to all ration figures, hazard pay schedules, and the very existence of the Discretionary Luxury Ration program, are strictly confidential. Disclosure to General Residents, Floor Monitors below Grade 3, or any individual demonstrating excessive curiosity is prohibited and constitutes grounds for involuntary reassignment to a residential wing of HR's choosing.
+Vault-Tec thanks you for your discretion, your loyalty, and your continued belief in a Brighter Tomorrow. The rations will continue for as long as your performance merits them. We are all, in this way, aligned.
+**Authorised By:**
+*Director, Human Resources — Vault-Tec Corp.*
+**Document Custodian Stamp:**
+*[ STAMP HERE ]*
+*VAULT-TEC: Building a Better Tomorrow, Today!*
+
+  [5] source=doc12_surface_exploration_archived | section=Section 3: Addressing Concerns From Alarmists | type=list | tokens=203
+  TEXT:
+Section 3: Addressing Concerns From Alarmists
+
+It has come to our attention that certain residents — specifically those billeted in Residential Block 3, you know who you are — have been circulating what can only be described as deeply un-swell rumors about the state of the surface. These include, but are not limited to:
+- Claims that the sky 'looks like the sun but wrong.'
+- Suggestions that the geiger counter in the break room is 'clicking funny.'
+- The unauthorized posting of a handwritten note reading 'DO NOT GO OUTSIDE' on the vault door, signed 'A Friend.'
+The individual responsible for the note has been identified and has been warmly invited to a mandatory one-on-one consultation with HR (Form 5-B, 'Morale Remediation — Pessimism Category'). We are pleased to report they are currently undergoing 'aggressive physiological re-alignment therapy' in Sub-Level 7 and are, by all accounts, contributing meaningfully to Vault-Tec science!
+
+LLM ANSWER (8.27s):
+Residents are encouraged to report suspected Dandy Boy Apple hoarding to their Floor Liaison Officer or by submitting anonymous tips in the Suggestion & Suspicion Box outside Cafeteria Bay 2 (Doc01_Vault_Dweller_Code_of_Conduct, SECTION 4: PROHIBITION ON HOARDING - DANDY BOY APPLES). A one-time bonus Nuka-Cola allocation is offered upon confirmed report.
+
+====================================================================================================
+

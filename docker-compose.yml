@@ -5,12 +5,13 @@ services:
 
   api:
     build:
-      context: .
-      dockerfile: docker/Dockerfile.api
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./src:/app/src       # Hot reload during development
+      - ./backend/src:/app/src       # Hot reload during development
+      - ./backend/data:/app/data     # Access to docling_exports
     env_file: .env
     depends_on:
       - postgres

@@ -1,29 +1,53 @@
+# Environment Variables
 .env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
 .pytest_cache/
-*.pyc
+.coverage
+htmlcov/
+.ruff_cache/
 .venv/
+venv/
+env/
+build/
+dist/
+
+# Application Data & Databases
 data/raw/
 data/processed/
-*.egg-info/
-.ruff_cache/
-dist/
-build/
+qdrant_storage/
+auth.db
+*.sqlite3
 
-# Data & DB
-chroma_db/
+# Evaluation outputs
 tests/eval/results/
 tests/eval/generated_answers_*.json
 tests/eval/runs/
 
-# Frontend / Node
+# Frontend / Node / Vite
 node_modules/
 frontend/node_modules/
-.eslintcache
-*.local
+frontend/dist/
+frontend/build/
 .npm
 .cache
-frontend/dist/
+.eslintcache
+
+# Editor & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.local
 
 # Tools
 .claude/

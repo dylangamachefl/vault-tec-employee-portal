@@ -160,7 +160,32 @@ _CATALOGUE: list[DocumentRecord] = [
 ]
 
 
+# Maps catalogue ID → markdown filename inside data/processed/docling_exports/
+DOC_ID_TO_FILENAME: dict[str, str] = {
+    "doc01": "Doc01_Vault_Dweller_Code_of_Conduct.md",
+    "doc02": "Doc02_Radiation_Sickness_Symptom_Guide.md",
+    "doc03": "Doc3_Emergency_Evacuation_Procedures.md",
+    "doc04": "Doc4_Overseer_Compensation_HR.md",
+    "doc05": "VaultTec_HR_Doc5_NVDR.md",
+    "doc06": "Doc06_GOAT_Exam_Administration.md",
+    "doc07": "Doc7_Vault76_Tricentennial_Promotional_Strategy.md",
+    "doc08": "Doc08_GECK_Advertising_Guidelines.md",
+    "doc09": "Doc9_EndOfWorld_Crisis_Response_Messaging.md",
+    "doc10": "doc10_vault_door_override_protocol.md",
+    "doc11": "doc11_zax_mainframe_root_access.md",
+    "doc12": "doc12_surface_exploration_archived.md",
+    "doc13": "doc13_surface_exploration_active.md",
+    "sop01": "SOP_PipBoy_2000_Calibration.md",
+    "sop02": "SOP_PipBoy_3000_Calibration.md",
+}
+
+
 def get_accessible_documents(access_level: str) -> list[DocumentRecord]:
     """Return documents visible to the given access level."""
     allowed = _ACCESS_HIERARCHY.get(access_level, ["General Employee"])
     return [doc for doc in _CATALOGUE if doc.accessLevel in allowed]
+
+
+def get_accessible_doc_ids(access_level: str) -> set[str]:
+    """Return the set of doc IDs accessible at the given clearance level."""
+    return {doc.id for doc in get_accessible_documents(access_level)}

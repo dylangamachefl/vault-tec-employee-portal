@@ -16,9 +16,9 @@ switch ($Command) {
         docker compose down
     }
     "test" {
-        uv run pytest tests/ -v
+        cd backend; uv run pytest tests/ -v
     }
     "lint" {
-        uv run ruff check src/ --fix
+        cd backend; uv run ruff check src/ --fix
     }
 }

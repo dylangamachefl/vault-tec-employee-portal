@@ -1,0 +1,15 @@
+{
+  "candidate_scores": {
+    "256": {
+      "faithfulness": 0.7261052079233897,
+      "answer_relevancy": 0.44177624312487646,
+      "context_precision": 0.8406862744589461,
+      "context_recall": 0.9068627450980392
+    }
+  },
+  "composite_scores": {
+    "256": 0.7107818639338479
+  },
+  "winning_collection": "vault_documents_256",
+  "canonical_collection_name": "vault_documents"
+}
