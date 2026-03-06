@@ -12,7 +12,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from src.api.documents import DocumentRecord, DOC_ID_TO_FILENAME, get_accessible_documents, get_accessible_doc_ids
+from src.api.documents import (
+    DOC_ID_TO_FILENAME,
+    DocumentRecord,
+    get_accessible_doc_ids,
+    get_accessible_documents,
+)
 from src.audit.logger import log_query_event
 from src.audit.schemas import AuditLogOut
 from src.auth.crud import get_allowed_levels, get_user
@@ -35,7 +40,9 @@ app = FastAPI(
 # Production: ALLOWED_ORIGINS=https://vault-tec.vercel.app,https://vault-tec.netlify.app
 # ---------------------------------------------------------------------------
 
-_raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:80,http://localhost")
+_raw_origins = os.getenv(
+    "ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:80,http://localhost"
+)
 _allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
 app.add_middleware(
