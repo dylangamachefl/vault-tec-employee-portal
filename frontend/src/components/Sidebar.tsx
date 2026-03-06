@@ -6,9 +6,10 @@ import { FileText, Folder, Lock, LogOut, AlertTriangle } from 'lucide-react';
 interface SidebarProps {
   user: User;
   onLogout: () => void;
+  onViewDoc: (doc: Document) => void;
 }
 
-export function Sidebar({ user, onLogout }: SidebarProps) {
+export function Sidebar({ user, onLogout, onViewDoc }: SidebarProps) {
   const [docs, setDocs] = useState<Document[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -78,24 +79,27 @@ export function Sidebar({ user, onLogout }: SidebarProps) {
                   </div>
                   <ul className="space-y-2 pl-6">
                     {deptDocs.map((doc) => (
-                      <li key={doc.id} className="group">
-                        <div className="flex items-start">
+                      <li key={doc.id}>
+                        <button
+                          onClick={() => onViewDoc(doc)}
+                          className="w-full text-left group flex items-start p-1 -ml-1 rounded hover:bg-vault-green/10 transition-colors"
+                        >
                           <FileText
                             size={16}
-                            className="mr-2 mt-1 flex-shrink-0 group-hover:text-vault-amber"
+                            className="mr-2 mt-1 flex-shrink-0 group-hover:text-vault-amber transition-colors"
                           />
-                          <div>
-                            <p className="text-lg group-hover:text-vault-amber leading-tight">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-lg group-hover:text-vault-amber leading-tight truncate transition-colors">
                               {doc.title}
                             </p>
                             <div className="flex gap-x-3 text-sm text-vault-green-dim opacity-70">
                               <span>{doc.effectiveDate}</span>
                               {doc.status === 'ARCHIVED' && (
-                                <span className="text-vault-amber">[ARCHIVED]</span>
+                                <span className="text-vault-amber font-bold">[ARCHIVED]</span>
                               )}
                             </div>
                           </div>
-                        </div>
+                        </button>
                       </li>
                     ))}
                   </ul>
